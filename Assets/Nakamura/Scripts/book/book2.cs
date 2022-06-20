@@ -24,14 +24,14 @@ public class book2 : MonoBehaviour
     {
 	if (b == 0)
        	{
-		if (coinstone.allcoin < 300)
+		if (coinstone.allcoin < 500)
         	{
             		toggle.isOn = false;
         	}
 
-	 	if (coinstone.allcoin >= 300 && toggle.isOn == true)
+	 	if (coinstone.allcoin >= 500 && toggle.isOn == true)
         	{
-            		coinstone.allcoin -= 300;
+            		coinstone.allcoin -= 500;
                     shopRange = true;
                     toggle.interactable = false;
 	    		    b = 1;
