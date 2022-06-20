@@ -9,6 +9,9 @@ public class HpUpBook : MonoBehaviour
     GameObject player;
     PlayerControl script;
 
+    //Œø‰Ê‰¹
+    public GameObject bookSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class HpUpBook : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             script.HPLimit += 10.0f;
             script.HP = script.HPLimit;
             Destroy(gameObject);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -13,8 +14,12 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.003f;                          
+    private float speed=0.01f;                          
     private Rigidbody2D rb;
+    private float jumpPower=1;//ジャンプ力
+    private bool jumpDecision = false;
+    private bool jumpDecision2 = false;
+    private bool jumpHole=false;
 
     //弾
     private int direction = 2;//向いてる方向１～４
@@ -26,6 +31,9 @@ public class PlayerControl : MonoBehaviour
     private float range=0; //増加攻撃範囲
     private float power=5; //攻撃力
 
+    //防御力
+    private float defense = 0;
+
     //爆弾
     bool getBomb=false;
     public GameObject bombs;
@@ -36,11 +44,21 @@ public class PlayerControl : MonoBehaviour
     //HP酸素
     private float hp=100.0f;
     private float hpLimit = 100.0f;
-    private float oxygen=50.0f;
+    private float oxygen=200.0f;
     private bool maxO2=false;
     private bool rec=false;
 
     private bool onParther = false;//追従開始
+
+    //ショップ画面
+    public static int coin = 0;
+    public static int asset = 0;     //資源
+    public static bool shopResu=false; //ショップ蘇生
+    public static bool shopRange=false;//ショップ攻撃範囲
+    public static bool shopDefense = false;//ショップ防御力
+    public static bool shopRec = false;//ショップ自動回復
+
+
 
     void Start()
     {
@@ -48,11 +66,28 @@ public class PlayerControl : MonoBehaviour
 
         renderer = GetComponent<SpriteRenderer>();
         sr = gameObject.GetComponent<SpriteRenderer>();
+
+        if(shopRange==true)
+        {
+            range += 1.0f;
+            Debug.Log("範囲");
+        }
+        if (shopDefense == true)
+        {
+            defense += 1.0f;
+            Debug.Log("防御力");
+        }
+        if (shopRec == true)
+        {
+            rec=true;
+            Debug.Log("自動回復");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
         float horizontalKey = Input.GetAxis("Horizontal");
         float verticalKey = Input.GetAxis("Vertical");
 
@@ -84,6 +119,39 @@ public class PlayerControl : MonoBehaviour
             direction = 4;
         }//下-4
 
+        //ジャンプ
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            float tile = 5;//１タイルの幅
+            if (jumpDecision == true && jumpHole == true)
+            {
+                if (direction == 1)
+                {
+                    this.transform.position = new Vector2(this.transform.position.x + (tile * (jumpPower + 2)), this.transform.position.y);
+
+
+                }//右
+                if (direction == 2)
+                {
+                    this.transform.position = new Vector2(this.transform.position.x - (tile * (jumpPower + 2)), this.transform.position.y);
+
+                }//左
+
+            }
+            if (jumpDecision2 == true && jumpHole == true)
+            {
+                if (direction == 3)
+                {
+                    this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (tile * (jumpPower + 2)));
+
+                }//上
+                else if (direction == 4)
+                {
+                    this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - (tile * (jumpPower + 2)));
+
+                }//下
+            }
+        }
 
         //弾
         timeElapsed += Time.deltaTime;
@@ -109,6 +177,22 @@ public class PlayerControl : MonoBehaviour
                 StartCoroutine(Timer());
             }
         }
+
+        //ゲームオーバー
+        if (hp <= 0)
+        {
+            if(shopResu==true)
+            { 
+                hpLimit=hp;
+                shopResu=false;
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOver");
+                asset = 0;
+            }
+            
+        }
         
     }
 
@@ -129,32 +213,90 @@ public class PlayerControl : MonoBehaviour
             power+=5;
 
         }
+
         //爆弾
         else if (other.gameObject.tag == "Bomb")
         {
             getBomb=true;
         }
 
+        //酸素回復エリア入り
         if (other.gameObject.tag == "Cylinder")
         {
             maxO2 = true;
         }
 
+        //仲間追従開始
         if (other.gameObject.tag == "Partner")
         {
             onParther = true;
         }
+
+        //酸素回復攻撃に当たったら１０回復
+        if (other.gameObject.tag == "O2")
+        {
+            oxygen +=10;
+        }
+
+       
+
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Cylinder")
         {
             maxO2 = false;
-            Debug.Log("ok");
+        }//酸素回復エリア抜け出し
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        //コインゲット
+        if (other.gameObject.tag == "Coin")
+        {
+            coin += 1;
         }
+
+        //資源ゲット
+        if (other.gameObject.tag == "Asset")
+        {
+            asset += 1;
+        }
+
+        //敵キャラ攻撃受ける
+        //ざこ1
+        if (other.gameObject.tag == "Enemy1")
+        {
+            hp -= (10-defense);
+        }
+        //ざこ2
+        if (other.gameObject.tag == "Enemy2")
+        {
+            hp -= (15 - defense);
+        }
+        //ざこ３即死
+        if (other.gameObject.tag == "DieEnemy")
+        {
+            hp = 0;
+        }
+        //中ボス1,2
+        if (other.gameObject.tag == "Enemy4" && other.gameObject.tag == "Enemy5")
+        {
+            hp -= (20 - defense);
+        }
+        //ボス
+        if (other.gameObject.tag == "Boss")
+        {
+            hp -= (30 - defense);
+        }
+
+        
     }
 
     
+
+
+
     public float Speed
     {
         set { this.speed = value; }
@@ -220,4 +362,30 @@ public class PlayerControl : MonoBehaviour
         set { this.power = value; }
         get { return this.power; }
     }
+    public float JumpPower
+    {
+        set { this.jumpPower = value; }
+        get { return this.jumpPower; }
+    }
+    public bool JumpDecision
+    {
+        set { this.jumpDecision = value; }
+        get { return this.jumpDecision; }
+    }
+    public bool JumpDecision2
+    {
+        set { this.jumpDecision2 = value; }
+        get { return this.jumpDecision2; }
+    }
+    public float Defense
+    {
+        set { this.defense = value; }
+        get { return this.defense; }
+    }
+    public bool JumpHole
+    {
+        set { this.jumpHole = value; }
+        get { return this.jumpHole; }
+    }
+
 }

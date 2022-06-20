@@ -9,6 +9,14 @@ public class GunControl : MonoBehaviour
     int dir;
     float moveSpeed;
 
+    //攻撃範囲
+    BoxCollider2D boxCol;
+    private float range;
+    private float posX, posY;
+
+    //効果音
+    public GameObject bulletSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +26,11 @@ public class GunControl : MonoBehaviour
         dir = script.Direction;
         moveSpeed = script.GunSpeed;
 
+        boxCol = GetComponent<BoxCollider2D>();
+        posX = boxCol.size.x;
+        posY = boxCol.size.y;
+
+        Instantiate(bulletSound, this.transform.position, this.transform.rotation);//効果音
     }
 
     // Update is called once per frame
@@ -43,6 +56,7 @@ public class GunControl : MonoBehaviour
 
         }
 
+        boxCol.size = new Vector3(posX + script.Range, posY + script.Range, script.Range);
 
     }
 
@@ -55,5 +69,3 @@ public class GunControl : MonoBehaviour
 
     }
 }
-
-//10

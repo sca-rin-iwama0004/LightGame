@@ -8,7 +8,10 @@ public class BomdControl : MonoBehaviour
     public GameObject Explosion;
     private float time=3.0f;//”š”­‚Ü‚Å‚ÌŽžŠÔ
     private bool door=false;
-    
+
+    //Œø‰Ê‰¹
+    public GameObject bomdSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class BomdControl : MonoBehaviour
 
         StartCoroutine(DelayCoroutine(time, () =>
         {
+            Instantiate(bomdSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             Destroy(gameObject);
             Instantiate(Explosion, transform.position, transform.rotation);
             
@@ -32,6 +36,7 @@ public class BomdControl : MonoBehaviour
 
     }
 
+    //•Ç”»’è
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Door")
