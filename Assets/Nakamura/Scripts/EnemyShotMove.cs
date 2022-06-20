@@ -13,16 +13,16 @@ public class EnemyShotMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = true;
-        player = GameObject.Find("Player");
+        rb.isKinematic = true; 
 	    enemy1 = GameObject.Find("Enemy1");
-        n= player.transform.position.x * speed;
+        player = GameObject.Find("Player");
+        n = player.transform.position.x * speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-	    float x = enemy1.transform.position.x;
+        float x = enemy1.transform.position.x;
         float y = enemy1.transform.position.y;
         transform.position += new Vector3(n, 0.0f, 0.0f);
 	    if (this.transform.position.x >= x + 30.0f || this.transform.position.x <= x - 30.0f || this.transform.position.y >= y + 30.0f || this.transform.position.y <= y - 30.0f)

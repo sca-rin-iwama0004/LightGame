@@ -18,7 +18,7 @@ public class Enemy5ShotU : MonoBehaviour
         float x = enemy4.transform.position.x;
         float y = enemy4.transform.position.y;
         transform.position += new Vector3(0.0f,speed, 0.0f);
-        if (this.transform.position.y >= y + 7.0f)
+        if (this.transform.position.y >= y + 15.0f)
         {
             this.gameObject.SetActive(false);
         }
