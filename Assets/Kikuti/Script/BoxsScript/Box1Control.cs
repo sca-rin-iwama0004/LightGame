@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Box1Control : MonoBehaviour
@@ -6,11 +8,14 @@ public class Box1Control : MonoBehaviour
 
     public GameObject attackUpBook;
     public GameObject attackSpeedBook;
+    public GameObject defenseBook;
+
+    //å¯â âπ
+    public GameObject openSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -19,11 +24,12 @@ public class Box1Control : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bullet")
         {
-
+            Instantiate(openSound, this.transform.position, this.transform.rotation);//å¯â âπ
+        
             float rnd = Random.Range(0, 1f);
             Destroy(gameObject);
 
@@ -38,7 +44,8 @@ public class Box1Control : MonoBehaviour
                 //çUåÇë¨ìxUP
             }
             else
-            { 
+            {
+                Instantiate(defenseBook, this.transform.position, this.transform.rotation);
                 //ñhå‰óÕUP
             }
         }

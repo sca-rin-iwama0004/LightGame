@@ -8,12 +8,18 @@ public class PartnerGunControl : MonoBehaviour
     PlayerControl script;
     int dir;
     private float moveSpeed=20;
+
+    //Œø‰Ê‰¹
+    public GameObject bulletSound;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
         dir = script.Direction;
+
+        Instantiate(bulletSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
     }
 
     // Update is called once per frame
