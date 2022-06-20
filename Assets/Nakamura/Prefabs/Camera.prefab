@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5164697727262175186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.5409365, y: 2.4683504, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 66cf358627be58843ade541e43e3a1a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,9 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eye: {fileID: 21300000, guid: 48a675e14eadae041b39ddff12950eff, type: 3}
   enemy3: {fileID: 21300000, guid: 66cf358627be58843ade541e43e3a1a0, type: 3}
-  Coin: {fileID: 3031357079797871623, guid: a4276af2ea425494684eb86e3036f9b1, type: 3}
-  Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
-  Silver: {fileID: 1586172539853583186, guid: accca7b1ce9627d4b937ee09e83204d1, type: 3}
   enemy4: {fileID: 2275914178961091299, guid: ed59cb06dd3af1441b79dcadba6b9635, type: 3}
 --- !u!50 &5164697727262175188
 Rigidbody2D:

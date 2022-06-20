@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9a89f44e342441c42b683c07b25625cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,14 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4676dff830cda604ebb4ca7678ccfa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackUpBook: {fileID: 5533154505726240136, guid: cd62288856a193047b566154500572f9,
-    type: 3}
-  attackSpeedBook: {fileID: 2684233708874924076, guid: 1fe226c4afa934e42834bcfdf61b7eaf,
-    type: 3}
-  defenseBook: {fileID: 7112219282468312064, guid: ace06f50e6e34bf4e8fef88ce8131ecb,
-    type: 3}
-  openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4,
-    type: 3}
+  attackUpBook: {fileID: 5533154505726240136, guid: cd62288856a193047b566154500572f9, type: 3}
+  attackSpeedBook: {fileID: 2684233708874924076, guid: 1fe226c4afa934e42834bcfdf61b7eaf, type: 3}
+  defenseBook: {fileID: 7112219282468312064, guid: ace06f50e6e34bf4e8fef88ce8131ecb, type: 3}
+  openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4, type: 3}
 --- !u!61 &3282137717610257110
 BoxCollider2D:
   m_ObjectHideFlags: 0
