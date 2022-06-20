@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ItemControl : MonoBehaviour
 {
+    //Œø‰Ê‰¹
+    public GameObject gunSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,7 @@ public class ItemControl : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Instantiate(gunSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             Destroy(gameObject);
         }
 

@@ -9,6 +9,9 @@ public class attackSpeedBook : MonoBehaviour
     GameObject player;
     PlayerControl script;
 
+    //Œø‰Ê‰¹
+    public GameObject bookSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class attackSpeedBook : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             script.TimeGun+=1.0f;
             Destroy(gameObject);
         }

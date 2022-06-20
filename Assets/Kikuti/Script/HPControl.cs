@@ -15,6 +15,7 @@ public class HPControl : MonoBehaviour
     private float recTime=0f;
     private float recSpan=20.0f;//回復スピード
 
+
     private void Start()
     {
         image = this.GetComponent<Image>();

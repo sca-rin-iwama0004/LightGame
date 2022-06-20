@@ -9,7 +9,10 @@ public class FoodControl : MonoBehaviour
     GameObject player;
     PlayerControl script;
 
-    private float recovery=30.0f;
+    private float recovery=30.0f;//‰ñ•œ—Ê
+
+    //Œø‰Ê‰¹
+    public GameObject foodSound;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,7 @@ public class FoodControl : MonoBehaviour
             {
                 script.HP = script.HPLimit;
             }
+            Instantiate(foodSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             Destroy(gameObject);
         }
 

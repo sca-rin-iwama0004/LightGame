@@ -18,6 +18,9 @@ public class KnifeControl : MonoBehaviour
     //画像
     private SpriteRenderer renderer;
 
+    //効果音
+    public GameObject knifeSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,7 @@ public class KnifeControl : MonoBehaviour
         posX = boxCol.size.x;
         posY=boxCol.size.y;
 
-
+        Instantiate(knifeSound, this.transform.position, this.transform.rotation);//効果音
 
         //画像
         renderer = GetComponent<SpriteRenderer>();

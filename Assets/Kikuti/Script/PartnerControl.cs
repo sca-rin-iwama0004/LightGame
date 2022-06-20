@@ -17,8 +17,9 @@ public class PartnerControl : MonoBehaviour
 
     GameObject player;
     PlayerControl script;
-    
 
+    //Œø‰Ê‰¹
+    public GameObject partnerSound;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class PartnerControl : MonoBehaviour
     {
         int dir;
         if (script.OnParther == true) {
+            Instantiate(partnerSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             dir = script.Direction;
 
             //UŒ‚

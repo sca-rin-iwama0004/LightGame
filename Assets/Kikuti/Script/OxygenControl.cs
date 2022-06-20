@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class OxygenControl : MonoBehaviour
 {
-    private float maxO2 = 200;
-    private float decreaseO2 = 200;
+   
     private Image image;
 
     GameObject player;
@@ -29,7 +28,8 @@ public class OxygenControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        image.fillAmount -= (( Time.deltaTime / decreaseO2 )/o2Up);
+
+        image.fillAmount -= (( Time.deltaTime / script.Oxygen) /o2Up);
         
        if(script.MaxO2==true)
        {
@@ -37,7 +37,8 @@ public class OxygenControl : MonoBehaviour
 
             if (currentTime > span)
             {
-                image.fillAmount += (decreaseO2*0.3f);
+
+                image.fillAmount += (script.Oxygen * 0.3f);
                 currentTime = 0f;
             }
         }
