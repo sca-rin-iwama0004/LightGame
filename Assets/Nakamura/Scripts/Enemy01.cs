@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy5 : MonoBehaviour
+public class Enemy01 : MonoBehaviour
 {
     GameObject player;
     PlayerControl script;
-    private float hp =500;
+    private float hp = 100;
     Rigidbody2D rb;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
-    [SerializeField] private GameObject Gold;
-    [SerializeField] private GameObject Shot;
-    private float time = 0f;
-    private float span = 5.0f;
+    [SerializeField] private GameObject Bronze;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,44 +20,31 @@ public class Enemy5 : MonoBehaviour
         script = player.GetComponent<PlayerControl>();
     }
 
-    void Update()
-    {
-        time += Time.deltaTime;
-        if (time % 10 > span)
-        {
-            Instantiate(Shot);
-            Shot.transform.position = this.transform.position;
-            time = 0f;
-        }
-    }
-
-
     void OnCollisionEnter2D(Collision2D other)
     {
         int coin = 0;
         int c = 0;
         int food = 0;
-        int gold = 0;
-        int g = 0;
+        int bronze = 0;
+        int b =0;
         if (other.gameObject.tag == "Bullet")
         {
             hp -= script.Power;
         }
         if (other.gameObject.tag == "Gun")
-        {
-            hp -= (script.Power / 2.0f);
-        }
+         {
+          hp -= (script.Power / 2);
+         }
         if (other.gameObject.tag == "Explosion")
         {
-            hp -= 50;
+          hp -= 50;
         }
-
 
         if (hp <= 0)
         {
             coin = Random.Range(0, 2);
             food = Random.Range(0, 2);
-            gold = Random.Range(0, 2);
+            bronze = Random.Range(0,2);
             if (coin == 1)
             {
                 while (c < 10)
@@ -80,16 +64,16 @@ public class Enemy5 : MonoBehaviour
                 Food.transform.position = new Vector2(x, this.transform.position.y);
             }
 
-            if(gold == 1)
+            if(bronze  == 1)
             {
-                while(g < 1)
+                while(b< 1)
                 {
                     float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                    Instantiate(Gold);
-                    Gold.transform.position = new Vector2(x, this.transform.position.y);
-                    g++;
+                    Instantiate(Bronze);
+                    Bronze.transform.position = new Vector2(x, this.transform.position.y);
+                    b++;
                 }
-                  
+                
             }
             this.gameObject.SetActive(false);
         }

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
     private float speed = 0.005f;
     public GameObject PlayerShot;
     public static int coin =0;
     public static int assetCoin = 0;
     public static int asset = 0;
-    int g =0;
     private int hp = 10;
+    private float power = 5;
     Rigidbody2D rb;
     GameObject boss;
     
@@ -70,17 +70,11 @@ public class Player : MonoBehaviour
 
 
 
-        if (other.gameObject.tag == "Item")
+        if (other.gameObject.tag == "Stone")
         {
-            g++;
             asset++;
-            if (g == 3)
-            {
-                assetCoin++;
-                Debug.Log(assetCoin);
-                g = 0;
-                
-            }
+            assetCoin++;
+            Debug.Log(assetCoin);
 
         }
 
@@ -100,5 +94,11 @@ public class Player : MonoBehaviour
         }
 
         Debug.Log(hp);
+    }
+
+    public float Power
+    {
+        set { this.power = value; }
+        get { return this.power; }
     }
 }

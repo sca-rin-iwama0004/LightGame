@@ -21,5 +21,13 @@ public class Game: MonoBehaviour
     {
         
         SceneManager.LoadScene("SampleScene");
+        if (book1.shopDefense == true)
+        {
+            Debug.Log("a");
+        }
+        else
+        {
+            Debug.Log("b");
+        }
     }	
 }

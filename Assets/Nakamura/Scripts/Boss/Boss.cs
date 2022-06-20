@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    GameObject player;
+    PlayerControl script;
     SpriteRenderer MainSpriteRendererD;
     SpriteRenderer MainSpriteRendererU;
     SpriteRenderer MainSpriteRendererR;
@@ -29,7 +31,7 @@ public class Boss : MonoBehaviour
     private float span2 = 1.5f;
     private float time = 0f;
     private float time2 = 0f;
-    private int hp = 10;
+    private float hp = 1000;
     private int o2d = 0;
     private int o2u = 0;
     private int o2r = 0;
@@ -45,6 +47,8 @@ public class Boss : MonoBehaviour
         MainSpriteRendererL = enemyshotL.GetComponent<SpriteRenderer>();
         MainSpriteRendererU = enemyshotU.GetComponent<SpriteRenderer>();
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        player = GameObject.Find("Player");
+        script = player.GetComponent<PlayerControl>();
     }
 
     void Update()
@@ -96,7 +100,7 @@ public class Boss : MonoBehaviour
         else
         {
             MainSpriteRendererD.sprite = atk;
-            enemyshotD.tag = "Shot";
+            enemyshotD.tag = "Boss";
         }
 
         o2u = Random.Range(1, 11);
@@ -109,7 +113,7 @@ public class Boss : MonoBehaviour
         else
         {
             MainSpriteRendererU.sprite = atk;
-            enemyshotU.tag = "Shot";
+            enemyshotU.tag = "Boss";
         }
 
         o2r = Random.Range(1, 11);
@@ -122,7 +126,7 @@ public class Boss : MonoBehaviour
         else
         {
             MainSpriteRendererR.sprite = atk;
-            enemyshotR.tag = "Shot";
+            enemyshotR.tag = "Boss";
         }
 
         o2l = Random.Range(1, 11);
@@ -135,29 +139,27 @@ public class Boss : MonoBehaviour
         else
         {
             MainSpriteRendererL.sprite = atk;
-            enemyshotL.tag = "Shot";
+            enemyshotL.tag = "Boss";
         }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        //int coin = 49;
-        //int c = 0;
         if (other.gameObject.tag == "Bullet")
         {
-            hp--;
+        hp -= script.Power;
+        }
+        if (other.gameObject.tag == "Gun")
+         {
+         hp -= (script.Power / 2);
+         }
+        if (other.gameObject.tag == "Explosion")
+         {
+         hp -= 50;
         }
 
         if (hp <= 0)
         {
-            //while (coin >= c)
-            //{
-            //float x = Random.Range(this.transform.position.x +4, this.transform.position.x - 4);
-            //float y = Random.Range(this.transform.position.y - 1, this.transform.position.y - 3);
-            //Instantiate(Coin);
-            //Coin.transform.position = new Vector2(x, y);
-            // c++;
-            //}
             MainSpriteRenderer.sprite = explosion;
             this.tag = "explosion";
             Invoke("End",2.0f);
