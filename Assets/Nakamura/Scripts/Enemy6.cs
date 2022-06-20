@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy6 : MonoBehaviour
 {
+    GameObject player;
+    PlayerControl script;
     Rigidbody2D rb;
     float rotation_speed =0;
     [SerializeField] private GameObject enemy6r;
@@ -19,14 +21,15 @@ public class Enemy6 : MonoBehaviour
     private float time = 0f;
     private float time2 = 0f;
     private float time3 = 0f;
-    private int hp = 10;
+    private float hp = 500;
     private float stoptime = 0f;
     private float stop = 9.0f;
     [SerializeField] private GameObject Coin;
     // Start is called before the first frame update
     void Start()
     {
-	
+        player = GameObject.Find("Player");
+        script = player.GetComponent<PlayerControl>();
     }
 
     // Update is called once per frame
@@ -69,23 +72,29 @@ public class Enemy6 : MonoBehaviour
         int c = 0;
         int food = 0;
         int gold = 0;
-        int goldcount = 0;
         int g = 0;
         if (other.gameObject.tag == "Bullet")
         {
-            hp--;
+            hp -= script.Power;
         }
+        if (other.gameObject.tag == "Gun")
+        {
+            hp -= (script.Power / 2.0f);
+        }
+        if (other.gameObject.tag == "Explosion")
+        {
+            hp -= 50;
+        }
+
 
         if (hp <= 0)
         {
             coin = Random.Range(0, 2);
             food = Random.Range(0, 2);
             gold = Random.Range(0, 2);
-            goldcount = Random.Range(0, 4);
             Debug.Log(coin);
             Debug.Log(food);
             Debug.Log(gold);
-            Debug.Log(goldcount);
             if (coin == 1)
             {
                 while (c < 10)
@@ -107,7 +116,7 @@ public class Enemy6 : MonoBehaviour
 
             if (gold == 1)
             {
-                while (g < goldcount)
+                while (g < 1)
                 {
                     float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
                     Instantiate(Gold);

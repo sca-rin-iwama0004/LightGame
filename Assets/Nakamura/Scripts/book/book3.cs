@@ -3,41 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class book4 : MonoBehaviour
+public class book3 : MonoBehaviour
 {
     [SerializeField] private Toggle toggle;
-    public static int d = 0;
+    public static int c = 0;
+    public static bool shopRec;
 
     void Start()
     {
 
-        if (d == 1)
+        if (c == 1)
         {
             toggle.isOn = true;
             toggle.interactable = false;
         }
-        
     }
 
     public void OnToggleChanged()
     {
-        if (d == 0)
+       
+	if (c == 0)
 	{
-		if (coinstone.allcoin < 500)
+		if (coinstone.allcoin < 400)
         	{
             		toggle.isOn = false;
         	}
 
-	 	if (coinstone.allcoin >= 500 && toggle.isOn == true)
-        	{
-            		coinstone.allcoin -= 500;
+	  	if (coinstone.allcoin >= 400 && toggle.isOn == true)
+       		{
+            		coinstone.allcoin -= 400;
             		toggle.interactable = false;
-	    		d = 1;
-        	}
-
-	}
+                    shopRec = true;
+                    c = 1;
+        	}	
 
         
-       
+	}
+        
+
+      
     }
 }

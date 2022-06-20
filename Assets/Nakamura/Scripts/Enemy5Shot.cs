@@ -8,21 +8,21 @@ public class Enemy5Shot : MonoBehaviour
     [SerializeField] private GameObject enemyshotL;
     [SerializeField] private GameObject enemyshotU;
     [SerializeField] private GameObject enemyshotD;
-    GameObject enemy5;
+    GameObject enemy4;
     private float span = 3.0f;
     private float time = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        enemy5 = GameObject.Find("Enemy5");
+        enemy4 = GameObject.Find("Enemy4");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float x = enemy5.transform.position.x;
-        float y = enemy5.transform.position.y;
+        float x = enemy4.transform.position.x;
+        float y = enemy4.transform.position.y;
         time += Time.deltaTime;
         if (time > span)
         {

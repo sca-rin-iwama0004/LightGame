@@ -5,18 +5,18 @@ using UnityEngine;
 public class Enemy5ShotR : MonoBehaviour
 {
     private float speed = 0.005f;
-    GameObject enemy5;
+    GameObject enemy4;
     // Start is called before the first frame update
     void Start()
     {
-        enemy5 = GameObject.Find("Enemy5");
+        enemy4 = GameObject.Find("Enemy4");
     }
 
     // Update is called once per frame
     void Update()
     {
-        float x = enemy5.transform.position.x;
-        float y = enemy5.transform.position.y;
+        float x = enemy4.transform.position.x;
+        float y = enemy4.transform.position.y;
         transform.position += new Vector3(speed, 0.0f, 0.0f);
         if(this.transform.position.x >= x +7.0f)
         {

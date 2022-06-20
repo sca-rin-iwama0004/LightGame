@@ -10,8 +10,8 @@ public class StoneText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stoneText.text = Player.asset.ToString();
-        Debug.Log(Player.item);
+        stoneText.text = PlayerControl.asset.ToString();
+        Debug.Log(PlayerControl.assetCoin);
 
     }
 

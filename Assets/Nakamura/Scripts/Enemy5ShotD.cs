@@ -5,20 +5,20 @@ using UnityEngine;
 public class Enemy5ShotD : MonoBehaviour
 {
     private float speed = 0.005f;
-    GameObject enemy5;
+    GameObject enemy4;
     // Start is called before the first frame update
     void Start()
     {
-        enemy5 = GameObject.Find("Enemy5");
+        enemy4 = GameObject.Find("Enemy4");
     }
 
     // Update is called once per frame
     void Update()
     {
-        float x = enemy5.transform.position.x;
-        float y = enemy5.transform.position.y;
+        float x = enemy4.transform.position.x;
+        float y = enemy4.transform.position.y;
         transform.position += new Vector3(0.0f, -speed, 0.0f);
-        if (this.transform.position.y <= y - 7.0f)
+        if (this.transform.position.y <= y - 15.0f)
         {
             this.gameObject.SetActive(false);
         }

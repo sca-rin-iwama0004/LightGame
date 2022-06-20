@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class book2 : MonoBehaviour
 {
     [SerializeField] private Toggle toggle;
-
+    public static bool shopRange;
     public static int b = 0;
 
     void Start()
@@ -15,9 +15,9 @@ public class book2 : MonoBehaviour
         if (b == 1)
         {
             toggle.isOn = true;
-	    toggle.interactable = false;
+	        toggle.interactable = false;
         }
-        
+
     }
 
     public void OnToggleChanged()
@@ -32,8 +32,9 @@ public class book2 : MonoBehaviour
 	 	if (coinstone.allcoin >= 300 && toggle.isOn == true)
         	{
             		coinstone.allcoin -= 300;
-            		toggle.interactable = false;
-	    		b = 1;
+                    shopRange = true;
+                    toggle.interactable = false;
+	    		    b = 1;
         	}
 	}
         
