@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Enemy01 : MonoBehaviour
 {
-    GameObject player;
     PlayerControl script;
     private float hp = 100;
     Rigidbody2D rb;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Bronze;
+    [SerializeField] private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
-        player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
     }
 
