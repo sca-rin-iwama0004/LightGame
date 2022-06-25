@@ -116,10 +116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd6491b7d855fa49afbb6b31e470a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy6r: {fileID: 3508253697850558494, guid: 5007ad33c63c3e244b629f42e9d24fca, type: 3}
-  enemy6l: {fileID: 8843139511312796986, guid: efbcef60858d8304a9d7772507d37202, type: 3}
   enemy6shotr: {fileID: 7180255444971775373}
   enemy6shotl: {fileID: 7180255443619171677}
+  enemy6shotrh: {fileID: 7180255444971775373}
+  enemy6shotlh: {fileID: 7180255443619171677}
+  enemy6shotrhd: {fileID: 8266987667964672345}
+  enemy6shotlhu: {fileID: 7869155502508137588}
   Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
   Gold: {fileID: 9180543449771526230, guid: 5b69f0682d49fe34db31104d2b16a3ec, type: 3}
   Shot: {fileID: 7293175676095867252, guid: 6894a4c22c592ce498fe566e9e098f8f, type: 3}
