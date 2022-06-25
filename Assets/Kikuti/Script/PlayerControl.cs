@@ -135,7 +135,7 @@ public class PlayerControl : MonoBehaviour
 
                 }//上
             }
-            if (jumpDecision3 == true && jumpHole == true)
+            if (jumpDecision2 == true && jumpHole == true)
             {
                 if (direction == 4)
                 {
