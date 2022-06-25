@@ -6,15 +6,14 @@ public class EnemyShotMove : MonoBehaviour
 {
     private float speed =0.004f;    
     GameObject player;
-    GameObject enemy1;
     float n;
     Rigidbody2D rb;
+    [SerializeField] private GameObject enemy1;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true; 
-	    enemy1 = GameObject.Find("Enemy1");
         player = GameObject.Find("Player");
         n = player.transform.position.x * speed;
     }

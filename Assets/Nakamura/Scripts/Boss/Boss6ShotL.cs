@@ -15,7 +15,7 @@ public class Boss6ShotL : MonoBehaviour
         boss = GameObject.Find("Boss");
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
-	    if(this.transform.position.x >= boss.transform.position.x)
+	    if(this.transform.position.x > 0)
 	    {
 		left =(this.transform.position.x*-2)* speed;
         }
@@ -26,7 +26,7 @@ public class Boss6ShotL : MonoBehaviour
         }
 
 
-        if(this.transform.position.y >= boss.transform.position.y)
+        if(this.transform.position.y >0)
 	    {
 		down = (this.transform.position.y*-3)* speed;
         }

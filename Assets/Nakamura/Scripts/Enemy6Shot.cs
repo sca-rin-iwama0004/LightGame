@@ -34,7 +34,6 @@ public class Enemy6Shot : MonoBehaviour
         else
         {
             up = (this.transform.position.y * 2) * speed;
-            Debug.Log("a");
         }
 
 

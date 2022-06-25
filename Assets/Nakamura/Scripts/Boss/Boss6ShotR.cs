@@ -15,23 +15,23 @@ public class Boss6ShotR : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
         boss = GameObject.Find("Boss");
-	if(this.transform.position.x > boss.transform.position.x)
-	{
+	    if(this.transform.position.x > 0)
+	    {
 		right =(this.transform.position.x*2)* speed;
         }
 
-	else 
-	{
+	    else 
+	    {
 		right =(this.transform.position.x*-2)* speed;
         }
 
-	if(this.transform.position.y > boss.transform.position.y)
-	{
+	    if(this.transform.position.y >0)
+	    {
 		down= (this.transform.position.y*-3)* speed;
         }
 
-	else 
-	{
+	    else 
+	    {
 		down =(this.transform.position.y*3)* speed;
         }
     }
