@@ -30,7 +30,7 @@ public class SpeedUpBook : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
-            script.Speed += 0.003f;
+            script.Speed += (script.Speed*0.05f);
             Destroy(gameObject);
         }
 

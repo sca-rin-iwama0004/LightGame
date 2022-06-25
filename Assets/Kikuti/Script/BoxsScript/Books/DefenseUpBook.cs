@@ -30,7 +30,7 @@ public class DefenseUpBook : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
-            script.Defense += 1.0f;
+            script.Defense += 3.0f;
             Destroy(gameObject);
         }
 

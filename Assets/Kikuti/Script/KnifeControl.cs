@@ -11,8 +11,6 @@ public class KnifeControl : MonoBehaviour
     float moveSpeed;
 
     //攻撃範囲
-    BoxCollider2D boxCol;
-    private float range;
     private float posX,posY;
 
     //画像
@@ -28,10 +26,13 @@ public class KnifeControl : MonoBehaviour
         script = player.GetComponent<PlayerControl>();
         dir = script.Direction;
         moveSpeed=script.GunSpeed;
+        
+        Vector3 size;
+        size = gameObject.transform.localScale;
+        size.x += (script.Range/10);
+        size.y += (script.Range/10);
+        gameObject.transform.localScale = size;
 
-        boxCol=GetComponent<BoxCollider2D>();
-        posX = boxCol.size.x;
-        posY=boxCol.size.y;
 
         Instantiate(knifeSound, this.transform.position, this.transform.rotation);//効果音
 
@@ -67,15 +68,13 @@ public class KnifeControl : MonoBehaviour
             
         }
 
-        boxCol.size = new Vector3(posX + script.Range, posY + script.Range, script.Range);
-    
-
+       
 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag != "Player" && other.gameObject.tag != "Partner")
+        if (other.gameObject.tag != "Player" && other.gameObject.tag != "Partner" && other.gameObject.tag != "Untagged" && other.gameObject.tag != "Gun" && other.gameObject.tag != "Hole" && other.gameObject.tag != "Road" && other.gameObject.tag != "Bombs")
         {
             Destroy(gameObject);
         }

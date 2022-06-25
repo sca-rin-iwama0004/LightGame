@@ -30,7 +30,7 @@ public class attackSpeedBook : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
-            script.TimeGun+=1.0f;
+            script.TimeGun-=0.4f;
             Destroy(gameObject);
         }
 
