@@ -20,6 +20,7 @@ public class PartnerControl : MonoBehaviour
 
     //Œø‰Ê‰¹
     public GameObject partnerSound;
+    private bool sound=true;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,12 @@ public class PartnerControl : MonoBehaviour
     {
         int dir;
         if (script.OnParther == true) {
-            Instantiate(partnerSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
+            if(sound==true)
+            {
+                Instantiate(partnerSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
+                sound=false;
+            }
+
             dir = script.Direction;
 
             //UŒ‚

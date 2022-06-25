@@ -19,6 +19,8 @@ public class PlayerControl : MonoBehaviour
     private float jumpPower=1;//ジャンプ力
     private bool jumpDecision = false;
     private bool jumpDecision2 = false;
+    private bool jumpDecision3 = false;
+    private bool jumpDecision4 = false;
     private bool jumpHole=false;
 
     //弾
@@ -32,7 +34,7 @@ public class PlayerControl : MonoBehaviour
     private float power=5; //攻撃力
 
     //防御力
-    private float defense = 0;
+    private float defense = 0;//%
 
     //爆弾
     bool getBomb=false;
@@ -66,22 +68,6 @@ public class PlayerControl : MonoBehaviour
 
         renderer = GetComponent<SpriteRenderer>();
         sr = gameObject.GetComponent<SpriteRenderer>();
-
-        if(shopRange==true)
-        {
-            range += 1.0f;
-            Debug.Log("範囲");
-        }
-        if (shopDefense == true)
-        {
-            defense += 1.0f;
-            Debug.Log("防御力");
-        }
-        if (shopRec == true)
-        {
-            rec=true;
-            Debug.Log("自動回復");
-        }
     }
 
     // Update is called once per frame
@@ -131,6 +117,9 @@ public class PlayerControl : MonoBehaviour
 
 
                 }//右
+            }
+            if (jumpDecision3 == true && jumpHole == true)
+            {
                 if (direction == 2)
                 {
                     this.transform.position = new Vector2(this.transform.position.x - (tile * (jumpPower + 2)), this.transform.position.y);
@@ -138,14 +127,17 @@ public class PlayerControl : MonoBehaviour
                 }//左
 
             }
-            if (jumpDecision2 == true && jumpHole == true)
+            if (jumpDecision4 == true && jumpHole == true)
             {
                 if (direction == 3)
                 {
                     this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (tile * (jumpPower + 2)));
 
                 }//上
-                else if (direction == 4)
+            }
+            if (jumpDecision3 == true && jumpHole == true)
+            {
+                if (direction == 4)
                 {
                     this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - (tile * (jumpPower + 2)));
 
@@ -267,12 +259,12 @@ public class PlayerControl : MonoBehaviour
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
         {
-            hp -= (10-defense);
+            hp -= (10-(10*(defense/100)));
         }
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
         {
-            hp -= (15 - defense);
+            hp -= (15 - (15 * (defense / 100)));
         }
         //ざこ３即死
         if (other.gameObject.tag == "DieEnemy")
@@ -282,12 +274,12 @@ public class PlayerControl : MonoBehaviour
         //中ボス1,2
         if (other.gameObject.tag == "Enemy4" && other.gameObject.tag == "Enemy5")
         {
-            hp -= (20 - defense);
+            hp -= (20 - (20 * (defense / 100)));
         }
         //ボス
         if (other.gameObject.tag == "Boss")
         {
-            hp -= (30 - defense);
+            hp -= (30 - (30 * (defense / 100)));
         }
 
         
@@ -376,6 +368,16 @@ public class PlayerControl : MonoBehaviour
     {
         set { this.jumpDecision2 = value; }
         get { return this.jumpDecision2; }
+    }
+    public bool JumpDecision3
+    {
+        set { this.jumpDecision3 = value; }
+        get { return this.jumpDecision3; }
+    }
+    public bool JumpDecision4
+    {
+        set { this.jumpDecision4 = value; }
+        get { return this.jumpDecision4; }
     }
     public float Defense
     {

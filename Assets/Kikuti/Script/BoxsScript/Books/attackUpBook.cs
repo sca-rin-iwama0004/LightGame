@@ -30,7 +30,20 @@ public class attackUpBook : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
-            script.Power += 5.0f;
+            float rnd = Random.Range(0, 1f);
+
+            if (rnd <= 0.3f)
+            {
+                script.Power += 5.0f;
+            }
+            if (rnd <= 0.7f)
+            {
+                script.Power += 4.0f;
+            }
+            else
+            {
+                script.Power += 3.0f;
+            }
             Destroy(gameObject);
         }
 

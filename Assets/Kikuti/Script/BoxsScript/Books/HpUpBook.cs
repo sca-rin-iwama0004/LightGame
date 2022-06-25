@@ -30,7 +30,7 @@ public class HpUpBook : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
-            script.HPLimit += 10.0f;
+            script.HPLimit +=6.0f;
             script.HP = script.HPLimit;
             Destroy(gameObject);
         }

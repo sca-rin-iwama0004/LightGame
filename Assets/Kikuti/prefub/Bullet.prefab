@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8acabb44fae2d4cb4c757accc683c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSound: {fileID: 7086881402699688012, guid: 31737b9eb6d999046bc4145da805cbf6,
+  bulletSound: {fileID: 7086881402699688012, guid: 31737b9eb6d999046bc4145da805cbf6,
     type: 3}
 --- !u!61 &-2066299921075349579
 BoxCollider2D:

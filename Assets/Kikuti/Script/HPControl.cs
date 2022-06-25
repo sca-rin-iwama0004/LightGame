@@ -13,7 +13,7 @@ public class HPControl : MonoBehaviour
 
     //自動回復
     private float recTime=0f;
-    private float recSpan=20.0f;//回復スピード
+    private float recSpan=1.0f;//回復スピード
 
 
     private void Start()
@@ -39,7 +39,7 @@ public class HPControl : MonoBehaviour
             {
                 if (script.HP<script.HPLimit)
                 {
-                    script.HP += 1.0f;
+                    script.HP += 0.1f;//0.1回復
                 }
                 recTime = 0f;
             }
