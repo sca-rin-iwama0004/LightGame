@@ -42,7 +42,7 @@ public class Enemy02 : MonoBehaviour
         }
         if (other.gameObject.tag == "Gun")
         {
-          hp -= (script.Power / 2);
+         hp -= (script.Power / 2);
         }
         if (other.gameObject.tag == "Explosion")
         {
