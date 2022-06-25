@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemyshot : MonoBehaviour
 {
     [SerializeField] private GameObject enemyshot;
-    private GameObject enemy1;
     private float span = 2.0f;
     private float time =0f;
    
@@ -13,15 +12,14 @@ public class Enemyshot : MonoBehaviour
     void Start()
     {
        
-        enemy1 = GameObject.Find("Enemy1");
     }
 
     // Update is called once per frame
     void Update()
     {
         time +=Time.deltaTime;
-         float x = enemy1.transform.position.x;
-         float y = enemy1.transform.position.y;
+         float x = this.transform.position.x;
+         float y =this.transform.position.y;
         if (time >span)
         {
             Instantiate(enemyshot);
