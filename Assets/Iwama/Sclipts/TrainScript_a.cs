@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class TrainScript_a : MonoBehaviour
 {
-    public GameObject[] Train;
-    private int randomNumber;
-    public int a;
-    public int number;
+    [SerializeField] protected GameObject[] Train;
+    protected int randomNumber;
+    protected int a;
+    protected int number;
 
-    void Start()
+    protected virtual void Start()
     {
         number = Random.Range(0, Train.Length);
         Instantiate(Train[number], transform.position, transform.rotation);
     }
+    
 
     public int GetNumberA()
     {
