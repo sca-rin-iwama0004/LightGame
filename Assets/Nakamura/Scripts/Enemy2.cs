@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy01 : MonoBehaviour
+public class Enemy2 : MonoBehaviour
 {
-    GameObject player;
-    PlayerControl script;
-    private float hp = 100;
+    private int hp = 10;
     Rigidbody2D rb;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
@@ -16,8 +14,6 @@ public class Enemy01 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
-        player = GameObject.Find("Player");
-        script = player.GetComponent<PlayerControl>();
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -26,18 +22,11 @@ public class Enemy01 : MonoBehaviour
         int c = 0;
         int food = 0;
         int bronze = 0;
+        int bronzecount = 0;
         int b =0;
         if (other.gameObject.tag == "Bullet")
         {
-            hp -= script.Power;
-        }
-        if (other.gameObject.tag == "Gun")
-         {
-          hp -= (script.Power / 2);
-         }
-        if (other.gameObject.tag == "Explosion")
-        {
-          hp -= 50;
+            hp--;
         }
 
         if (hp <= 0)
@@ -45,6 +34,7 @@ public class Enemy01 : MonoBehaviour
             coin = Random.Range(0, 2);
             food = Random.Range(0, 2);
             bronze = Random.Range(0,2);
+            bronzecount = Random.Range(0, 4);
             if (coin == 1)
             {
                 while (c < 10)
@@ -66,7 +56,7 @@ public class Enemy01 : MonoBehaviour
 
             if(bronze  == 1)
             {
-                while(b< 1)
+                while(b< bronzecount)
                 {
                     float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
                     Instantiate(Bronze);

@@ -26,7 +26,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject enemy6lu;
     [SerializeField] private GameObject enemy6rcu;
     [SerializeField] private GameObject enemy6lcu;
-    [SerializeField] private GameObject Coin;
+    //[SerializeField] private GameObject Coin;
     private float span = 1.0f;
     private float span2 = 1.5f;
     private float time = 0f;
@@ -48,7 +48,7 @@ public class Boss : MonoBehaviour
         MainSpriteRendererU = enemyshotU.GetComponent<SpriteRenderer>();
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
-       script = player.GetComponent<PlayerControl>();
+        script = player.GetComponent<PlayerControl>();
     }
 
     void Update()
@@ -147,11 +147,11 @@ public class Boss : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-       hp -= script.Power;
+        hp -= script.Power;
         }
         if (other.gameObject.tag == "Gun")
          {
-        hp -= (script.Power / 2);
+         hp -= (script.Power / 2);
          }
         if (other.gameObject.tag == "Explosion")
          {

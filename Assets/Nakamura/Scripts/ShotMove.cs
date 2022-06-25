@@ -28,9 +28,9 @@ public class ShotMove : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             this.gameObject.SetActive(false);
         }

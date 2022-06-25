@@ -5,36 +5,32 @@ using UnityEngine;
 public class Enemy6Shot : MonoBehaviour
 {
     private GameObject enemy6l;
-    private GameObject enemy5;
     private float speed = 0.0009f;
     float right;
     float up;
     // Start is called before the first frame update
     void Start()
     {
-        enemy6l = GameObject.Find("Enemy6ShotLh");
-        enemy5 = GameObject.Find("Enemy5");
-        if (this.transform.position.x >= enemy5.transform.position.x)
-        {
-            right = (this.transform.position.x * 2) * speed;
-        }
-
-        else
+        enemy6l = GameObject.Find("Enemy6ShotL");
+        if (this.transform.position.x >= 0)
         {
             right = (this.transform.position.x * -2) * speed;
         }
 
-
-        if (this.transform.position.y >= enemy5.transform.position.y)
+        else if (this.transform.position.x < 0)
         {
-            up= (this.transform.position.y * -2) * speed;
-            
+            right = (this.transform.position.x * 2) * speed;
         }
 
-        else
+
+        if (this.transform.position.y >= 0)
+        {
+            up= (this.transform.position.y * -2) * speed;
+        }
+
+        else if (this.transform.position.y < 0)
         {
             up = (this.transform.position.y * 2) * speed;
-            Debug.Log("a");
         }
 
 
@@ -53,9 +49,9 @@ public class Enemy6Shot : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             this.gameObject.SetActive(false);
         }
