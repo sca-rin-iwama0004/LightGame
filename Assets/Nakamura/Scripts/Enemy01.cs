@@ -29,7 +29,7 @@ public class Enemy01 : MonoBehaviour
         int b =0;
         if (other.gameObject.tag == "Bullet")
         {
-            hp -= script.Power;
+           hp -= script.Power;
         }
         if (other.gameObject.tag == "Gun")
          {
