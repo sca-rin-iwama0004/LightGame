@@ -18,7 +18,7 @@ public class Enemy5ShotR : MonoBehaviour
         float x = enemy4.transform.position.x;
         float y = enemy4.transform.position.y;
         transform.position += new Vector3(speed, 0.0f, 0.0f);
-        if(this.transform.position.x >= x +15.0f)
+        if(this.transform.position.x >= x +45.0f)
         {
             this.gameObject.SetActive(false);
         }

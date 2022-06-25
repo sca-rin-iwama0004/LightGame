@@ -44,7 +44,7 @@ public class Enemy6ShotR : MonoBehaviour
         transform.position += new Vector3(-right, down, 0.0f);
         float x = enemy6r.transform.position.x;
         float y = enemy6r.transform.position.y;
-        if (this.transform.position.x >= x + 10.0f || this.transform.position.x <= x - 10.0f || this.transform.position.y >= y + 10.0f || this.transform.position.y <= y - 10.0f)
+        if (this.transform.position.x >= x + 40.0f || this.transform.position.x <= x - 40.0f || this.transform.position.y >= y + 40.0f || this.transform.position.y <= y - 40.0f)
         {
             this.gameObject.SetActive(false);
         }
