@@ -26,7 +26,7 @@ public class BossShotD : MonoBehaviour
         float x = boss.transform.position.x;
         float y = boss.transform.position.y;
         transform.position += new Vector3(0.0f, -speed, 0.0f);
-        if (this.transform.position.y <= y - 10.0f)
+        if (this.transform.position.y <= y - 45.0f)
         {
             this.gameObject.SetActive(false);
         }
