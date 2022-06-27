@@ -45,7 +45,7 @@ public class Boss6ShotL : MonoBehaviour
         transform.position += new Vector3(left, down, 0.0f);
         float x = boss.transform.position.x;
         float y = boss.transform.position.y;
-        if (this.transform.position.x >= x + 10.0f || this.transform.position.x < x - 10.0f || this.transform.position.y >= y + 10.0f || this.transform.position.y < y - 10.0f)
+        if (this.transform.position.x >= x + 45.0f || this.transform.position.x < x - 45.0f || this.transform.position.y >= y + 45.0f || this.transform.position.y < y - 45.0f)
         {
             this.gameObject.SetActive(false);
         }

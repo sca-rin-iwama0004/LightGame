@@ -59,7 +59,7 @@ public class Camera : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         float x = this.transform.position.x;
-        float y = this.transform.position.y+10;
+        float y = this.transform.position.y+3;
         if (other.gameObject.tag == "Player" && MainSpriteRenderer.sprite == enemy3 && en <1)
         {
             Instantiate(enemy4);

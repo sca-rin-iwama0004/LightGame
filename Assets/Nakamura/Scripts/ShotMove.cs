@@ -22,7 +22,7 @@ public class ShotMove : MonoBehaviour
         float y = player.transform.position.y*speed;
         transform.position += new Vector3(x,y,0);
 
-        if (this.transform.position.x >x + 10.0f || this.transform.position.x <=x - 10.0f || this.transform.position.y >=y + 10.0f || this.transform.position.y <= y - 10.0f)
+        if (this.transform.position.x >x + 45.0f || this.transform.position.x <=x - 45.0f || this.transform.position.y >=y + 45.0f || this.transform.position.y <= y - 45.0f)
         {
             this.gameObject.SetActive(false);
         }
