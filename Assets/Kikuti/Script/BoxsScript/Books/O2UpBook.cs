@@ -30,7 +30,7 @@ public class O2UpBook : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
-            script.O2Up += 1.0f;
+            script.O2Up += 0.1f;
             Destroy(gameObject);
         }
 

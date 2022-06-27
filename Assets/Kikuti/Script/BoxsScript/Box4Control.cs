@@ -8,9 +8,11 @@ public class Box4Control : MonoBehaviour
 
     public GameObject hpUpBook;
     public GameObject o2UpBook;
-    public GameObject attackRangeBook;
-    public GameObject attackSpeedBook;
     public GameObject hpRecoveryBook;
+
+    public GameObject stone;
+
+    private bool decision = true;
 
     //ŠJ‚­Œø‰Ê‰¹
     public GameObject openSound;
@@ -18,7 +20,7 @@ public class Box4Control : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -26,42 +28,81 @@ public class Box4Control : MonoBehaviour
     {
 
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bullet")
         {
             Instantiate(openSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
-            float rnd = Random.Range(0, 1f);
             Destroy(gameObject);
 
-            if (rnd <= 0.2f)
+            int i = 0;
+            while (decision == true)
             {
-                Instantiate(hpUpBook, this.transform.position, this.transform.rotation);
 
-                //HPUP
+                float rnd = Random.Range(0, 1f);
+
+                if (PlayerControl.shopRec == false)
+                {
+                    GameManager.hpRecUp = 0;
+                }
+
+                if (GameManager.hpUp == 0 && GameManager.o2Up == 0 && GameManager.hpRecUp == 0)
+                {
+                    Stone();
+                    break;
+                }
+
+                if (rnd <= 0.3f)//HPUP
+                {
+                    if(GameManager.hpUp>0)
+                    {
+                        Instantiate(hpUpBook, this.transform.position, this.transform.rotation);
+                        GameManager.hpUp-=1;
+                        decision=false;
+                    }
+                    else { i += 1; }
+
+                }
+                else if (rnd <= 0.6f)//Ž_‘fŒ¸­—¦
+                {
+                    if (GameManager.o2Up > 0)
+                    {
+                        Instantiate(o2UpBook, this.transform.position, this.transform.rotation);
+                        GameManager.o2Up-=1;
+                        decision=false;
+                    }
+                    else { i += 1; }
+                }
+                else//Ž©“®‰ñ•œ
+                {
+                    if (PlayerControl.shopRec == true)
+                    {
+                        if (GameManager.hpRecUp > 0)
+                        {
+                            Instantiate(hpRecoveryBook, this.transform.position, this.transform.rotation);
+                            GameManager.hpRecUp -= 1;
+                            decision = false;
+                        }
+                        else { i += 1; }
+                    }
+                }
+                
             }
-            else if(rnd <= 0.4f)
-            {
-                Instantiate(o2UpBook, this.transform.position, this.transform.rotation);
-                //Ž_‘f‘Ï‹vUP
-            }
-            else if (rnd <= 0.6f)
-            {
-                Instantiate(attackRangeBook, this.transform.position, this.transform.rotation);
-                //UŒ‚”ÍˆÍUP
-            }
-            else if (rnd <= 0.8f)
-            {
-                Instantiate(attackSpeedBook, this.transform.position, this.transform.rotation);
-                //UŒ‚‘¬“xUP
-            }
-            else
-            {
-                Instantiate(hpRecoveryBook, this.transform.position, this.transform.rotation);
-                //Ž©“®‰ñ•œ
-            }
+
+               
         }
 
     }
+
+    private void Stone()
+    {
+        for(int i=0;i<10;i++)
+        {
+            Instantiate(stone, new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z), this.transform.rotation);
+        }
+        
+
+    }
+    
 }

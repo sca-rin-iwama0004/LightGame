@@ -10,8 +10,6 @@ public class GunControl : MonoBehaviour
     float moveSpeed;
 
     //攻撃範囲
-    BoxCollider2D boxCol;
-    private float range;
     private float posX, posY;
 
     //効果音
@@ -26,9 +24,11 @@ public class GunControl : MonoBehaviour
         dir = script.Direction;
         moveSpeed = script.GunSpeed;
 
-        boxCol = GetComponent<BoxCollider2D>();
-        posX = boxCol.size.x;
-        posY = boxCol.size.y;
+        Vector3 size;
+        size = gameObject.transform.localScale;
+        size.x += (script.Range/10);
+        size.y += (script.Range/10);
+        gameObject.transform.localScale = size;
 
         Instantiate(bulletSound, this.transform.position, this.transform.rotation);//効果音
     }
@@ -56,13 +56,12 @@ public class GunControl : MonoBehaviour
 
         }
 
-        boxCol.size = new Vector3(posX + script.Range, posY + script.Range, script.Range);
 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag != "Player" && other.gameObject.tag != "Partner")
+        if (other.gameObject.tag != "Player" && other.gameObject.tag != "Partner"&& other.gameObject.tag != "Untagged" && other.gameObject.tag != "Gun"&& other.gameObject.tag != "Hole" && other.gameObject.tag != "Road" && other.gameObject.tag != "Bombs")
         {
             Destroy(gameObject);
         }
