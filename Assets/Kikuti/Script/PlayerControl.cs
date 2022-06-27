@@ -28,13 +28,13 @@ public class PlayerControl : MonoBehaviour
 
     //弾
     private int direction = 2;//向いてる方向１～４
-    private float gunSpeed=15;                    
+    private float gunSpeed=23;                    
     private int gunKind=1;//武器１(ナイフ)2(銃)～ 
     public GameObject knife;
     public GameObject gun;
     private float timeGun=5.0f;  //攻撃速度
     private float range=0; //増加攻撃範囲
-    private float power=5; //攻撃力
+    private float power=50; //攻撃力
 
     //防御力
     private float defense = 0;//%
