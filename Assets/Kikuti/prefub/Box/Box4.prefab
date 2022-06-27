@@ -96,15 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c087fe493852214b9dddfe43cdd9c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpUpBook: {fileID: 1436160505833530584, guid: 697a933a47fe87a4b939f92a3da9df48,
-    type: 3}
-  o2UpBook: {fileID: 5043613685264305777, guid: 0a10c8a98d39d344dbcb34d06dbff713,
-    type: 3}
-  hpRecoveryBook: {fileID: 5819749302071813212, guid: da2626debe6117141a916dfabf9c2098,
-    type: 3}
-  stone: {fileID: 2070155562772419754, guid: c204e4e08fe1c884dbe2e61d91443c4f, type: 3}
-  openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4,
-    type: 3}
+  hpUpBook: {fileID: 1436160505833530584, guid: 697a933a47fe87a4b939f92a3da9df48, type: 3}
+  o2UpBook: {fileID: 5043613685264305777, guid: 0a10c8a98d39d344dbcb34d06dbff713, type: 3}
+  hpRecoveryBook: {fileID: 5819749302071813212, guid: da2626debe6117141a916dfabf9c2098, type: 3}
+  stone: {fileID: 9180543449771526230, guid: 5b69f0682d49fe34db31104d2b16a3ec, type: 3}
+  openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4, type: 3}
 --- !u!61 &5613688661585876087
 BoxCollider2D:
   m_ObjectHideFlags: 0

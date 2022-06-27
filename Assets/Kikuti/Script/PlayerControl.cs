@@ -14,14 +14,19 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.01f;                          
+    private float speed=0.1f;                          
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
     private bool jumpDecision = false;
     private bool jumpDecision2 = false;
     private bool jumpDecision3 = false;
     private bool jumpDecision4 = false;
-    private bool jumpHole=false;
+
+    private bool jumpHole = false;
+    private bool jumpHole2 = false;
+    private bool jumpHole3 = false;
+    private bool jumpHole4 = false;
+
 
     //弾
     private int direction = 2;//向いてる方向１～４
@@ -118,7 +123,9 @@ public class PlayerControl : MonoBehaviour
 
                 }//右
             }
-            if (jumpDecision3 == true && jumpHole == true)
+
+            if (jumpDecision3 == true && jumpHole3 == true)
+
             {
                 if (direction == 2)
                 {
@@ -127,7 +134,9 @@ public class PlayerControl : MonoBehaviour
                 }//左
 
             }
-            if (jumpDecision4 == true && jumpHole == true)
+
+            if (jumpDecision4 == true && jumpHole4 == true)
+
             {
                 if (direction == 3)
                 {
@@ -135,7 +144,8 @@ public class PlayerControl : MonoBehaviour
 
                 }//上
             }
-            if (jumpDecision3 == true && jumpHole == true)
+            if (jumpDecision2 == true && jumpHole2 == true)
+
             {
                 if (direction == 4)
                 {
@@ -171,7 +181,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         //ゲームオーバー
-        if (hp <= 0)
+        if (hp <= 0||oxygen<=0)
         {
             if(shopResu==true)
             { 
@@ -389,5 +399,21 @@ public class PlayerControl : MonoBehaviour
         set { this.jumpHole = value; }
         get { return this.jumpHole; }
     }
+    public bool JumpHole2
+    {
+        set { this.jumpHole2 = value; }
+        get { return this.jumpHole2; }
+    }
+    public bool JumpHole3
+    {
+        set { this.jumpHole3 = value; }
+        get { return this.jumpHole3; }
+    }
+    public bool JumpHole4
+    {
+        set { this.jumpHole4 = value; }
+        get { return this.jumpHole4; }
+    }
+
 
 }

@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainScript_b : MonoBehaviour
-{
-    public GameObject[] Train;
-    private int randomNumber;
-    public int b;
-    public int number;
-
-    void Start()
+    public class TrainScript_b : TrainScript_a
     {
-        number = Random.Range(0, Train.Length);
-        Instantiate(Train[number], transform.position, transform.rotation);
-    }
+        protected int b;
 
-    public int GetNumberB()
+        protected override void Start()
+        {
+            base.Start();
+        }
+
+
+        public int GetNumberB()
     {
         if (number == 0)
         {
