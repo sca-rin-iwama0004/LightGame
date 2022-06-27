@@ -26,8 +26,11 @@ public class JumpRangeControl2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        boxCol.size = new Vector3(posX,  script.JumpPower, script.JumpPower);
-
+        if(script.JumpPower==2)
+        {
+            boxCol.offset = new Vector3(0,  -3.5f, script.JumpPower);
+            boxCol.size = new Vector3(posX, script.JumpPower, script.JumpPower);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

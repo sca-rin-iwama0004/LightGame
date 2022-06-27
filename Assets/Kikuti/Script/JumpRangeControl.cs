@@ -26,8 +26,11 @@ public class JumpRangeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        boxCol.size = new Vector3(script.JumpPower, posY , script.JumpPower);
-        
+        if (script.JumpPower == 2)
+        {
+            boxCol.offset = new Vector3(3.5f, 0, script.JumpPower);
+            boxCol.size = new Vector3(script.JumpPower, posY, script.JumpPower);
+        }
 
     }
 
