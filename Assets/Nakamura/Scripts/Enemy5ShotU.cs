@@ -18,15 +18,15 @@ public class Enemy5ShotU : MonoBehaviour
         float x = enemy4.transform.position.x;
         float y = enemy4.transform.position.y;
         transform.position += new Vector3(0.0f,speed, 0.0f);
-        if (this.transform.position.y >= y + 7.0f)
+        if (this.transform.position.y >= y + 45.0f)
         {
             this.gameObject.SetActive(false);
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
         {
             this.gameObject.SetActive(false);
         }

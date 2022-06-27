@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8843139511312796984}
   - component: {fileID: 8843139511312796987}
   m_Layer: 0
-  m_Name: Enemy5ShotL
+  m_Name: Enemy5shotL
   m_TagString: Enemy5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8843139511312796986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4582465, y: 0.93386966, z: 0}
+
+  m_LocalPosition: {x: 279.96243, y: -40.722404, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bb8b3b3f4b89e1449a3d77a36f0364a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

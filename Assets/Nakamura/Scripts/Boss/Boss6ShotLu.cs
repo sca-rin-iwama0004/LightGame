@@ -15,23 +15,23 @@ public class Boss6ShotLu : MonoBehaviour
         boss = GameObject.Find("Boss");
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
-        if (this.transform.position.x >= 0)
+        if (this.transform.position.x >0)
         {
             left = (this.transform.position.x * -2) * speed;
         }
 
-        else if (this.transform.position.x < 0)
+        else
         {
             left = (this.transform.position.x * 2) * speed;
         }
 
 
-        if (this.transform.position.y >= 0)
+        if (this.transform.position.y >=0)
         {
             up = (this.transform.position.y * 3) * speed;
         }
 
-        else if (this.transform.position.y < 0)
+        else
         {
             up = (this.transform.position.y * -3) * speed;
         }
@@ -51,9 +51,9 @@ public class Boss6ShotLu : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
         {
             this.gameObject.SetActive(false);
         }

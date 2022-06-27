@@ -7,6 +7,25 @@ TagManager:
   - wall
   - Enemy
   - Botton
+  - Hole
+  - Road
+  - Door
+  - JumpRang
+  - Bullet
+  - Bombs
+  - Cylinder
+  - Stone
+  - Enemy1
+  - Food
+  - Coin
+  - Boss
+  - Enemy2
+  - DieEnemy
+  - Enemy4
+  - Enemy5
+  - Partner
+  - Gun
+  - O2
   - 0
   - 1
   - 2
@@ -17,9 +36,6 @@ TagManager:
   - 7
   - 8
   - 9
-  - Hole
-  - Road
-  - Door
   layers:
   - Default
   - TransparentFX
