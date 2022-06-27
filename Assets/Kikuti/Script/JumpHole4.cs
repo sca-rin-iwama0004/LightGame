@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpHole4 : MonoBehaviour
 {
-    //y
+     //y
     GameObject player;
     PlayerControl script;
 
