@@ -14,19 +14,17 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.1f;                          
+    private float speed=0.03f;                          
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
     private bool jumpDecision = false;
     private bool jumpDecision2 = false;
     private bool jumpDecision3 = false;
     private bool jumpDecision4 = false;
-
     private bool jumpHole = false;
     private bool jumpHole2 = false;
     private bool jumpHole3 = false;
     private bool jumpHole4 = false;
-
 
     //弾
     private int direction = 2;//向いてる方向１～４
@@ -123,9 +121,7 @@ public class PlayerControl : MonoBehaviour
 
                 }//右
             }
-
             if (jumpDecision3 == true && jumpHole3 == true)
-
             {
                 if (direction == 2)
                 {
@@ -134,9 +130,7 @@ public class PlayerControl : MonoBehaviour
                 }//左
 
             }
-
             if (jumpDecision4 == true && jumpHole4 == true)
-
             {
                 if (direction == 3)
                 {
@@ -145,7 +139,6 @@ public class PlayerControl : MonoBehaviour
                 }//上
             }
             if (jumpDecision2 == true && jumpHole2 == true)
-
             {
                 if (direction == 4)
                 {
@@ -282,7 +275,7 @@ public class PlayerControl : MonoBehaviour
             hp = 0;
         }
         //中ボス1,2
-        if (other.gameObject.tag == "Enemy4" && other.gameObject.tag == "Enemy5")
+        if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
         {
             hp -= (20 - (20 * (defense / 100)));
         }
