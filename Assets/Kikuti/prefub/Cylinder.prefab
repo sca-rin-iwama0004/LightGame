@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5143135469451991309}
   - component: {fileID: 5143135469451991310}
   - component: {fileID: 5143135469451991311}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Cylinder
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 5143135469798744942}
   - component: {fileID: 5143135469798744940}
   - component: {fileID: 5143135469798744941}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: OxygenRange
   m_TagString: Cylinder
   m_Icon: {fileID: 0}
@@ -182,8 +182,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
-    type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 0.87040555, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
