@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;//UI‚ğg‚¤‚½‚ß’Ç‰Á
 
-public class test : MonoBehaviour
+public class text : MonoBehaviour
 {
     [SerializeField] private Text suuji_text;//TextŒ^‚Ì•Ï”suuji_text‚ğéŒ¾
     [SerializeField] protected Button checkButton;
