@@ -13,7 +13,7 @@ public class OxygenControl : MonoBehaviour
 
     private float span = 1.0f;
     private float currentTime = 0f;
-    private float o2Up=2.0f;
+    private float o2Up=0.5f;
 
 
     // Start is called before the first frame update

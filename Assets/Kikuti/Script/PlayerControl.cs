@@ -58,7 +58,7 @@ public class PlayerControl : MonoBehaviour
 
     //ショップ画面
     public static int coin = 0;
-    public static int stone = 0;     //資源
+    public static int asset = 0;     //資源
     public static bool shopResu=false; //ショップ蘇生
     public static bool shopRange=false;//ショップ攻撃範囲
     public static bool shopDefense = false;//ショップ防御力
@@ -185,7 +185,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 SceneManager.LoadScene("GameOver");
-                stone = 0;
+                asset = 0;
             }
             
         }
@@ -234,7 +234,21 @@ public class PlayerControl : MonoBehaviour
             oxygen +=10;
         }
 
-       
+        //ざこ1
+        if (other.gameObject.tag == "Enemy1")
+        {
+            hp -= (10 - (10 * (defense / 100)));
+        }
+        //中ボス1,2
+        if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
+        {
+            hp -= (20 - (20 * (defense / 100)));
+        }
+        //ボス
+        if (other.gameObject.tag == "Boss")
+        {
+            hp -= (30 - (30 * (defense / 100)));
+        }
 
     }
     void OnTriggerExit2D(Collider2D other)
@@ -256,15 +270,14 @@ public class PlayerControl : MonoBehaviour
         //資源ゲット
         if (other.gameObject.tag == "Stone")
         {
-            stone += 1;
-            Debug.Log(stone);
+            asset += 1;
         }
 
         //敵キャラ攻撃受ける
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
         {
-            hp -= (10-(10*(defense/100)));
+            hp -= (10 - (10 * (defense / 100)));
         }
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
@@ -287,7 +300,8 @@ public class PlayerControl : MonoBehaviour
             hp -= (30 - (30 * (defense / 100)));
         }
 
-        
+
+
     }
 
     
