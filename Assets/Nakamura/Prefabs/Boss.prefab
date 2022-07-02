@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 9070777529314509307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.38, y: -0.7, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 9070777530251688976}
   - {fileID: 9070777529712655973}
@@ -218,7 +218,7 @@ MonoBehaviour:
   enemyshotU: {fileID: 7298720054187878401, guid: c58de04dc9e482a42a116f788ca03bd3, type: 3}
   enemyshotD: {fileID: 3832170279208917316, guid: a2885f3a65af4104981fda0821aa2718, type: 3}
   enemy6r: {fileID: 6051613889331933207, guid: a514b4090fc22144aa0bc4a2be00e138, type: 3}
-  enemy6l: {fileID: 8141909217003919676, guid: aeb28332488f429429d75a8286c3ad22, type: 3}
+  enemy6l: {fileID: 6063380257942075084, guid: 2533108ffd60beb4f84c4e9ff70ba67b, type: 3}
   enemy6rc: {fileID: 9070777529712655975}
   enemy6lc: {fileID: 9070777530251688978}
   enemy6ru: {fileID: 4329307537158201322, guid: 93e35d2c4f2da5c4cb094f92bec16ad3, type: 3}

@@ -5,18 +5,17 @@ using UnityEngine;
 public class EnemyShotMove : MonoBehaviour
 {
     private float speed =0.004f;    
+    GameObject player;
     float n;
     Rigidbody2D rb;
     [SerializeField] private GameObject enemy1;
-    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true; 
+        player = GameObject.Find("Player");
         n = player.transform.position.x * speed;
-        
     }
 
     // Update is called once per frame
