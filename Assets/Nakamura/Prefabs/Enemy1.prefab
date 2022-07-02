@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6304689217276580184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7210433, y: -1.1507752, z: 0}
+  m_LocalPosition: {x: 2.5, y: -0.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyshot: {fileID: 3394470310046668467, guid: 2a3fe2526dc1cd34494da67017336c55, type: 3}
-  player: {fileID: 301610973509711945, guid: 31cd5a79947f25a4495ab90124d791e3, type: 3}
+  player: {fileID: 2275914178961091299, guid: ed59cb06dd3af1441b79dcadba6b9635, type: 3}
+
 --- !u!50 &6304689217276580186
 Rigidbody2D:
   serializedVersion: 4
@@ -162,4 +163,4 @@ MonoBehaviour:
   Coin: {fileID: 3031357079797871623, guid: a4276af2ea425494684eb86e3036f9b1, type: 3}
   Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
   Bronze: {fileID: 2980797111661389138, guid: a776ee7cbe7ede44a842f3329dfa671d, type: 3}
-  player: {fileID: 6815941842197329410, guid: 0cc3cbd07ea8d384e9c0410b95d430a7, type: 3}
+  player: {fileID: 5099158227135559471, guid: aa8721b9c28684e48a3d83028f959ea1, type: 3}

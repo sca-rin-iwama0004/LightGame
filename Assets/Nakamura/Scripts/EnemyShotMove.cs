@@ -8,13 +8,15 @@ public class EnemyShotMove : MonoBehaviour
     float n;
     Rigidbody2D rb;
     [SerializeField] private GameObject enemy1;
-    [SerializeField] private GameObject player;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true; 
         n = player.transform.position.x * speed;
+        
     }
 
     // Update is called once per frame

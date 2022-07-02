@@ -89,7 +89,7 @@ public class Enemy6 : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         int coin = 0;
         int c = 0;
