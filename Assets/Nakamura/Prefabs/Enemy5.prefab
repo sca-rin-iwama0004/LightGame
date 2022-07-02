@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd6491b7d855fa49afbb6b31e470a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy6shotr: {fileID: 7180255444971775373}
-  enemy6shotl: {fileID: 7180255443619171677}
+  enemy6shotr: {fileID: 3508253697850558494, guid: 5007ad33c63c3e244b629f42e9d24fca, type: 3}
+  enemy6shotl: {fileID: 8843139511312796986, guid: efbcef60858d8304a9d7772507d37202, type: 3}
   enemy6shotrh: {fileID: 7180255444971775373}
   enemy6shotlh: {fileID: 7180255443619171677}
   enemy6shotrhd: {fileID: 8266987667964672345}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 7180255443619171651}
   - component: {fileID: 7180255443619171650}
   m_Layer: 0
-  m_Name: Enemy6ShotL
+  m_Name: Enemy6ShotLh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 7180255444971775411}
   - component: {fileID: 7180255444971775410}
   m_Layer: 0
-  m_Name: Enemy6ShotR
+  m_Name: Enemy6ShotRh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 3968020208243289035}
   - component: {fileID: 6219328636520867248}
   m_Layer: 0
-  m_Name: Enemy6ShotL (1)
+  m_Name: Enemy6ShotLhu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 2995255267176027161}
   - component: {fileID: 6942220705007050449}
   m_Layer: 0
-  m_Name: Enemy6ShotR (1)
+  m_Name: Enemy6ShotRhd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

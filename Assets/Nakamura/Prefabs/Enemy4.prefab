@@ -118,6 +118,7 @@ MonoBehaviour:
   enemyshotL: {fileID: 4450981576540822203, guid: 2292b4e63639e104583322880ceb67d2, type: 3}
   enemyshotU: {fileID: 7758845576632847110, guid: 74b482788850b9740a74da00cf4c583b, type: 3}
   enemyshotD: {fileID: 5323546981184282326, guid: d4d01905440882f449e11ede6da840a1, type: 3}
+  player: {fileID: 5099158227135559471, guid: aa8721b9c28684e48a3d83028f959ea1, type: 3}
 --- !u!114 &5677275319174594695
 MonoBehaviour:
   m_ObjectHideFlags: 0
