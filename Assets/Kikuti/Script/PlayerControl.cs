@@ -25,6 +25,7 @@ public class PlayerControl : MonoBehaviour
     private bool jumpHole2 = false;
     private bool jumpHole3 = false;
     private bool jumpHole4 = false;
+    public GameObject jumpSound;
 
     //弾
     private int direction = 2;//向いてる方向１～４
@@ -117,7 +118,7 @@ public class PlayerControl : MonoBehaviour
                 if (direction == 1)
                 {
                     this.transform.position = new Vector2(this.transform.position.x + (tile * (jumpPower + 2)), this.transform.position.y);
-
+                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
 
                 }//右
             }
@@ -126,7 +127,7 @@ public class PlayerControl : MonoBehaviour
                 if (direction == 2)
                 {
                     this.transform.position = new Vector2(this.transform.position.x - (tile * (jumpPower + 2)), this.transform.position.y);
-
+                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
                 }//左
 
             }
@@ -135,7 +136,7 @@ public class PlayerControl : MonoBehaviour
                 if (direction == 3)
                 {
                     this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (tile * (jumpPower + 2)));
-
+                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
                 }//上
             }
             if (jumpDecision2 == true && jumpHole2 == true)
@@ -143,7 +144,7 @@ public class PlayerControl : MonoBehaviour
                 if (direction == 4)
                 {
                     this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - (tile * (jumpPower + 2)));
-
+                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
                 }//下
             }
         }
