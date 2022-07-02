@@ -30,7 +30,6 @@ public class Enemy01 : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
            hp -= script.Power;
-            Debug.Log(hp);
         }
         if (other.gameObject.tag == "Gun")
          {

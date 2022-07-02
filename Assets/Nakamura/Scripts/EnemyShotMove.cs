@@ -25,15 +25,16 @@ public class EnemyShotMove : MonoBehaviour
         float x = enemy1.transform.position.x;
         float y = enemy1.transform.position.y;
         transform.position += new Vector3(n, 0.0f, 0.0f);
-	    if (this.transform.position.x >= x + 500.0f || this.transform.position.x <= x - 500.0f || this.transform.position.y >= y + 500.0f || this.transform.position.y <= y - 500.0f)
+        if (this.transform.position.x >= x + 50.0f || this.transform.position.x <= x - 50.0f || this.transform.position.y >= y + 50.0f || this.transform.position.y <= y - 30.0f)
         {
             this.gameObject.SetActive(false);
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player" || other.gameObject.tag == "Wall" || other.gameObject.tag == "Partner" || other.gameObject.tag == "Door")
         {
             this.gameObject.SetActive(false);
         }
