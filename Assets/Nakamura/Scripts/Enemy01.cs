@@ -19,13 +19,14 @@ public class Enemy01 : MonoBehaviour
         script = player.GetComponent<PlayerControl>();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         int coin = 0;
         int c = 0;
         int food = 0;
         int bronze = 0;
         int b =0;
+        Debug.Log(hp);
         if (other.gameObject.tag == "Bullet")
         {
            hp -= script.Power;

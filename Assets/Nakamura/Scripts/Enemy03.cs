@@ -28,7 +28,7 @@ public class Enemy03 : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         int coin = 0;
         int food = 0;
