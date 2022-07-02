@@ -25,7 +25,7 @@ public class EnemyShotMove : MonoBehaviour
         float x = enemy1.transform.position.x;
         float y = enemy1.transform.position.y;
         transform.position += new Vector3(n, 0.0f, 0.0f);
-	    if (this.transform.position.x >= x + 50.0f || this.transform.position.x <= x - 50.0f || this.transform.position.y >= y + 50.0f || this.transform.position.y <= y - 30.0f)
+	    if (this.transform.position.x >= x + 500.0f || this.transform.position.x <= x - 500.0f || this.transform.position.y >= y + 500.0f || this.transform.position.y <= y - 500.0f)
         {
             this.gameObject.SetActive(false);
         }

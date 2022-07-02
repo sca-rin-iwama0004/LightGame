@@ -3453,5 +3453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Partner
       objectReference: {fileID: 0}
+    - target: {fileID: 9181486713115461306, guid: 56af55d9bbca99b4a92eb81104bd8cce,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56af55d9bbca99b4a92eb81104bd8cce, type: 3}

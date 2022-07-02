@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyshot: {fileID: 3394470310046668467, guid: 2a3fe2526dc1cd34494da67017336c55, type: 3}
   player: {fileID: 2275914178961091299, guid: ed59cb06dd3af1441b79dcadba6b9635, type: 3}
+
 --- !u!50 &6304689217276580186
 Rigidbody2D:
   serializedVersion: 4

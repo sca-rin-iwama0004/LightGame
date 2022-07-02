@@ -21,22 +21,20 @@ public class PlayerControl : MonoBehaviour
     private bool jumpDecision2 = false;
     private bool jumpDecision3 = false;
     private bool jumpDecision4 = false;
-
     private bool jumpHole = false;
     private bool jumpHole2 = false;
     private bool jumpHole3 = false;
     private bool jumpHole4 = false;
 
-
     //弾
     private int direction = 2;//向いてる方向１～４
-    private float gunSpeed=15;                    
+    private float gunSpeed=23;                    
     private int gunKind=1;//武器１(ナイフ)2(銃)～ 
     public GameObject knife;
     public GameObject gun;
     private float timeGun=5.0f;  //攻撃速度
     private float range=0; //増加攻撃範囲
-    private float power=5; //攻撃力
+    private float power=50; //攻撃力
 
     //防御力
     private float defense = 0;//%
@@ -59,7 +57,7 @@ public class PlayerControl : MonoBehaviour
 
     //ショップ画面
     public static int coin = 0;
-    public static int asset = 0;     //資源
+    public static int stone = 0;     //資源
     public static bool shopResu=false; //ショップ蘇生
     public static bool shopRange=false;//ショップ攻撃範囲
     public static bool shopDefense = false;//ショップ防御力
@@ -123,9 +121,7 @@ public class PlayerControl : MonoBehaviour
 
                 }//右
             }
-
             if (jumpDecision3 == true && jumpHole3 == true)
-
             {
                 if (direction == 2)
                 {
@@ -134,9 +130,7 @@ public class PlayerControl : MonoBehaviour
                 }//左
 
             }
-
             if (jumpDecision4 == true && jumpHole4 == true)
-
             {
                 if (direction == 3)
                 {
@@ -145,7 +139,6 @@ public class PlayerControl : MonoBehaviour
                 }//上
             }
             if (jumpDecision2 == true && jumpHole2 == true)
-
             {
                 if (direction == 4)
                 {
@@ -191,7 +184,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 SceneManager.LoadScene("GameOver");
-                asset = 0;
+                stone = 0;
             }
             
         }
@@ -260,9 +253,10 @@ public class PlayerControl : MonoBehaviour
         }
 
         //資源ゲット
-        if (other.gameObject.tag == "Asset")
+        if (other.gameObject.tag == "Stone")
         {
-            asset += 1;
+            stone += 1;
+            Debug.Log(stone);
         }
 
         //敵キャラ攻撃受ける
@@ -282,7 +276,7 @@ public class PlayerControl : MonoBehaviour
             hp = 0;
         }
         //中ボス1,2
-        if (other.gameObject.tag == "Enemy4" && other.gameObject.tag == "Enemy5")
+        if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
         {
             hp -= (20 - (20 * (defense / 100)));
         }
