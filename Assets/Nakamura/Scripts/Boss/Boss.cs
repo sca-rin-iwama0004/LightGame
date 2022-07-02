@@ -37,6 +37,9 @@ public class Boss : MonoBehaviour
     private int o2r = 0;
     private int o2l = 0;
     Rigidbody2D rb;
+    bool InArea = false;
+    private float arealr =0.0f;
+    private float areaud = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,39 +56,59 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        float x = this.transform.position.x;
-        float y = this.transform.position.y;
-        time += Time.deltaTime;
-        if (time > span && this.tag != "explosion")
+        recovery();
+        if (InArea == true)
         {
-            Instantiate(enemyshotR);
-            Instantiate(enemyshotL);
-            Instantiate(enemyshotU);
-            Instantiate(enemyshotD);
-            enemyshotR.transform.position = new Vector2(x, y);
-            enemyshotL.transform.position = new Vector2(x, y);
-            enemyshotU.transform.position = new Vector2(x, y);
-            enemyshotD.transform.position = new Vector2(x, y);
-        }
-        time2 += Time.deltaTime;
-        if (time > span && this.tag != "explosion")
-        {
-            Instantiate(enemy6r);
-            Instantiate(enemy6lu);
-            enemy6r.transform.position = enemy6rc.transform.position;
-            enemy6lu.transform.position = enemy6lcu.transform.position;
-            time = 0f;
+            float x = this.transform.position.x;
+            float y = this.transform.position.y;
+            time += Time.deltaTime;
+            if (time > span && this.tag != "explosion")
+            {
+                Instantiate(enemyshotR);
+                Instantiate(enemyshotL);
+                Instantiate(enemyshotU);
+                Instantiate(enemyshotD);
+                enemyshotR.transform.position = new Vector2(x, y);
+                enemyshotL.transform.position = new Vector2(x, y);
+                enemyshotU.transform.position = new Vector2(x, y);
+                enemyshotD.transform.position = new Vector2(x, y);
+            }
+            time2 += Time.deltaTime;
+            if (time > span && this.tag != "explosion")
+            {
+                Instantiate(enemy6r);
+                Instantiate(enemy6lu);
+                enemy6r.transform.position = enemy6rc.transform.position;
+                enemy6lu.transform.position = enemy6lcu.transform.position;
+                time = 0f;
 
+            }
+            else if (time2 > span2 && this.tag != "explosion")
+            {
+                Instantiate(enemy6l);
+                Instantiate(enemy6ru);
+                enemy6l.transform.position = enemy6lc.transform.position;
+                enemy6ru.transform.position = enemy6rcu.transform.position;
+                time2 = 0f;
+            }
         }
-        else if (time2 > span2 && this.tag != "explosion")
+        arealr = player.transform.position.x-this.transform.position.x;
+        //Debug.Log(arealr);
+        areaud = player.transform.position.y - this.transform.position.y;
+        if (arealr >=11.0f || arealr<=-11.0f|| areaud >= 11.0f || areaud <= -11.0f)//Collider‚ª‚S‚O‚È‚ç‚P‚P
         {
-            Instantiate(enemy6l);
-            Instantiate(enemy6ru);
-            enemy6l.transform.position = enemy6lc.transform.position;
-            enemy6ru.transform.position = enemy6rcu.transform.position;
-            time2 = 0f;
+            InArea = false;
         }
 
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        InArea = true;
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        InArea = true;
     }
 
 
@@ -145,7 +168,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Bullet")
         {
