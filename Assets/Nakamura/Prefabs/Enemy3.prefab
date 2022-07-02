@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2275914178961091224}
   - component: {fileID: 2275914178961091303}
   - component: {fileID: 2275914178961091302}
-  - component: {fileID: 2275914178961091301}
   - component: {fileID: 2275914178961091300}
+  - component: {fileID: 2275914178961091301}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: DieEnemy
@@ -29,13 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2275914178961091299}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 141.71307, y: 135.57466, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-=======
-  m_LocalPosition: {x: 5.5409365, y: -2.59, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
->>>>>>> 2226e2a6a308a35c91fe9ec7c2d7be8f9efa684b
+  m_LocalPosition: {x: 4.22, y: 5.81, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -130,7 +125,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 8, y: 8}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 8, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -138,21 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 17.19, y: 8.96}
   m_EdgeRadius: 0
---- !u!114 &2275914178961091301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2275914178961091299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404fc8c2444ca154eb1a3b5343ad3202, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Coin: {fileID: 3031357079797871623, guid: a4276af2ea425494684eb86e3036f9b1, type: 3}
-  Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
-  Silver: {fileID: 1586172539853583186, guid: accca7b1ce9627d4b937ee09e83204d1, type: 3}
 --- !u!61 &2275914178961091300
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +151,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 8, y: 8}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 8, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -179,3 +159,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.39, y: 4.4}
   m_EdgeRadius: 0
+--- !u!114 &2275914178961091301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275914178961091299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404fc8c2444ca154eb1a3b5343ad3202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coin: {fileID: 3031357079797871623, guid: a4276af2ea425494684eb86e3036f9b1, type: 3}
+  Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
+  Silver: {fileID: 1586172539853583186, guid: accca7b1ce9627d4b937ee09e83204d1, type: 3}
