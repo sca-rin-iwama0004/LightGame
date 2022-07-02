@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.03f;                          
+    private float speed=0.1f;                          
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
     private bool jumpDecision = false;
@@ -57,7 +57,7 @@ public class PlayerControl : MonoBehaviour
 
     //ショップ画面
     public static int coin = 0;
-    public static int asset = 0;     //資源
+    public static int stone = 0;     //資源
     public static bool shopResu=false; //ショップ蘇生
     public static bool shopRange=false;//ショップ攻撃範囲
     public static bool shopDefense = false;//ショップ防御力
@@ -184,7 +184,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 SceneManager.LoadScene("GameOver");
-                asset = 0;
+                stone = 0;
             }
             
         }
@@ -253,9 +253,10 @@ public class PlayerControl : MonoBehaviour
         }
 
         //資源ゲット
-        if (other.gameObject.tag == "Asset")
+        if (other.gameObject.tag == "Stone")
         {
-            asset += 1;
+            stone += 1;
+            Debug.Log(stone);
         }
 
         //敵キャラ攻撃受ける

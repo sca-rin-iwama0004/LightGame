@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Iwama/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Nakamura/Scenes/GameOver.unity
+    guid: ab19b11ad8d0b894ba073f7460820164
+  - enabled: 1
+    path: Assets/Nakamura/Scenes/CoinShop.unity
+    guid: a0c8a7c0af9c48447bc035e28f7afe85
+  - enabled: 1
+    path: Assets/Nakamura/Scenes/Clear.unity
+    guid: f9a8aa77558d32d458d3e398cd0f8326
+  - enabled: 1
+    path: Assets/Nakamura/Scenes/result.unity
+    guid: dbbe159ed9490b441aefab713a6af3ae
+  - enabled: 1
+    path: Assets/Nakamura/Scenes/Title.unity
+    guid: 676d74a8107cf7b45b39333f304dfcfb
   m_configObjects: {}
