@@ -234,10 +234,21 @@ public class PlayerControl : MonoBehaviour
             oxygen +=10;
         }
 
+        //敵キャラ攻撃受ける
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
         {
             hp -= (10 - (10 * (defense / 100)));
+        }
+        //ざこ2
+        if (other.gameObject.tag == "Enemy2")
+        {
+            hp -= (15 - (15 * (defense / 100)));
+        }
+        //ざこ３即死
+        if (other.gameObject.tag == "DieEnemy")
+        {
+            hp = 0;
         }
         //中ボス1,2
         if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
