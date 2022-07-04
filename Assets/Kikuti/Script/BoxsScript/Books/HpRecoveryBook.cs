@@ -31,7 +31,8 @@ public class HpRecoveryBook : MonoBehaviour
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             script.Rec=true;
-
+            script.Ui = "HPŽ©“®‰ñ•œGET";
+            script.UiDecision = true;
             Destroy(gameObject);
         }
 

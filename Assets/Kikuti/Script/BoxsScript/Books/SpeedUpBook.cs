@@ -31,6 +31,8 @@ public class SpeedUpBook : MonoBehaviour
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             script.Speed += (script.Speed*0.05f);
+            script.Ui = "ˆÚ“®‘¬“xUP";
+            script.UiDecision = true;
             Destroy(gameObject);
         }
 
