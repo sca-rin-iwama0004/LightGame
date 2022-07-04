@@ -31,6 +31,8 @@ public class attackUpBook : MonoBehaviour
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             float rnd = Random.Range(0, 1f);
+            script.Ui = "UŒ‚—ÍUP";
+            script.UiDecision = true;
 
             if (rnd <= 0.3f)
             {

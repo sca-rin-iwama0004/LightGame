@@ -31,6 +31,8 @@ public class attackSpeedBook : MonoBehaviour
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//å¯â âπ
             script.TimeGun-=0.4f;
+            script.Ui = "çUåÇë¨ìxUP";
+            script.UiDecision = true;
             Destroy(gameObject);
         }
 
