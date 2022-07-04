@@ -14,6 +14,15 @@ public class CheckButton : text
     [SerializeField] private GameObject newPanel;
     [SerializeField] private GameObject Enemy;
 
+    AudioSource audioSource;
+    [SerializeField] private AudioClip no;
+    [SerializeField] private AudioClip yes;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+
 
     public string InputString {
         set { this.inputString = value; }
@@ -56,11 +65,14 @@ public class CheckButton : text
        {
            Debug.Log("ê≥â");
            Destroy(KeyDoor);
-           newPanel.SetActive(false);
+            audioSource.PlayOneShot(yes);
+            newPanel.SetActive(false);
 
         }
         else{
             Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
+           // GetComponent<AudioSource>().Play();
+            audioSource.PlayOneShot(no);
             Debug.Log("ïsê≥â");
 
        }

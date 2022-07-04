@@ -38,7 +38,7 @@ public class OxygenControl : MonoBehaviour
             if (currentTime > span)
             {
 
-                image.fillAmount += (script.Oxygen/1700 * 0.3f);
+                image.fillAmount +=  0.3f;
                 currentTime = 0f;
             }
         }
