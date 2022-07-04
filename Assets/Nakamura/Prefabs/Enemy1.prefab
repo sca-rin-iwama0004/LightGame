@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 670da7e387f0fe848a26ac3e3ded7dc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2697c18abc9e6884c98fb9fa409b9cab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 13.98, y: 13.05}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,7 +105,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 13.98, y: 13.05}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 13.98, y: 13.05}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -162,31 +162,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Coin: {fileID: 3031357079797871623, guid: a4276af2ea425494684eb86e3036f9b1, type: 3}
   Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
-  Bronze: {fileID: 2980797111661389138, guid: a776ee7cbe7ede44a842f3329dfa671d, type: 3}
-  player: {fileID: 5099158227135559471, guid: aa8721b9c28684e48a3d83028f959ea1, type: 3}
---- !u!61 &2283055403428689390
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6304689217276580184}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 13.98, y: 13.05}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 13.98, y: 13.05}
-  m_EdgeRadius: 0
+  Bronze: {fileID: 2980797111661389138, guid: a776ee7cbe7ede44a842f3329dfa671d, type: 3
+  player: {fileID: 3081380709000108139, guid: 7abe39053764a9f428ccc4355fce39d1, type: 3}

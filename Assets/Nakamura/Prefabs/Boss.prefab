@@ -161,12 +161,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 527f7003c9b198f48adb918c7c1c327f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 359aee28f30790748aa0519f4fe9e120, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 14.46, y: 13.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -190,7 +190,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 14.46, y: 13.44}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 14.46, y: 13.44}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -210,9 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224eb3638c392cb4f83471f50696b1b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atk: {fileID: 21300000, guid: c59e048684527184089d51a0edc97e7d, type: 3}
-  o2up: {fileID: 21300000, guid: fc519fa02ed01644f9b75f1cb2fe00d3, type: 3}
-  explosion: {fileID: 21300000, guid: b80db4706c01d214589913951d0f6fc8, type: 3}
+  atk: {fileID: 21300000, guid: 509282b0d32436046864bd0632e6e126, type: 3}
+  o2up: {fileID: 21300000, guid: 0b0126c702ec42646ba355fca1e03699, type: 3}
+  explosion: {fileID: 21300000, guid: 2e118e8a23b7c0c42b09d46b851d30b3, type: 3}
   enemyshotR: {fileID: 7057979058231139420, guid: a338789143a4fb640a21063cee22be34, type: 3}
   enemyshotL: {fileID: 4630599181328844120, guid: bf067cd27a739f640a76740ef5908b60, type: 3}
   enemyshotU: {fileID: 7298720054187878401, guid: c58de04dc9e482a42a116f788ca03bd3, type: 3}
@@ -265,7 +265,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 14.46, y: 13.44}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 14.46, y: 13.44}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
