@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6304689217276580187}
   - component: {fileID: 6304689217276580186}
   - component: {fileID: 6304689217276580185}
+  - component: {fileID: 2283055403428689390}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy1
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyshot: {fileID: 3394470310046668467, guid: 2a3fe2526dc1cd34494da67017336c55, type: 3}
-  player: {fileID: 2275914178961091299, guid: ed59cb06dd3af1441b79dcadba6b9635, type: 3}
+  player: {fileID: 6304689217276580184}
 --- !u!50 &6304689217276580186
 Rigidbody2D:
   serializedVersion: 4
@@ -163,3 +164,29 @@ MonoBehaviour:
   Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
   Bronze: {fileID: 2980797111661389138, guid: a776ee7cbe7ede44a842f3329dfa671d, type: 3}
   player: {fileID: 5099158227135559471, guid: aa8721b9c28684e48a3d83028f959ea1, type: 3}
+--- !u!61 &2283055403428689390
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304689217276580184}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 13.98, y: 13.05}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 13.98, y: 13.05}
+  m_EdgeRadius: 0

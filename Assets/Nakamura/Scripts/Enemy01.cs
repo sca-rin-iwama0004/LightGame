@@ -26,7 +26,6 @@ public class Enemy01 : MonoBehaviour
         int food = 0;
         int bronze = 0;
         int b =0;
-        Debug.Log(hp);
         if (other.gameObject.tag == "Bullet")
         {
            hp -= script.Power;
