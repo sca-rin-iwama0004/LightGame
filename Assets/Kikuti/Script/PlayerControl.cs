@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.03f;                          
+    private float speed=0.1f;                          
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
     private bool jumpDecision = false;
@@ -29,13 +29,13 @@ public class PlayerControl : MonoBehaviour
 
     //弾
     private int direction = 2;//向いてる方向１～４
-    private float gunSpeed=15;                    
+    private float gunSpeed=23;                    
     private int gunKind=1;//武器１(ナイフ)2(銃)～ 
     public GameObject knife;
     public GameObject gun;
     private float timeGun=5.0f;  //攻撃速度
     private float range=0; //増加攻撃範囲
-    private float power=5; //攻撃力
+    private float power=50; //攻撃力
 
     //防御力
     private float defense = 0;//%
@@ -55,6 +55,7 @@ public class PlayerControl : MonoBehaviour
     private bool rec=false;
 
     private bool onParther = false;//追従開始
+    private int parCount=0;
 
     //ショップ画面
     public static int coin = 0;
@@ -64,7 +65,9 @@ public class PlayerControl : MonoBehaviour
     public static bool shopDefense = false;//ショップ防御力
     public static bool shopRec = false;//ショップ自動回復
 
-
+    //UI
+    private string ui;
+    private bool uiDecision=false;
 
     void Start()
     {
@@ -203,17 +206,20 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //銃
-        if (other.gameObject.tag == "Gun")
+        if (other.gameObject.tag == "Guns")
         {
             gunKind = 2;
             power+=5;
-
+            ui="銃GET";
+            uiDecision=true;
         }
 
         //爆弾
         else if (other.gameObject.tag == "Bomb")
         {
             getBomb=true;
+            ui = "爆弾GET";
+            uiDecision = true;
         }
 
         //酸素回復エリア入り
@@ -226,6 +232,12 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.tag == "Partner")
         {
             onParther = true;
+            if (parCount == 0) {
+                ui = "仲間GET";
+                uiDecision = true;
+            }
+            parCount=1;
+            
         }
 
         //酸素回復攻撃に当たったら１０回復
@@ -234,36 +246,11 @@ public class PlayerControl : MonoBehaviour
             oxygen +=10;
         }
 
-       
-
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Cylinder")
-        {
-            maxO2 = false;
-        }//酸素回復エリア抜け出し
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        //コインゲット
-        if (other.gameObject.tag == "Coin")
-        {
-            coin += 1;
-        }
-
-        //資源ゲット
-        if (other.gameObject.tag == "Asset")
-        {
-            asset += 1;
-        }
-
         //敵キャラ攻撃受ける
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
         {
-            hp -= (10-(10*(defense/100)));
+            hp -= (10 - (10 * (defense / 100)));
         }
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
@@ -286,7 +273,62 @@ public class PlayerControl : MonoBehaviour
             hp -= (30 - (30 * (defense / 100)));
         }
 
-        
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Cylinder")
+        {
+            maxO2 = false;
+        }//酸素回復エリア抜け出し
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        //コインゲット
+        if (other.gameObject.tag == "Coin")
+        {
+            coin += 1;
+            ui = "コインGET";
+            uiDecision = true;
+        }
+
+        //資源ゲット
+        if (other.gameObject.tag == "Stone")
+        {
+            asset += 1;
+            ui = "資源GET";
+            uiDecision = true;
+        }
+
+        //敵キャラ攻撃受ける
+        //ざこ1
+        if (other.gameObject.tag == "Enemy1")
+        {
+            hp -= (10 - (10 * (defense / 100)));
+        }
+        //ざこ2
+        if (other.gameObject.tag == "Enemy2")
+        {
+            hp -= (15 - (15 * (defense / 100)));
+        }
+        //ざこ３即死
+        if (other.gameObject.tag == "DieEnemy")
+        {
+            hp = 0;
+        }
+        //中ボス1,2
+        if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
+        {
+            hp -= (20 - (20 * (defense / 100)));
+        }
+        //ボス
+        if (other.gameObject.tag == "Boss")
+        {
+            hp -= (30 - (30 * (defense / 100)));
+        }
+
+
+
     }
 
     
@@ -408,6 +450,15 @@ public class PlayerControl : MonoBehaviour
         set { this.jumpHole4 = value; }
         get { return this.jumpHole4; }
     }
-
+    public string Ui
+    {
+        set { this.ui = value; }
+        get { return this.ui; }
+    }
+    public bool UiDecision
+    {
+        set { this.uiDecision = value; }
+        get { return this.uiDecision; }
+    }
 
 }

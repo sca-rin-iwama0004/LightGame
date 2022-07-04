@@ -31,6 +31,8 @@ public class JumpUpBook : MonoBehaviour
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             script.JumpPower += 1.0f;
+            script.Ui = "ƒWƒƒƒ“ƒv—ÍUP";
+            script.UiDecision = true;
             Destroy(gameObject);
         }
 

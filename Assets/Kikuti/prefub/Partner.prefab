@@ -123,13 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2b45460b42e754a9683edc9f303075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTrans: {fileID: 6815941842531434694, guid: 0cc3cbd07ea8d384e9c0410b95d430a7,
-    type: 3}
-  speed: 0.01
-  partnerGun: {fileID: 3254816808913860263, guid: 6a5d5574d53dc9141a0125fe56f939ea,
-    type: 3}
-  partnerSound: {fileID: 6335774987293456644, guid: 7ce4ee155d3957f44811d46a68d99a5f,
-    type: 3}
+  playerTrans: {fileID: 6815941842531434694, guid: 0cc3cbd07ea8d384e9c0410b95d430a7, type: 3}
+  speed: 0.025
+  partnerGun: {fileID: 3254816808913860263, guid: 6a5d5574d53dc9141a0125fe56f939ea, type: 3}
+  partnerSound: {fileID: 6335774987293456644, guid: 7ce4ee155d3957f44811d46a68d99a5f, type: 3}
 --- !u!50 &9181486713115461305
 Rigidbody2D:
   serializedVersion: 4

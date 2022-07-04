@@ -32,6 +32,8 @@ public class HpUpBook : MonoBehaviour
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             script.HPLimit +=6.0f;
             script.HP = script.HPLimit;
+            script.Ui = "HP UP";
+            script.UiDecision = true;
             Destroy(gameObject);
         }
 

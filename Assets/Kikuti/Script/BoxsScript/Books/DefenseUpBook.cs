@@ -31,6 +31,8 @@ public class DefenseUpBook : MonoBehaviour
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             script.Defense += 3.0f;
+            script.Ui = "–hŒä—ÍUP";
+            script.UiDecision = true;
             Destroy(gameObject);
         }
 

@@ -31,6 +31,8 @@ public class attackRangeBook : MonoBehaviour
         {
             Instantiate(bookSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             script.Range += 1.0f;
+            script.Ui="UŒ‚”ÍˆÍUP";
+            script.UiDecision = true;
             Destroy(gameObject);
         }
 
