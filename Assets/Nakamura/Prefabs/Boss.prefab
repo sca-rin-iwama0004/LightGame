@@ -221,7 +221,7 @@ MonoBehaviour:
   enemy6l: {fileID: 8141909217003919676, guid: aeb28332488f429429d75a8286c3ad22, type: 3}
   enemy6rc: {fileID: 9070777529712655975}
   enemy6lc: {fileID: 9070777530251688978}
-  enemy6ru: {fileID: 4329307537158201322, guid: 93e35d2c4f2da5c4cb094f92bec16ad3, type: 3}
+  enemy6ru: {fileID: 9070777529821341867}
   enemy6lu: {fileID: 3517877753636366169, guid: 018f13bf896e7c7429a0b5e026293c68, type: 3}
   enemy6rcu: {fileID: 9070777529821341867}
   enemy6lcu: {fileID: 9070777529171531589}
