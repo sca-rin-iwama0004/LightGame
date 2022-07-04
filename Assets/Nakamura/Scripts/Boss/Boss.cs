@@ -59,6 +59,7 @@ public class Boss : MonoBehaviour
         recovery();
         if (InArea == true)
         {
+
             float x = this.transform.position.x;
             float y = this.transform.position.y;
             time += Time.deltaTime;
@@ -93,12 +94,13 @@ public class Boss : MonoBehaviour
             }
         }
         arealr = player.transform.position.x - this.transform.position.x;
-        //Debug.Log(arealr);
+        Debug.Log(InArea);
         areaud = player.transform.position.y - this.transform.position.y;
         if (arealr >= 11.0f || arealr <= -11.0f || areaud >= 11.0f || areaud <= -11.0f)//Collider‚ª‚S‚O‚È‚ç‚P‚P
         {
             InArea = false;
         }
+
 
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -129,6 +131,26 @@ public class Boss : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         InArea = true;
+
+        if (other.gameObject.tag == "Bullet")
+        {
+            hp -= script.Power;
+        }
+        if (other.gameObject.tag == "Gun")
+        {
+            hp -= (script.Power / 2);
+        }
+        if (other.gameObject.tag == "Explosion")
+        {
+            hp -= 50;
+        }
+
+        if (hp <= 0)
+        {
+            MainSpriteRenderer.sprite = explosion;
+            this.tag = "explosion";
+            Invoke("End", 2.0f);
+        }
     }
 
 
