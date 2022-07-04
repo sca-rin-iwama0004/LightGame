@@ -29,8 +29,10 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject Coin;
     private float span = 1.0f;
     private float span2 = 1.5f;
+    private float span3 = 3.0f;
     private float time = 0f;
     private float time2 = 0f;
+    private float time3 = 0f;
     private float hp = 1000;
     private int o2d = 0;
     private int o2u = 0;
@@ -63,7 +65,9 @@ public class Boss : MonoBehaviour
             float x = this.transform.position.x;
             float y = this.transform.position.y;
             time += Time.deltaTime;
-            if (time > span && this.tag != "explosion")
+            time2 += Time.deltaTime;
+            time3 += Time.deltaTime;
+            if (time3 > span3 && this.tag != "explosion")
             {
                 Instantiate(enemyshotR);
                 Instantiate(enemyshotL);
@@ -73,8 +77,8 @@ public class Boss : MonoBehaviour
                 enemyshotL.transform.position = new Vector2(x, y);
                 enemyshotU.transform.position = new Vector2(x, y);
                 enemyshotD.transform.position = new Vector2(x, y);
+                time3 = 0f;
             }
-            time2 += Time.deltaTime;
             if (time > span && this.tag != "explosion")
             {
                 Instantiate(enemy6r);
@@ -84,7 +88,7 @@ public class Boss : MonoBehaviour
                 time = 0f;
 
             }
-            else if (time2 > span2 && this.tag != "explosion")
+            if (time2 > span2 && this.tag != "explosion")
             {
                 Instantiate(enemy6l);
                 Instantiate(enemy6ru);
@@ -94,9 +98,9 @@ public class Boss : MonoBehaviour
             }
         }
         arealr = player.transform.position.x - this.transform.position.x;
-        Debug.Log(InArea);
+        //Debug.Log(arealr);
         areaud = player.transform.position.y - this.transform.position.y;
-        if (arealr >= 11.0f || arealr <= -11.0f || areaud >= 11.0f || areaud <= -11.0f)//Collider‚ª‚S‚O‚È‚ç‚P‚P
+        if (arealr >= 60.0f || arealr <= -60.0f || areaud >= 60.0f || areaud <= -60.0f)//Collider‚ª‚S‚O‚È‚ç60
         {
             InArea = false;
         }
