@@ -25,6 +25,7 @@ public class PlayerControl : MonoBehaviour
     private bool jumpHole2 = false;
     private bool jumpHole3 = false;
     private bool jumpHole4 = false;
+    public GameObject jumpSound;
 
     //弾
     private int direction = 2;//向いてる方向１～４
@@ -57,7 +58,7 @@ public class PlayerControl : MonoBehaviour
 
     //ショップ画面
     public static int coin = 0;
-    public static int stone = 0;     //資源
+    public static int asset = 0;     //資源
     public static bool shopResu=false; //ショップ蘇生
     public static bool shopRange=false;//ショップ攻撃範囲
     public static bool shopDefense = false;//ショップ防御力
@@ -117,7 +118,7 @@ public class PlayerControl : MonoBehaviour
                 if (direction == 1)
                 {
                     this.transform.position = new Vector2(this.transform.position.x + (tile * (jumpPower + 2)), this.transform.position.y);
-
+                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
 
                 }//右
             }
@@ -126,7 +127,7 @@ public class PlayerControl : MonoBehaviour
                 if (direction == 2)
                 {
                     this.transform.position = new Vector2(this.transform.position.x - (tile * (jumpPower + 2)), this.transform.position.y);
-
+                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
                 }//左
 
             }
@@ -135,7 +136,7 @@ public class PlayerControl : MonoBehaviour
                 if (direction == 3)
                 {
                     this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (tile * (jumpPower + 2)));
-
+                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
                 }//上
             }
             if (jumpDecision2 == true && jumpHole2 == true)
@@ -143,7 +144,7 @@ public class PlayerControl : MonoBehaviour
                 if (direction == 4)
                 {
                     this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - (tile * (jumpPower + 2)));
-
+                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
                 }//下
             }
         }
@@ -184,7 +185,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 SceneManager.LoadScene("GameOver");
-                stone = 0;
+                asset = 0;
             }
             
         }
@@ -233,37 +234,11 @@ public class PlayerControl : MonoBehaviour
             oxygen +=10;
         }
 
-       
-
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Cylinder")
-        {
-            maxO2 = false;
-        }//酸素回復エリア抜け出し
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        //コインゲット
-        if (other.gameObject.tag == "Coin")
-        {
-            coin += 1;
-        }
-
-        //資源ゲット
-        if (other.gameObject.tag == "Stone")
-        {
-            stone += 1;
-            Debug.Log(stone);
-        }
-
         //敵キャラ攻撃受ける
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
         {
-            hp -= (10-(10*(defense/100)));
+            hp -= (10 - (10 * (defense / 100)));
         }
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
@@ -286,7 +261,58 @@ public class PlayerControl : MonoBehaviour
             hp -= (30 - (30 * (defense / 100)));
         }
 
-        
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Cylinder")
+        {
+            maxO2 = false;
+        }//酸素回復エリア抜け出し
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        //コインゲット
+        if (other.gameObject.tag == "Coin")
+        {
+            coin += 1;
+        }
+
+        //資源ゲット
+        if (other.gameObject.tag == "Stone")
+        {
+            asset += 1;
+        }
+
+        //敵キャラ攻撃受ける
+        //ざこ1
+        if (other.gameObject.tag == "Enemy1")
+        {
+            hp -= (10 - (10 * (defense / 100)));
+        }
+        //ざこ2
+        if (other.gameObject.tag == "Enemy2")
+        {
+            hp -= (15 - (15 * (defense / 100)));
+        }
+        //ざこ３即死
+        if (other.gameObject.tag == "DieEnemy")
+        {
+            hp = 0;
+        }
+        //中ボス1,2
+        if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
+        {
+            hp -= (20 - (20 * (defense / 100)));
+        }
+        //ボス
+        if (other.gameObject.tag == "Boss")
+        {
+            hp -= (30 - (30 * (defense / 100)));
+        }
+
+
+
     }
 
     

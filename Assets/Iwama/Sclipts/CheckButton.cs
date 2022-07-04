@@ -12,6 +12,7 @@ public class CheckButton : text
    public TrainScript_c trainC;
    public GameObject KeyDoor;
    public GameObject newPanel;
+    [SerializeField] private GameObject Enemy;
 
 
     public string InputString {
@@ -49,7 +50,9 @@ public class CheckButton : text
        int j = a * 100 + b * 10 + c;
 
 
-       if (s == j) 
+        
+
+        if (s == j) 
        {
            Debug.Log("ê≥â");
            Destroy(KeyDoor);
@@ -57,7 +60,9 @@ public class CheckButton : text
 
         }
         else{
-           Debug.Log("ïsê≥â");
+            Instantiate(Enemy, new Vector3(-45, 47, 0), Quaternion.identity);
+            Debug.Log("ïsê≥â");
+
        }
        
         

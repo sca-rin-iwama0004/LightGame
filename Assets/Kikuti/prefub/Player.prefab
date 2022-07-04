@@ -481,6 +481,8 @@ MonoBehaviour:
     type: 3}
   playerSide: {fileID: -975539310571944445, guid: 9a69571f98a2f8f4d9906a73cbcd1b5c,
     type: 3}
+  jumpSound: {fileID: 1755611506636807342, guid: faf444647c0e5fe4b8e42bdb139e22e4,
+    type: 3}
   knife: {fileID: 6636915847063434299, guid: bfbcbe2401012c74d8bb9a2f90e4520c, type: 3}
   gun: {fileID: 1666186175930893496, guid: 5155a161a3939e74ab5b11e6474a5c3b, type: 3}
   bombs: {fileID: 2223629079896790446, guid: 385d5f32a0426a543bf503b63c289b47, type: 3}
