@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class CheckButton : text
 {
-  private string inputString;
+     private string inputString;
 
-   public TrainScript_a trainA;
-   public TrainScript_b trainB;
-   public TrainScript_c trainC;
-   public GameObject KeyDoor;
-   public GameObject newPanel;
+    [SerializeField] private TrainScript_a trainA;
+    [SerializeField] private TrainScript_b trainB;
+    [SerializeField] private TrainScript_c trainC;
+    [SerializeField] private GameObject KeyDoor;
+    [SerializeField] private GameObject newPanel;
     [SerializeField] private GameObject Enemy;
 
 
@@ -35,10 +35,10 @@ public class CheckButton : text
         A.GetNumberA();//マップに何の数字がでてるか
 
         TrainScript_b B = trainB.GetComponent<TrainScript_b>();
-        B.GetNumberB();//マップに何の数字がでてるか
+        B.GetNumberB();
 
         TrainScript_c C = trainC.GetComponent<TrainScript_c>();
-        C.GetNumberC();//マップに何の数字がでてるか
+        C.GetNumberC();
 
         int a = A.GetNumberA();
         int b = B.GetNumberB();
