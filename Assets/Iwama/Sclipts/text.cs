@@ -60,8 +60,10 @@ public class text : MonoBehaviour
 
     public void PushButtonDialBack()
     {
+  
         Panel.SetActive(false);
-       // suuji_text.text = "0";
+        suuji_text.text = "";
+
         Debug.Log("–ß‚é");
     }
 }
