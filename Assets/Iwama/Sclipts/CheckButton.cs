@@ -60,7 +60,7 @@ public class CheckButton : text
 
         }
         else{
-            Instantiate(Enemy, new Vector3(-45, 47, 0), Quaternion.identity);
+            Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
             Debug.Log("•s³‰ğ");
 
        }
