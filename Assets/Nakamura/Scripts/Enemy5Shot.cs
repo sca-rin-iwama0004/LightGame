@@ -57,7 +57,7 @@ public class Enemy5Shot : MonoBehaviour
         }
 
         arealr = player.transform.position.x - this.transform.position.x;
-        Debug.Log(arealr);
+      
         areaud = player.transform.position.y - this.transform.position.y;
         //プレイヤーが範囲外に出たらfalse
         if (arealr >= 50.0f || arealr <= -50.0f || areaud >= 50.0f || areaud <= -50.0f)
