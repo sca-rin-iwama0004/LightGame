@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemyshot : MonoBehaviour
 {
-    [SerializeField] private GameObject shot;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject enemyshot;
+    GameObject player;
     private float span = 2.0f;
     private float time =0f;
     bool InArea = false;
@@ -14,12 +14,13 @@ public class Enemyshot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ƒvƒŒƒCƒ„[‚ª”ÍˆÍ“à‚É“ü‚Á‚½‚çenemyshot¶¬
         if (InArea == true)
         {
             float x = this.transform.position.x;
@@ -34,9 +35,10 @@ public class Enemyshot : MonoBehaviour
         }
 
         arealr = player.transform.position.x - this.transform.position.x;
-        //Debug.Log(arealr);
         areaud = player.transform.position.y - this.transform.position.y;
-        if (arealr >= 60.0f || arealr <= -60.0f || areaud >= 60.0f || areaud <= -60.0f)//Collider���S�O�Ȃ�60
+        //Debug.Log(arealr);
+        //ƒvƒŒƒCƒ„[‚ª”ÍˆÍŠO‚Éo‚½‚çfalse
+        if (arealr >= 80.0f || arealr <= -80.0f || areaud >= 20.0f || areaud <= -20.0f)
         {
             InArea = false;
         }
@@ -45,11 +47,19 @@ public class Enemyshot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        InArea = true;
+        //ƒvƒŒƒCƒ„[‚ª“ü‚Á‚½‚çtrue
+        if (other.gameObject.tag == "Player")
+        {
+            InArea = true;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        InArea = true;
+        //ƒvƒŒƒCƒ„[‚ª“ü‚Á‚½‚çtrue
+        if (other.gameObject.tag == "Player")
+        {
+            InArea = true;
+        }
     }
 }

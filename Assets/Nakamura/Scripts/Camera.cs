@@ -5,13 +5,13 @@ using UnityEngine;
 public class Camera : MonoBehaviour
 {
     SpriteRenderer MainSpriteRenderer;
-    [SerializeField] private Sprite eye;
-    [SerializeField] private Sprite enemy3;
+    [SerializeField] private Sprite eye;//–Ú‚ª•Â‚¶‚Ä‚é“G‰æ‘œ
+    [SerializeField] private Sprite enemy3;//–Ú‚ªŠJ‚¢‚Ä‚é“G‰æ‘œ
+    [SerializeField] private GameObject enemy4;//oŒ»‚³‚¹‚é“G
     private float time = 0f;
-    private int sleep = 3;
+    private int sleep = 3;//‰æ‘œØ‚è‘Ö‚¦‚ÌŠÔŠu
     Rigidbody2D rb;
     GameObject player;
-    [SerializeField] private GameObject enemy4;
     int en =0;
     private Vector2 pos;
     // Start is called before the first frame update
@@ -48,6 +48,7 @@ public class Camera : MonoBehaviour
         float y = this.transform.position.y+3;
         if (other.gameObject.tag == "Player" && MainSpriteRenderer.sprite == enemy3 && en <1)
         {
+            GetComponent<AudioSource>().Play();
             Instantiate(enemy4);
             en++;
             enemy4.transform.position = new Vector2(x, y);

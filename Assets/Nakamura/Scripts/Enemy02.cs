@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy02 : MonoBehaviour
 {
@@ -9,15 +10,18 @@ public class Enemy02 : MonoBehaviour
     Rigidbody2D rb;
     private float Speed = 3;
     private float hp = 150;
+    private float nowhp;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Silver;
+    public Slider hpSlider;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
+        hpSlider.value = 150;
 
     }
 
@@ -39,14 +43,17 @@ public class Enemy02 : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             hp -= script.Power;
+            hpSlider.value =  hp;
         }
         if (other.gameObject.tag == "Gun")
         {
-         hp -= (script.Power / 2);
+            hp -= (script.Power / 2);
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
-          hp -= 50;
+            hp -= 50;
+            hpSlider.value =  hp;
         }
 
         if (hp <= 0)

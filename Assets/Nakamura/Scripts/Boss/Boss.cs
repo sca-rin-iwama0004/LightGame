@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -18,14 +19,14 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject enemyshotL;
     [SerializeField] private GameObject enemyshotU;
     [SerializeField] private GameObject enemyshotD;
-    [SerializeField] private GameObject enemy6r;
-    [SerializeField] private GameObject enemy6l;
-    [SerializeField] private GameObject enemy6rc;
-    [SerializeField] private GameObject enemy6lc;
-    [SerializeField] private GameObject enemy6ru;
-    [SerializeField] private GameObject enemy6lu;
-    [SerializeField] private GameObject enemy6rcu;
-    [SerializeField] private GameObject enemy6lcu;
+    [SerializeField] private GameObject enemy6r;//right•ûŒü(‰º)‚ÌUŒ‚
+    [SerializeField] private GameObject enemy6l;//left•ûŒü(‰º)‚ÌUŒ‚
+    [SerializeField] private GameObject enemy6rd;//enemy6r‚Ì¶¬ˆÊ’u
+    [SerializeField] private GameObject enemy6ld;//enemy6l‚Ì¶¬ˆÊ’u
+    [SerializeField] private GameObject enemy6R;//right•ûŒü(ã)‚ÌUŒ‚
+    [SerializeField] private GameObject enemy6L;//left•ûŒü(ã)‚ÌUŒ‚
+    [SerializeField] private GameObject enemy6ru;//enemy6R‚Ì¶¬ˆÊ’u
+    [SerializeField] private GameObject enemy6lu;//enemy6L‚Ì¶¬ˆÊ’u
     [SerializeField] private GameObject Coin;
     private float span = 1.0f;
     private float span2 = 1.5f;
@@ -34,14 +35,16 @@ public class Boss : MonoBehaviour
     private float time2 = 0f;
     private float time3 = 0f;
     private float hp = 1000;
+    private float nowhp;
     private int o2d = 0;
     private int o2u = 0;
     private int o2r = 0;
     private int o2l = 0;
     Rigidbody2D rb;
     bool InArea = false;
-    private float arealr = 0.0f;
-    private float areaud = 0.0f;
+    private float arealr = 0.0f;//UŒ‚”ÍˆÍ(¶‰E)
+    private float areaud = 0.0f;//UŒ‚”ÍˆÍ(ã‰º)
+    public Slider hpSlider;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,11 +57,13 @@ public class Boss : MonoBehaviour
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
        script = player.GetComponent<PlayerControl>();
+        hpSlider.value = 1000;
     }
 
     void Update()
     {
         recovery();
+        //ƒvƒŒƒCƒ„[‚ª”ÍˆÍ‚É“ü‚Á‚½‚çˆÊ’u‚ğ‹‚ßAŠÔ‚ğŒv‘ª
         if (InArea == true)
         {
 
@@ -67,6 +72,7 @@ public class Boss : MonoBehaviour
             time += Time.deltaTime;
             time2 += Time.deltaTime;
             time3 += Time.deltaTime;
+            //span3•bŒo‰ß‚µ‚½‚çenemyshotR`enemyshotD‚ğ¶¬
             if (time3 > span3 && this.tag != "explosion")
             {
                 Instantiate(enemyshotR);
@@ -79,21 +85,23 @@ public class Boss : MonoBehaviour
                 enemyshotD.transform.position = new Vector2(x, y);
                 time3 = 0f;
             }
+            //span•bŒo‰ß‚µ‚½‚çenemy6r,enemy6L‚Ì¶¬
             if (time > span && this.tag != "explosion")
             {
                 Instantiate(enemy6r);
-                Instantiate(enemy6lu);
-                enemy6r.transform.position = enemy6rc.transform.position;
-                enemy6lu.transform.position = enemy6lcu.transform.position;
+                Instantiate(enemy6L);
+                enemy6r.transform.position = enemy6rd.transform.position;
+                enemy6L.transform.position = enemy6lu.transform.position;
                 time = 0f;
 
             }
+            //span2•bŒo‰ß‚µ‚½‚çenemy6l,enemy6R‚Ì¶¬
             if (time2 > span2 && this.tag != "explosion")
             {
                 Instantiate(enemy6l);
-                Instantiate(enemy6ru);
-                enemy6l.transform.position = enemy6lc.transform.position;
-                enemy6ru.transform.position = enemy6rcu.transform.position;
+                Instantiate(enemy6R);
+                enemy6l.transform.position = enemy6ld.transform.position;
+                enemy6R.transform.position = enemy6ru.transform.position;
                 time2 = 0f;
             }
         }
@@ -109,19 +117,25 @@ public class Boss : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        InArea = true;
+        if (other.gameObject.tag == "Player")
+        {
+            InArea = true;
+        }
 
         if (other.gameObject.tag == "Bullet")
         {
             hp -= script.Power;
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Gun")
         {
             hp -= (script.Power / 2);
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
             hp -= 50;
+            hpSlider.value = hp;
         }
 
         if (hp <= 0)
@@ -134,7 +148,10 @@ public class Boss : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        InArea = true;
+        if (other.gameObject.tag == "Player")
+        {
+            InArea = true;
+        }
 
         if (other.gameObject.tag == "Bullet")
         {
