@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class JumpRange3Control : MonoBehaviour
 {
-    //x
+    //ジャンプ先に床があるか判定スクリプト（左）
     GameObject player;
     PlayerControl script;
 
     BoxCollider2D boxCol;
-    private float range;
     private float posX, posY;
 
     // Start is called before the first frame update
@@ -26,6 +25,7 @@ public class JumpRange3Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //ジャンプUPのアイテム拾った後のColliderの位置
         if (script.JumpPower == 2)
         {
             boxCol.offset = new Vector3(-3.5f,0, script.JumpPower);
@@ -34,6 +34,7 @@ public class JumpRange3Control : MonoBehaviour
 
     }
 
+    //ジャンプ先に床があるか
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Road")
@@ -41,7 +42,6 @@ public class JumpRange3Control : MonoBehaviour
             script.JumpDecision3 = true;
         }
     }
-
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Road")

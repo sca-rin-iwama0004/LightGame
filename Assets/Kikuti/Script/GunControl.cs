@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GunControl : MonoBehaviour
 {
+    //銃攻撃
+
     GameObject player;
     PlayerControl script;
-    int dir;
-    float moveSpeed;
+    private float moveSpeed;  //弾飛ぶ速度
+    private int dir;//攻撃方向
 
     //攻撃範囲
     private float posX, posY;
@@ -15,15 +17,16 @@ public class GunControl : MonoBehaviour
     //効果音
     public GameObject bulletSound;
 
-
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
-        dir = script.Direction;
         moveSpeed = script.GunSpeed;
 
+        dir = (int)script.Direction;//方向確定
+
+        //ナイフサイズ変更（攻撃範囲）
         Vector3 size;
         size = gameObject.transform.localScale;
         size.x += (script.Range/10);
@@ -37,20 +40,20 @@ public class GunControl : MonoBehaviour
     void Update()
     {
 
-
-        if (dir == 1)
+        //弾発射
+        if (dir == (int)PlayerControl.PlayerDirection.RIGHT)//右
         {
             transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
         }
-        else if (dir == 2)
+        else if (dir == (int)PlayerControl.PlayerDirection.LEFT)//左
         {
             transform.Translate(-moveSpeed * Time.deltaTime, 0, 0);
         }
-        else if (dir == 3)
+        else if (dir == (int)PlayerControl.PlayerDirection.UP)//上
         {
             transform.Translate(0,moveSpeed * Time.deltaTime, 0);
         }
-        else if (dir == 4)
+        else if (dir == (int)PlayerControl.PlayerDirection.DOWN)//下
         {
             transform.Translate(0,-moveSpeed * Time.deltaTime, 0);
 
@@ -61,7 +64,8 @@ public class GunControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag != "Player" && other.gameObject.tag != "Partner" && other.gameObject.tag != "Untagged" && other.gameObject.tag != "Gun" && other.gameObject.tag != "Hole" && other.gameObject.tag != "Road" && other.gameObject.tag != "Bombs" && other.gameObject.tag != "JumpRang")
+        //弾消滅
+        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Enemy1" || other.gameObject.tag == "Enemy2" || other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5" || other.gameObject.tag == "DieEnemy" || other.gameObject.tag == "Boss")
         {
             Destroy(gameObject);
         }
