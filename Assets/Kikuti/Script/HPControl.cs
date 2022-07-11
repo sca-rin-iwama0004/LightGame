@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HPControl : MonoBehaviour
 {
+    //HP
 
     private Image image;
 
@@ -13,7 +14,7 @@ public class HPControl : MonoBehaviour
 
     //自動回復
     private float recTime=0f;
-    private float recSpan=1.0f;//回復スピード
+    private float recSpan=1.0f;//回復ペース
 
 
     private void Start()
@@ -28,9 +29,9 @@ public class HPControl : MonoBehaviour
     private void Update()
     {
 
-       image.fillAmount = script.HP / 500.0f;
+       image.fillAmount = script.HP / 160;
 
-        if(script.Rec==true)
+        if(script.Rec==true)//自動回復アイテム取得時実行
         {
 
             recTime += Time.deltaTime;
