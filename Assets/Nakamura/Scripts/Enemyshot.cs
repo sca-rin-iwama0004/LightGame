@@ -11,10 +11,13 @@ public class Enemyshot : MonoBehaviour
     bool InArea = false;
     private float arealr = 0.0f;
     private float areaud = 0.0f;
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        rb = GetComponent<Rigidbody2D>();
+        rb.isKinematic = true;
     }
 
     // Update is called once per frame
