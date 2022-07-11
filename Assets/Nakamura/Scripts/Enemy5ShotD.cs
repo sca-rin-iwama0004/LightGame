@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy5ShotD : MonoBehaviour
 {
-    private float speed = 0.005f;
+    private float speed = 0.1f;
     GameObject enemy4;
     // Start is called before the first frame update
     void Start()
@@ -15,10 +15,9 @@ public class Enemy5ShotD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = enemy4.transform.position.x;
         float y = enemy4.transform.position.y;
         transform.position += new Vector3(0.0f, -speed, 0.0f);
-        if (this.transform.position.x <= x - 45.0f)
+        if (this.transform.position.y <= y - 45.0f)
         {
             this.gameObject.SetActive(false);
         }

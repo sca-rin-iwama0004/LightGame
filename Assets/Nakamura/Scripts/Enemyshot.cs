@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemyshot : MonoBehaviour
 {
     [SerializeField] private GameObject enemyshot;
-    [SerializeField] private GameObject player;
+    GameObject player;
     private float span = 2.0f;
     private float time =0f;
     bool InArea = false;
@@ -14,12 +14,13 @@ public class Enemyshot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        //プレイヤーが範囲内に入ったらenemyshot生成
         if (InArea == true)
         {
             float x = this.transform.position.x;
@@ -34,9 +35,10 @@ public class Enemyshot : MonoBehaviour
         }
 
         arealr = player.transform.position.x - this.transform.position.x;
-        //Debug.Log(arealr);
         areaud = player.transform.position.y - this.transform.position.y;
-        if (arealr >= 60.0f || arealr <= -60.0f || areaud >= 60.0f || areaud <= -60.0f)//Colliderが４０なら60
+        //Debug.Log(arealr);
+        //プレイヤーが範囲外に出たらfalse
+        if (arealr >= 80.0f || arealr <= -80.0f || areaud >= 20.0f || areaud <= -20.0f)
         {
             InArea = false;
         }
@@ -45,11 +47,19 @@ public class Enemyshot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        InArea = true;
+        //プレイヤーが入ったらtrue
+        if (other.gameObject.tag == "Player")
+        {
+            InArea = true;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        InArea = true;
+        //プレイヤーが入ったらtrue
+        if (other.gameObject.tag == "Player")
+        {
+            InArea = true;
+        }
     }
 }

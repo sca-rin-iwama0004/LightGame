@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Enemy5Shot : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyshotR;
-    [SerializeField] private GameObject enemyshotL;
-    [SerializeField] private GameObject enemyshotU;
-    [SerializeField] private GameObject enemyshotD;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject enemyshotR;//攻撃(右)
+    [SerializeField] private GameObject enemyshotL;//攻撃(左)
+    [SerializeField] private GameObject enemyshotU;//攻撃(上)
+    [SerializeField] private GameObject enemyshotD;//攻撃(下)
+    [SerializeField] private GameObject Shot;//攻撃(追跡)
+    GameObject player;
     GameObject enemy4;
-    private float span = 5.0f;
+    private float span = 2.0f;
     private float time = 0f;
+    private float time2 = 0f;
     bool InArea = false;
     private float arealr = 0.0f;
     private float areaud = 0.0f;
@@ -19,17 +21,20 @@ public class Enemy5Shot : MonoBehaviour
     void Start()
     {
         enemy4 = GameObject.Find("Enemy4");
+        player = GameObject.Find("Player");
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        //プレイヤーが範囲内に入ったら生成
         if (InArea == true)
         {
             float x = enemy4.transform.position.x;
             float y = enemy4.transform.position.y;
             time += Time.deltaTime;
+            time2 += Time.deltaTime;
             if (time > span)
             {
                 Instantiate(enemyshotR);
@@ -42,13 +47,20 @@ public class Enemy5Shot : MonoBehaviour
                 enemyshotD.transform.position = new Vector2(x, y);
                 time = 0f;
             }
+            if (time2 % 10 > span)
+            {   
+                Instantiate(Shot);
+                Shot.transform.position = this.transform.position;
+                time2 = 0f;
+            }
 
         }
 
         arealr = player.transform.position.x - this.transform.position.x;
-        //Debug.Log(arealr);
+        Debug.Log(arealr);
         areaud = player.transform.position.y - this.transform.position.y;
-        if (arealr >= 60.0f || arealr <= -60.0f || areaud >= 60.0f || areaud <= -60.0f)
+        //プレイヤーが範囲外に出たらfalse
+        if (arealr >= 50.0f || arealr <= -50.0f || areaud >= 50.0f || areaud <= -50.0f)
         {
             InArea = false;
         }
@@ -58,12 +70,20 @@ public class Enemy5Shot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        InArea = true;
+        //プレイヤーが入ったらtrue
+        if (other.gameObject.tag == "Player")
+        {
+            InArea = true;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        InArea = true;
+        //プレイヤーが入ったらtrue
+        if (other.gameObject.tag == "Player")
+        {
+            InArea = true;
+        }
     }
 
 }

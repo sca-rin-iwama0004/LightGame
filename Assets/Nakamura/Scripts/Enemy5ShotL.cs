@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy5ShotL : MonoBehaviour
 {
-    private float speed = 0.005f;
+    private float speed = 0.1f;
     GameObject enemy4;
     // Start is called before the first frame update
     void Start()
