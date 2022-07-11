@@ -17,6 +17,7 @@ public class CheckButton : text
     AudioSource audioSource;
     [SerializeField] private AudioClip no;
     [SerializeField] private AudioClip yes;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
