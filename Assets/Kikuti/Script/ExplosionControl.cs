@@ -5,12 +5,9 @@ using System;
 
 public class ExplosionControl : MonoBehaviour
 {
-    //”š”­ƒ‚[ƒVƒ‡ƒ“
-
     // Start is called before the first frame update
     void Start()
     {
-        //2•bŒã‚ÉÁ‚¦‚é
         StartCoroutine(DelayCoroutine(2, () =>
         {
             Destroy(gameObject);

@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
-    //プレイヤー
-
     //画像
     [SerializeField] private Sprite playerPrevious;
     [SerializeField] private Sprite playerBehind;
@@ -16,10 +14,9 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.01f; //移動速度
+    private float speed=0.1f;                          
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
-    //ジャンプ判定
     private bool jumpDecision = false;
     private bool jumpDecision2 = false;
     private bool jumpDecision3 = false;
@@ -30,17 +27,8 @@ public class PlayerControl : MonoBehaviour
     private bool jumpHole4 = false;
     public GameObject jumpSound;
 
-    //プレイヤーの向いてる方向
-    public enum PlayerDirection
-    {
-        UP,
-        LEFT,
-        RIGHT,
-        DOWN,
-    }
-    private PlayerDirection direction;
-
     //弾
+    private int direction = 2;//向いてる方向１～４
     private float gunSpeed=23;                    
     private int gunKind=1;//武器１(ナイフ)2(銃)～ 
     public GameObject knife;
@@ -61,14 +49,13 @@ public class PlayerControl : MonoBehaviour
 
     //HP酸素
     private float hp=100.0f;
-    private float hpLimit = 100.0f;  //その時のmaxのHP
-    private float oxygen=150.0f;
-    private float oxygenMax = 150.0f;
-    private bool placeO2=false;  //酸素ボンベ
-    private bool rec=false;    //HP自動回復
+    private float hpLimit = 100.0f;
+    private float oxygen=200.0f;
+    private bool maxO2=false;
+    private bool rec=false;
 
     private bool onParther = false;//追従開始
-    private int parCount=0;  //仲間判定
+    private int parCount=0;
 
     //ショップ画面
     public static int coin = 0;
@@ -82,102 +69,91 @@ public class PlayerControl : MonoBehaviour
     private string ui;
     private bool uiDecision=false;
 
-    
-
     void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
 
         renderer = GetComponent<SpriteRenderer>();
         sr = gameObject.GetComponent<SpriteRenderer>();
-
-        direction = PlayerDirection.LEFT;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //移動
+
         float horizontalKey = Input.GetAxis("Horizontal");
         float verticalKey = Input.GetAxis("Vertical");
 
-        if (horizontalKey > 0)//右
+        if (horizontalKey > 0)
         {
-            rb.position += new Vector2(speed/* * Input.GetAxis("Horizontal")*/,0 );
+            rb.position += new Vector2(speed* Input.GetAxis("Horizontal"),0 );
             sr.sprite = playerSide;
             renderer.flipX = true;
-            direction = PlayerDirection.RIGHT;
-        }
-        else if (horizontalKey < 0)//左
+            direction = 1;
+        }//右-1
+        else if (horizontalKey < 0)
         {
-            rb.position += new Vector2(-speed/* * Input.GetAxis("Horizontal")*/, 0);
+            rb.position += new Vector2(speed * Input.GetAxis("Horizontal"), 0);
             sr.sprite = playerSide;
             renderer.flipX = false;
-            direction = PlayerDirection.LEFT;
-        }
+            direction = 2;
+        }//左-2
 
-        if (verticalKey > 0)//上
+        if (verticalKey > 0)
         {
-            rb.position += new Vector2(0,speed/* * Input.GetAxis("Vertical")*/);
+            rb.position += new Vector2(0,speed * Input.GetAxis("Vertical"));
             sr.sprite = playerBehind;
-            direction = PlayerDirection.UP;
-        }
-        else if (verticalKey < 0)//下
+            direction = 3;
+        }//上-3
+        else if (verticalKey < 0)
         {
-            rb.position += new Vector2(0, -speed /* * Input.GetAxis("Vertical")*/);
+            rb.position += new Vector2(0, speed * Input.GetAxis("Vertical"));
             sr.sprite = playerPrevious;
-            direction = PlayerDirection.DOWN;
-        }
+            direction = 4;
+        }//下-4
 
         //ジャンプ
         if (Input.GetKeyDown(KeyCode.C))
         {
             float tile = 5;//１タイルの幅
-
-            //右にジャンプ（向いてる方向に床があるか&&向いてる方向に穴があるか）
             if (jumpDecision == true && jumpHole == true)
             {
-                if (direction == PlayerDirection.RIGHT)
+                if (direction == 1)
                 {
                     this.transform.position = new Vector2(this.transform.position.x + (tile * (jumpPower + 2)), this.transform.position.y);
                     Instantiate(jumpSound, this.transform.position, this.transform.rotation);
 
-                }
+                }//右
             }
-            //左にジャンプ（向いてる方向に床があるか&&向いてる方向に穴があるか）
             if (jumpDecision3 == true && jumpHole3 == true)
             {
-                if (direction == PlayerDirection.LEFT)
+                if (direction == 2)
                 {
                     this.transform.position = new Vector2(this.transform.position.x - (tile * (jumpPower + 2)), this.transform.position.y);
                     Instantiate(jumpSound, this.transform.position, this.transform.rotation);
-                }
+                }//左
 
             }
-            //上にジャンプ（向いてる方向に床があるか&&向いてる方向に穴があるか）
             if (jumpDecision4 == true && jumpHole4 == true)
             {
-                if (direction == PlayerDirection.UP)
+                if (direction == 3)
                 {
                     this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (tile * (jumpPower + 2)));
                     Instantiate(jumpSound, this.transform.position, this.transform.rotation);
-                }
+                }//上
             }
-            //下にジャンプ（向いてる方向に床があるか&&向いてる方向に穴があるか）
             if (jumpDecision2 == true && jumpHole2 == true)
             {
-                if (direction == PlayerDirection.DOWN)
+                if (direction == 4)
                 {
                     this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - (tile * (jumpPower + 2)));
                     Instantiate(jumpSound, this.transform.position, this.transform.rotation);
-                }
+                }//下
             }
         }
 
         //弾
         timeElapsed += Time.deltaTime;
-
-        //
         if (timeElapsed >= timeGun)
         {
             if (gunKind == 1)//ナイフ
@@ -192,12 +168,11 @@ public class PlayerControl : MonoBehaviour
             timeElapsed = 0.0f;
         }
 
-        //爆弾設置
+        //爆弾
         if(Input.GetKeyDown(KeyCode.Space)){
             if (getBomb == true) {
                 Instantiate(bombs, transform.position, transform.rotation);
                 getBomb=false;
-                //クールタイム
                 StartCoroutine(Timer());
             }
         }
@@ -205,13 +180,11 @@ public class PlayerControl : MonoBehaviour
         //ゲームオーバー
         if (hp <= 0||oxygen<=0)
         {
-            //蘇生実行
             if(shopResu==true)
             { 
                 hpLimit=hp;
                 shopResu=false;
-            } 
-            //ゲームオーバー
+            }
             else
             {
                 SceneManager.LoadScene("GameOver");
@@ -252,7 +225,7 @@ public class PlayerControl : MonoBehaviour
         //酸素回復エリア入り
         if (other.gameObject.tag == "Cylinder")
         {
-            placeO2 = true;
+            maxO2 = true;
         }
 
         //仲間追従開始
@@ -273,7 +246,6 @@ public class PlayerControl : MonoBehaviour
             oxygen +=10;
         }
 
-        /*
         //敵キャラ攻撃受ける
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
@@ -300,13 +272,13 @@ public class PlayerControl : MonoBehaviour
         {
             hp -= (30 - (30 * (defense / 100)));
         }
-        */
+
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Cylinder")
         {
-            placeO2 = false;
+            maxO2 = false;
         }//酸素回復エリア抜け出し
     }
 
@@ -368,7 +340,7 @@ public class PlayerControl : MonoBehaviour
         set { this.speed = value; }
         get { return this.speed; }
     }
-    public PlayerDirection Direction
+    public int Direction
     {
         set { this.direction = value; }
         get { return this.direction; }
@@ -403,15 +375,10 @@ public class PlayerControl : MonoBehaviour
         set { this.oxygen = value; }
         get { return this.oxygen; }
     }
-    public float OxygenMax
+    public bool MaxO2
     {
-        set { this.oxygenMax = value; }
-        get { return this.oxygenMax; }
-    }
-    public bool PlaceO2
-    {
-        set { this.placeO2 = value; }
-        get { return this.placeO2; }
+        set { this.maxO2 = value; }
+        get { return this.maxO2; }
     }
     public bool OnParther
     {

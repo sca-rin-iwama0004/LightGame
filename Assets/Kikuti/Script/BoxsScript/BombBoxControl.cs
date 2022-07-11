@@ -30,7 +30,8 @@ public class BombBoxControl : MonoBehaviour
             Instantiate(openSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             Destroy(gameObject);
 
-            Instantiate(bomb, this.transform.position, this.transform.rotation); //”š’e
+            Instantiate(bomb, this.transform.position, this.transform.rotation);
+            //ƒWƒƒƒ“ƒvUP
 
         }
 

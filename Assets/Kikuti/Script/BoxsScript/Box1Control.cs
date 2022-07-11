@@ -14,7 +14,7 @@ public class Box1Control : MonoBehaviour
 
     public GameObject stone;
 
-    private bool decision = true;//ドロップアイテム確定までの判定
+    private bool decision = true;
 
     //効果音
     public GameObject openSound;
@@ -38,30 +38,27 @@ public class Box1Control : MonoBehaviour
             Instantiate(openSound, this.transform.position, this.transform.rotation);//効果音
             Destroy(gameObject);
 
-            int i=0;//while内をループするための処理
+            int i=0;
             while (decision = true)
             {
                 float rnd = Random.Range(0, 1f);
 
-                //攻撃範囲UPを買っていないならドロップ数＝0に設定
                 if (PlayerControl.shopRange == false)
                 {
                     GameManager.attackRange=0;
                 }
-                //防御力UPを買っていないならドロップ数＝0に設定
                 if (PlayerControl.shopDefense == false)
                 {
                     GameManager.defenseUp=0;
                 }
 
-                //すべての強化本のドロップ数が上限を超えたら資源を落とす
+
                 if (GameManager.attackUp==0&& GameManager.attackSpeedUp == 0 && GameManager.speedUp == 0 && GameManager.attackRange == 0 && GameManager.defenseUp == 0 )
                 { 
                     Stone();
                     break;
                 }
-                //攻撃力UPドロップ
-                if (rnd <= 0.3f) 
+                if (rnd <= 0.3f) //攻撃力UP
                 {
                     if (GameManager.attackUp > 0)
                     {
@@ -70,13 +67,12 @@ public class Box1Control : MonoBehaviour
                         break;
 
                     }
-                    else { i+=1; }//while内をループするための処理
-
+                    else { i+=1;}
+                    
                 }
-                //攻撃速度UPドロップ
-                else if (rnd <= 0.5f)
+                else if (rnd <= 0.5f)//攻撃速度UP
                 {
-                    if (GameManager.attackSpeedUp > 0)//ドロップ数上限超えてなければ実行
+                    if (GameManager.attackSpeedUp > 0)
                     {
                         Instantiate(attackSpeedBook, this.transform.position, this.transform.rotation);
                         GameManager.attackSpeedUp -= 1;
@@ -84,10 +80,9 @@ public class Box1Control : MonoBehaviour
                     }
                     else { i += 1; }
                 }
-                //移動速度UPドロップ
-                else if (rnd <= 0.7f)
+                else if (rnd <= 0.7f)//移動速度UP
                 {
-                    if (GameManager.speedUp > 0)//ドロップ数上限超えてなければ実行
+                    if (GameManager.speedUp > 0)
                     {
                         Instantiate(speedBook, this.transform.position, this.transform.rotation);
                         GameManager.speedUp -= 1;
@@ -95,12 +90,11 @@ public class Box1Control : MonoBehaviour
                     }
                     else { i += 1; }
                 }
-                //攻撃範囲UPドロップ
-                else if (rnd <= 0.8f)
+                else if (rnd <= 0.8f)//攻撃範囲UP
                 {
-                    if (PlayerControl.shopRange == true)//ショップで購入していれば実行
+                    if (PlayerControl.shopRange == true)
                     {
-                        if (GameManager.attackRange > 0)//ドロップ数上限超えてなければ実行
+                        if (GameManager.attackRange > 0)
                         {
                             Instantiate(attackRangeBook, this.transform.position, this.transform.rotation);
                             GameManager.attackRange -= 1;
@@ -109,12 +103,11 @@ public class Box1Control : MonoBehaviour
                         else { i += 1; }
                     }
                 }
-                //防御力UPドロップ
-                else
+                else//防御力UP
                 {
-                    if (PlayerControl.shopDefense == true)//ショップで購入していれば実行
+                    if (PlayerControl.shopDefense == true)
                     {
-                        if (GameManager.defenseUp > 0)//ドロップ数上限超えてなければ実行
+                        if (GameManager.defenseUp > 0)
                         {
                             Instantiate(defenseBook, this.transform.position, this.transform.rotation);
                             GameManager.defenseUp -= 1;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PartnerControl : MonoBehaviour
 {
-    //’‡ŠÔ
+    
 
     [SerializeField] private Transform playerTrans;
     [SerializeField] private float speed;
@@ -34,7 +34,7 @@ public class PartnerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //’Ç]ŠJŽn
+        int dir;
         if (script.OnParther == true) {
             if(sound==true)
             {
@@ -42,7 +42,9 @@ public class PartnerControl : MonoBehaviour
                 sound=false;
             }
 
-            //UŒ‚’e¶¬
+            dir = script.Direction;
+
+            //UŒ‚
             timeElapsed += Time.deltaTime;
             if (timeElapsed >= timeGun)
             {
@@ -51,25 +53,25 @@ public class PartnerControl : MonoBehaviour
             }
 
             //ˆÚ“®
-            if (script.Direction == PlayerControl.PlayerDirection.RIGHT)
+            if (dir == 1)
             {
                 this.transform.position =
                   Vector2.MoveTowards(this.transform.position, new Vector2(playerTrans.position.x - interval, playerTrans.position.y + interval), speed);
                
             }
-            else if (script.Direction == PlayerControl.PlayerDirection.LEFT)
+            else if (dir == 2)
             {
                 this.transform.position =
                   Vector2.MoveTowards(this.transform.position, new Vector2(playerTrans.position.x + interval, playerTrans.position.y - interval), speed);
                 
             }
-            else if (script.Direction == PlayerControl.PlayerDirection.UP)
+            else if (dir == 3)
             {
                 this.transform.position =
                   Vector2.MoveTowards(this.transform.position, new Vector2(playerTrans.position.x - interval, playerTrans.position.y - interval), speed);
                 
             }
-            else if (script.Direction == PlayerControl.PlayerDirection.DOWN)
+            else if (dir == 4)
             {
                 this.transform.position =
                  Vector2.MoveTowards(this.transform.position, new Vector2(playerTrans.position.x + interval, playerTrans.position.y + interval), speed);
