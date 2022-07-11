@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxDecision2Control : MonoBehaviour
 {
-    //確率通常宝箱判定
+    //確率通常宝箱
 
     public GameObject Box1;
 
@@ -13,8 +13,8 @@ public class BoxDecision2Control : MonoBehaviour
     void Start()
     {
         this.GetComponent<SpriteRenderer>().color=new Color(0,0,0,0);
+        
 
-        //50%の確率で宝箱出現
         float rnd = Random.Range(0, 1f);
         if (rnd <= 0.5)
         {

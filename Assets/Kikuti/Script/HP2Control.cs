@@ -23,6 +23,6 @@ public class HP2Control : MonoBehaviour
     void Update()
     {
 
-        image.fillAmount = script.HPLimit / 160;
+        image.fillAmount = script.HPLimit / 500.0f;
     }
 }

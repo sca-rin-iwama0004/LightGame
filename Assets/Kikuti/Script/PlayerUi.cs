@@ -6,8 +6,6 @@ using System;
 
 public class PlayerUi : MonoBehaviour
 {
-    //アイテム獲得テキスト表示
-
     public Text text;
 
     GameObject player;
@@ -23,10 +21,10 @@ public class PlayerUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(script.UiDecision==true)//表示
+        if(script.UiDecision==true)
         { 
             text.text = script.Ui;
-            StartCoroutine(DelayCoroutine(1, () => //１秒後非表示
+            StartCoroutine(DelayCoroutine(1, () =>
             {
                 text.text = " ";
                 script.UiDecision=false;
