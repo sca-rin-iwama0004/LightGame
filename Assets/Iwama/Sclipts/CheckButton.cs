@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CheckButton : text
 {
-     private string inputString;
+    public string inputString;
 
     [SerializeField] private TrainScript_a trainA;
     [SerializeField] private TrainScript_b trainB;
@@ -73,6 +73,7 @@ public class CheckButton : text
             Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
            // GetComponent<AudioSource>().Play();
             audioSource.PlayOneShot(no);
+            inputString = "";
             Debug.Log("ïsê≥â");
 
        }

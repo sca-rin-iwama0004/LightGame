@@ -10,6 +10,15 @@ public class text : MonoBehaviour
     [SerializeField] protected Button checkButton;
     [SerializeField] GameObject Panel;
 
+    GameObject Check;
+    CheckButton script;
+
+    void Start()
+    {
+        Check = GameObject.Find("Check");
+        script = Check.GetComponent<CheckButton>();
+    }
+
     //ボタンを押したら実行する関数　実行するためにはボタンへ関数登録が必要
     //int型の引数numberを宣言
     public virtual void Push_Button(int number)
@@ -55,13 +64,13 @@ public class text : MonoBehaviour
 
     }
     
-
-
-
     public void PushButtonDialBack()
     {
-        Panel.SetActive(false);
-       // suuji_text.text = "0";
+       script.PushButtonCheck(); 
+
+       suuji_text.text = "";
+       Panel.SetActive(false);
+      
         Debug.Log("戻る");
     }
 }
