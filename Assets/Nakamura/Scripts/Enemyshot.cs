@@ -20,7 +20,7 @@ public class Enemyshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Æ’vÆ’Å’Æ’CÆ’â€Â[â€šÂªâ€ÃË†Ãâ€œÃ â€šÃ‰â€œÃ¼â€šÃâ€šÂ½â€šÃ§enemyshotÂÂ¶ÂÂ¬
+        //ƒvƒŒƒCƒ„[‚ª”ÍˆÍ“à‚É“ü‚Á‚½‚çenemyshot¶¬
         if (InArea == true)
         {
             float x = this.transform.position.x;
@@ -28,8 +28,8 @@ public class Enemyshot : MonoBehaviour
             time += Time.deltaTime;
             if (time > span)
             {
-                Instantiate(shot);
-               shot.transform.position = new Vector2(x - 0.7f, y - 0.8f);
+                Instantiate(enemyshot);
+                enemyshot.transform.position = new Vector2(x - 0.7f, y - 0.8f);
                 time = 0f;
             }
         }
@@ -37,7 +37,7 @@ public class Enemyshot : MonoBehaviour
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
         //Debug.Log(arealr);
-        //Æ’vÆ’Å’Æ’CÆ’â€Â[â€šÂªâ€ÃË†ÃÅ Oâ€šÃ‰Âoâ€šÂ½â€šÃ§false
+        //ƒvƒŒƒCƒ„[‚ª”ÍˆÍŠO‚Éo‚½‚çfalse
         if (arealr >= 80.0f || arealr <= -80.0f || areaud >= 20.0f || areaud <= -20.0f)
         {
             InArea = false;
@@ -47,7 +47,7 @@ public class Enemyshot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Æ’vÆ’Å’Æ’CÆ’â€Â[â€šÂªâ€œÃ¼â€šÃâ€šÂ½â€šÃ§true
+        //ƒvƒŒƒCƒ„[‚ª“ü‚Á‚½‚çtrue
         if (other.gameObject.tag == "Player")
         {
             InArea = true;
@@ -56,7 +56,7 @@ public class Enemyshot : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        //Æ’vÆ’Å’Æ’CÆ’â€Â[â€šÂªâ€œÃ¼â€šÃâ€šÂ½â€šÃ§true
+        //ƒvƒŒƒCƒ„[‚ª“ü‚Á‚½‚çtrue
         if (other.gameObject.tag == "Player")
         {
             InArea = true;
