@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.01f; //移動速度
+    private float speed=0.1f; //移動速度
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
     //ジャンプ判定
@@ -291,7 +291,7 @@ public class PlayerControl : MonoBehaviour
         {
             hp = 0;
         }
-        */
+        
         //中ボス1,2
         if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
         {
