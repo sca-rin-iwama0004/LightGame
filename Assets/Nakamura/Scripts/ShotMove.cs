@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShotMove : MonoBehaviour
 {
     GameObject player;
+    GameObject enemy4;
     Rigidbody2D rb;
     private float speed = 0.004f;
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class ShotMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
         player = GameObject.Find("Player");
+        enemy4 = GameObject.Find("Enemy4");
     }
 
     // Update is called once per frame
@@ -22,15 +24,16 @@ public class ShotMove : MonoBehaviour
         float y = player.transform.position.y*speed;
         transform.position += new Vector3(x,y,0);
 
-        if (this.transform.position.x >x + 10.0f || this.transform.position.x <=x - 10.0f || this.transform.position.y >=y + 10.0f || this.transform.position.y <= y - 10.0f)
+        if (enemy4.transform.position.x >x + 45.0f || enemy4.transform.position.x <x - 45.0f|| enemy4.transform.position.y >y + 45.0f || enemy4.transform.position.y < y - 45.0f)
         {
+            
             this.gameObject.SetActive(false);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player" || other.gameObject.tag == "Wall" || other.gameObject.tag == "Partner" || other.gameObject.tag == "Door")
         {
             this.gameObject.SetActive(false);
         }

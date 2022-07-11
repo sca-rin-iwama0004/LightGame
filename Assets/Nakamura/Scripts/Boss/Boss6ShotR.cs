@@ -42,7 +42,7 @@ public class Boss6ShotR : MonoBehaviour
         transform.position += new Vector3(right, down, 0.0f);
         float x = boss.transform.position.x;
         float y = boss.transform.position.y;
-        if (this.transform.position.x >= x + 10.0f || this.transform.position.x < x - 10.0f || this.transform.position.y >= y + 10.0f || this.transform.position.y < y - 10.0f)
+        if (this.transform.position.x >= x + 45.0f || this.transform.position.x < x - 45.0f || this.transform.position.y >= y + 45.0f || this.transform.position.y < y - 45.0f)
         {
             this.gameObject.SetActive(false);
         }
@@ -50,7 +50,7 @@ public class Boss6ShotR : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player" || other.gameObject.tag == "Wall" || other.gameObject.tag == "Partner" || other.gameObject.tag == "Door")
         {
             this.gameObject.SetActive(false);
         }

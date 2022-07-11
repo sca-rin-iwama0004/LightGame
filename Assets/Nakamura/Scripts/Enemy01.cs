@@ -19,7 +19,7 @@ public class Enemy01 : MonoBehaviour
         script = player.GetComponent<PlayerControl>();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         int coin = 0;
         int c = 0;

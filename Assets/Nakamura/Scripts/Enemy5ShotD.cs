@@ -18,7 +18,7 @@ public class Enemy5ShotD : MonoBehaviour
         float x = enemy4.transform.position.x;
         float y = enemy4.transform.position.y;
         transform.position += new Vector3(0.0f, -speed, 0.0f);
-        if (this.transform.position.y <= y - 45.0f)
+        if (this.transform.position.x <= x - 45.0f)
         {
             this.gameObject.SetActive(false);
         }
@@ -26,7 +26,7 @@ public class Enemy5ShotD : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player"||other.gameObject.tag == "Wall" || other.gameObject.tag == "Partner" || other.gameObject.tag == "Door")
         {
             this.gameObject.SetActive(false);
         }

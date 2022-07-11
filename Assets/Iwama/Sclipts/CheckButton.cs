@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CheckButton : test
+public class CheckButton : text
 {
-  private string inputString;
+     private string inputString;
 
-   public TrainScript_a trainA;
-   public TrainScript_b trainB;
-   public TrainScript_c trainC;
-   public GameObject KeyDoor;
-   public GameObject newPanel;
+    [SerializeField] private TrainScript_a trainA;
+    [SerializeField] private TrainScript_b trainB;
+    [SerializeField] private TrainScript_c trainC;
+    [SerializeField] private GameObject KeyDoor;
+    [SerializeField] private GameObject newPanel;
+    [SerializeField] private GameObject Enemy;
+
+    AudioSource audioSource;
+    [SerializeField] private AudioClip no;
+    [SerializeField] private AudioClip yes;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
 
 
     public string InputString {
@@ -34,10 +44,10 @@ public class CheckButton : test
         A.GetNumberA();//マップに何の数字がでてるか
 
         TrainScript_b B = trainB.GetComponent<TrainScript_b>();
-        B.GetNumberB();//マップに何の数字がでてるか
+        B.GetNumberB();
 
         TrainScript_c C = trainC.GetComponent<TrainScript_c>();
-        C.GetNumberC();//マップに何の数字がでてるか
+        C.GetNumberC();
 
         int a = A.GetNumberA();
         int b = B.GetNumberB();
@@ -49,15 +59,22 @@ public class CheckButton : test
        int j = a * 100 + b * 10 + c;
 
 
-       if (s == j) 
+        
+
+        if (s == j) 
        {
            Debug.Log("正解");
            Destroy(KeyDoor);
-           newPanel.SetActive(false);
+            audioSource.PlayOneShot(yes);
+            newPanel.SetActive(false);
 
         }
         else{
-           Debug.Log("不正解");
+            Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
+           // GetComponent<AudioSource>().Play();
+            audioSource.PlayOneShot(no);
+            Debug.Log("不正解");
+
        }
        
         

@@ -9,7 +9,6 @@ public class Camera : MonoBehaviour
     [SerializeField] private Sprite enemy3;
     private float time = 0f;
     private int sleep = 3;
-    private int hp =5;
     Rigidbody2D rb;
     GameObject player;
     [SerializeField] private GameObject enemy4;
@@ -23,7 +22,6 @@ public class Camera : MonoBehaviour
         rb.isKinematic = true;
         player = GameObject.Find("Player");
         pos = transform.position;
-        
     }
 
     // Update is called once per frame
@@ -43,23 +41,11 @@ public class Camera : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-            hp--;
-        }
-
-        if (hp <= 0)
-        {
-                this.gameObject.SetActive(false);
-        }
-    }
   
     void OnTriggerStay2D(Collider2D other)
     {
         float x = this.transform.position.x;
-        float y = this.transform.position.y+10;
+        float y = this.transform.position.y+3;
         if (other.gameObject.tag == "Player" && MainSpriteRenderer.sprite == enemy3 && en <1)
         {
             Instantiate(enemy4);

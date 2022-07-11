@@ -29,15 +29,20 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject Coin;
     private float span = 1.0f;
     private float span2 = 1.5f;
+    private float span3 = 3.0f;
     private float time = 0f;
     private float time2 = 0f;
+    private float time3 = 0f;
     private float hp = 1000;
     private int o2d = 0;
     private int o2u = 0;
     private int o2r = 0;
     private int o2l = 0;
     Rigidbody2D rb;
-   // Start is called before the first frame update
+    bool InArea = false;
+    private float arealr = 0.0f;
+    private float areaud = 0.0f;
+    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,39 +59,106 @@ public class Boss : MonoBehaviour
     void Update()
     {
         recovery();
-        float x = this.transform.position.x;
-        float y = this.transform.position.y;
-        time += Time.deltaTime;
-        if (time > span && this.tag != "explosion")
+        if (InArea == true)
         {
-            Instantiate(enemyshotR);
-            Instantiate(enemyshotL);
-            Instantiate(enemyshotU);
-            Instantiate(enemyshotD);
-            enemyshotR.transform.position = new Vector2(x, y);
-            enemyshotL.transform.position = new Vector2(x, y);
-            enemyshotU.transform.position = new Vector2(x, y);
-            enemyshotD.transform.position = new Vector2(x, y);
-        }
-        time2 += Time.deltaTime;
-        if (time > span && this.tag != "explosion")
-        {
-            Instantiate(enemy6r);
-            Instantiate(enemy6lu);
-            enemy6r.transform.position = enemy6rc.transform.position;
-            enemy6lu.transform.position = enemy6lcu.transform.position;
-            time = 0f;
 
+            float x = this.transform.position.x;
+            float y = this.transform.position.y;
+            time += Time.deltaTime;
+            time2 += Time.deltaTime;
+            time3 += Time.deltaTime;
+            if (time3 > span3 && this.tag != "explosion")
+            {
+                Instantiate(enemyshotR);
+                Instantiate(enemyshotL);
+                Instantiate(enemyshotU);
+                Instantiate(enemyshotD);
+                enemyshotR.transform.position = new Vector2(x, y);
+                enemyshotL.transform.position = new Vector2(x, y);
+                enemyshotU.transform.position = new Vector2(x, y);
+                enemyshotD.transform.position = new Vector2(x, y);
+                time3 = 0f;
+            }
+            if (time > span && this.tag != "explosion")
+            {
+                Instantiate(enemy6r);
+                Instantiate(enemy6lu);
+                enemy6r.transform.position = enemy6rc.transform.position;
+                enemy6lu.transform.position = enemy6lcu.transform.position;
+                time = 0f;
+
+            }
+            if (time2 > span2 && this.tag != "explosion")
+            {
+                Instantiate(enemy6l);
+                Instantiate(enemy6ru);
+                enemy6l.transform.position = enemy6lc.transform.position;
+                enemy6ru.transform.position = enemy6rcu.transform.position;
+                time2 = 0f;
+            }
         }
-        else if (time2 > span2 && this.tag != "explosion")
+        arealr = player.transform.position.x - this.transform.position.x;
+        //Debug.Log(arealr);
+        areaud = player.transform.position.y - this.transform.position.y;
+        if (arealr >= 60.0f || arealr <= -60.0f || areaud >= 60.0f || areaud <= -60.0f)//Collider‚ª‚S‚O‚È‚ç60
         {
-            Instantiate(enemy6l);
-            Instantiate(enemy6ru);
-            enemy6l.transform.position = enemy6lc.transform.position;
-            enemy6ru.transform.position = enemy6rcu.transform.position;
-            time2 = 0f;
+            InArea = false;
+        }
+
+
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        InArea = true;
+
+        if (other.gameObject.tag == "Bullet")
+        {
+            hp -= script.Power;
+        }
+        if (other.gameObject.tag == "Gun")
+        {
+            hp -= (script.Power / 2);
+        }
+        if (other.gameObject.tag == "Explosion")
+        {
+            hp -= 50;
+        }
+
+        if (hp <= 0)
+        {
+            MainSpriteRenderer.sprite = explosion;
+            this.tag = "explosion";
+            Invoke("End", 2.0f);
         }
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        InArea = true;
+
+        if (other.gameObject.tag == "Bullet")
+        {
+            hp -= script.Power;
+        }
+        if (other.gameObject.tag == "Gun")
+        {
+            hp -= (script.Power / 2);
+        }
+        if (other.gameObject.tag == "Explosion")
+        {
+            hp -= 50;
+        }
+
+        if (hp <= 0)
+        {
+            MainSpriteRenderer.sprite = explosion;
+            this.tag = "explosion";
+            Invoke("End", 2.0f);
+        }
+    }
+
+
+
 
     void recovery()
     {
@@ -143,28 +215,6 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-       hp -= script.Power;
-        }
-        if (other.gameObject.tag == "Gun")
-         {
-        hp -= (script.Power / 2);
-         }
-        if (other.gameObject.tag == "Explosion")
-         {
-         hp -= 50;
-        }
-
-        if (hp <= 0)
-        {
-            MainSpriteRenderer.sprite = explosion;
-            this.tag = "explosion";
-            Invoke("End",2.0f);
-        }
-    }
 
     void End()
     {
