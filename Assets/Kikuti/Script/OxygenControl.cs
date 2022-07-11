@@ -11,10 +11,12 @@ public class OxygenControl : MonoBehaviour
     GameObject player;
     PlayerControl script;
 
-    private float span = 1.0f;
-    private float currentTime = 0f;
-    private float o2Up=0.5f;
+    private float o2Time = 0f;
+    private float o2Span = 0.2f;  //’Êí_‘fŒ¸­ƒy[ƒX
 
+    private float span = 1.0f;  //_‘fƒ{ƒ“ƒx‰ñ•œƒy[ƒX
+    private float currentTime = 0f;
+    private float o2Up=0.5f;  //’Êí_‘fŒ¸­—¦
 
     // Start is called before the first frame update
     void Start()
@@ -28,17 +30,24 @@ public class OxygenControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //’Êí_‘fŒ¸­
+        o2Time += Time.deltaTime;
+        if (o2Time > o2Span)
+        {
+            script.Oxygen -= 0.2f;
+            o2Time = 0f;
+        }
 
-        image.fillAmount -= (( Time.deltaTime / script.Oxygen) /o2Up);
+        image.fillAmount = script.Oxygen / script.OxygenMax;//•\¦
         
-       if(script.MaxO2==true)
+       if(script.PlaceO2 == true)//_‘fƒ{ƒ“ƒxƒGƒŠƒA
        {
             currentTime += Time.deltaTime;
 
             if (currentTime > span)
             {
 
-                image.fillAmount += (script.Oxygen/1700 * 0.3f);
+                script.Oxygen +=  0.3f; //span‚²‚Æ‚É30“‰ñ•œ
                 currentTime = 0f;
             }
         }

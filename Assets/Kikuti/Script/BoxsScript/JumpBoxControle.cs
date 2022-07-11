@@ -30,8 +30,7 @@ public class JumpBoxControle : MonoBehaviour
             Instantiate(openSound, this.transform.position, this.transform.rotation);//効果音
             Destroy(gameObject);
 
-            Instantiate(jumpUpBook, this.transform.position, this.transform.rotation);
-           //ジャンプUP
+            Instantiate(jumpUpBook, this.transform.position, this.transform.rotation);//ジャンプUP
             
         }
 
