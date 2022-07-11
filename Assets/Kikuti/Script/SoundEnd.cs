@@ -5,6 +5,8 @@ using System;
 
 public class SoundEnd : MonoBehaviour
 {
+    //Œø‰Ê‰¹Á‚·
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +16,7 @@ public class SoundEnd : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //ŽO•bŒã‚ÉŒø‰Ê‰¹‚ðÁ‚·
         StartCoroutine(DelayCoroutine(3, () =>
         {
             Destroy(gameObject);
