@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpHole : MonoBehaviour
 {
-    //ジャンプ先に穴があるか判定スクリプト（右）
+    //x
     GameObject player;
     PlayerControl script;
 
@@ -21,7 +21,6 @@ public class JumpHole : MonoBehaviour
         
     }
 
-    //ジャンプ先に穴があるか
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Hole")

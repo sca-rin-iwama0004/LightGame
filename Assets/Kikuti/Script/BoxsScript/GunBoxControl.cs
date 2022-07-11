@@ -30,7 +30,8 @@ public class GunBoxControl : MonoBehaviour
             Instantiate(openSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
             Destroy(gameObject);
 
-            Instantiate(gun, this.transform.position, this.transform.rotation); //e
+            Instantiate(gun, this.transform.position, this.transform.rotation);
+            //ƒWƒƒƒ“ƒvUP
 
         }
 

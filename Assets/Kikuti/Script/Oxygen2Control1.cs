@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Oxygen2Control1 : MonoBehaviour
 {
-    //maxé_ëfUI
-
     private float maxO2 = 500;
     private Image image;
     // Start is called before the first frame update
