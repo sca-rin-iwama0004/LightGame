@@ -20,6 +20,7 @@ public class ItemControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //ƒvƒŒƒCƒ„[‚Éæ“¾‚³‚êÁ‚¦‚é
         if (other.gameObject.tag == "Player")
         {
             Instantiate(gunSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
