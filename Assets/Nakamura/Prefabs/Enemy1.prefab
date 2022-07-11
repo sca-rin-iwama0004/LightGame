@@ -8,12 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6304689217276580190}
-  - component: {fileID: 6304689217276580189}
-  - component: {fileID: 6304689217276580188}
-  - component: {fileID: 6304689217276580187}
-  - component: {fileID: 6304689217276580186}
-  - component: {fileID: 6304689217276580185}
+  - component: {fileID: 1821791609566293606}
+  - component: {fileID: 1821791609566293601}
+  - component: {fileID: 1821791609566293600}
+  - component: {fileID: 1821791609566293603}
+  - component: {fileID: 1821791609566293602}
+  - component: {fileID: 1821791609566293597}
+  - component: {fileID: 1821791609566293596}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy1
@@ -162,7 +163,6 @@ MonoBehaviour:
   Coin: {fileID: 3031357079797871623, guid: a4276af2ea425494684eb86e3036f9b1, type: 3}
   Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
   Bronze: {fileID: 2980797111661389138, guid: a776ee7cbe7ede44a842f3329dfa671d, type: 3}
-
   player: {fileID: 5099158227135559471, guid: aa8721b9c28684e48a3d83028f959ea1, type: 3}
   hpSlider: {fileID: 1821791610107889017}
 --- !u!61 &1821791609566293596
@@ -566,5 +566,3 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
-=======
-  player: {fileID: 3081380709000108139, guid: 7abe39053764a9f428ccc4355fce39d1, type: 3}
