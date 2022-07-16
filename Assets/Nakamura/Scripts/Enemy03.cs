@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy03 : MonoBehaviour
 {
@@ -9,22 +10,34 @@ public class Enemy03 : MonoBehaviour
     Rigidbody2D rb;
     private float Speed = 3;
     private  float hp =200;
+    private float nowhp;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Silver;
+    public Slider hpSlider;
+    private float arealr = 0.0f;
+    private float areaud = 0.0f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
+        hpSlider.value = 200;
     }
-   
-    void OnTriggerStay2D(Collider2D other)
+
+    void Update()
     {
-        if(other.gameObject.tag =="Player")
+        arealr = player.transform.position.x - this.transform.position.x;
+        areaud = player.transform.position.y - this.transform.position.y;
+        //Debug.Log(arealr);
+        if (arealr < 20.0f && arealr > -20.0f)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+            if (areaud < 20.0f && areaud > -20.0f)
+            {
+                this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+            }
+
         }
     }
 
@@ -38,14 +51,17 @@ public class Enemy03 : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             hp -= script.Power;
+            hpSlider.value = hp;
         }
        if (other.gameObject.tag == "Gun")
         {
            hp -= (script.Power / 2.0f);
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
             hp -= 50;
+            hpSlider.value = hp;
         }
 
         if (hp <= 0)

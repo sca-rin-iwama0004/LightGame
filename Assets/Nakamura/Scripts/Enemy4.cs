@@ -11,6 +11,8 @@ public class Enemy4 : MonoBehaviour
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Silver;
+    private float arealr = 0.0f;
+    private float areaud = 0.0f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,12 +20,19 @@ public class Enemy4 : MonoBehaviour
         player = GameObject.Find("Player");
 	
     }
-   
-    void OnTriggerStay2D(Collider2D other)
+
+    void Update()
     {
-        if(other.gameObject.tag =="Player")
+        arealr = player.transform.position.x - this.transform.position.x;
+        areaud = player.transform.position.y - this.transform.position.y;
+        //Debug.Log(arealr);
+        if (arealr < 40.0f && arealr > -40.0f)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+            if (areaud < 40.0f && areaud > -40.0f)
+            {
+                this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+            }
+
         }
     }
 

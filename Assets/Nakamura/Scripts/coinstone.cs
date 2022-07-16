@@ -11,17 +11,17 @@ public class coinstone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-	    //all = PlayerControl.coin+ (StoneText.assetCoin*3);
-	    coinstoneText.text ="合計コイン　"+ allcoin.ToString();
-        //allcoin += PlayerControl.coin;
-        allcoin += (StoneText.assetCoin*3);
+	    all = PlayerControl.coin+ (StoneText.assetCoin*3);
+        allcoin += PlayerControl.coin;
+        allcoin += (StoneText.assetCoin * 3);
+        coinstoneText.text ="合計コイン　"+ allcoin.ToString();
         Debug.Log(allcoin);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //PlayerControl.coin = 0;
+        PlayerControl.coin = 0;
         StoneText.assetCoin = 0;
         all = 0;
     }

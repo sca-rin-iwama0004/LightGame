@@ -28,11 +28,13 @@ public class book1 : MonoBehaviour
     {
 	    if(a == 0)
         {
+            //コインの枚数が500以上ならクリックできる
 		    if (coinstone.allcoin < 500)
             { 
                 	toggle.isOn = false;
             }
-        
+            
+            //枚数が５００以上かつクリックされたら購入
 	        if (coinstone.allcoin >= 500 && toggle.isOn == true)
             {
                     coinstone.allcoin -= 500;

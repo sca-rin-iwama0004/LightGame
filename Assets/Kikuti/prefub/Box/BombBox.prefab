@@ -122,6 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339ce648497f41d43898d6bf61b6f9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 6866966207901272455, guid: d3c89f87764c8a8449702cd323aaa1c6, type: 3}
-  openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4,
-    type: 3}
+  bomb: {fileID: 3571262819726207125, guid: 595ba800bd299174b8afffcdc01e03d8, type: 3}
+  openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4, type: 3}

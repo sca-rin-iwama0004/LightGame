@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy6 : MonoBehaviour
 {
@@ -16,77 +17,84 @@ public class Enemy6 : MonoBehaviour
     [SerializeField] private GameObject enemy6shotlhu;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Gold;
-    [SerializeField] private GameObject Shot;
 
     private float span = 0.5f;
     private float span2 = 1.0f;
     private float span3 = 1.5f;
     private float span4 = 2.0f;
-    private float span5 = 5.0f;
+    //private float span5 = 5.0f;
     private float time = 0f;
     private float time2 = 0f;
     private float time3 = 0f;
     private float time4 = 0f;
-    private float time5 = 0f;
+    //private float time5 = 0f;
     private float hp = 500;
+    private float nowhp;
     private float stoptime = 0f;
     private float stop = 9.0f;
     [SerializeField] private GameObject Coin;
+    private float arealr = 0.0f;
+    private float areaud = 0.0f;
+    public Slider hpSlider;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
+        hpSlider.value = 500;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time5 += Time.deltaTime;
-        if (time5 % 10 > span5)
+        arealr = player.transform.position.x - this.transform.position.x;
+        areaud = player.transform.position.y - this.transform.position.y;
+        //プレイヤーが範囲内に入ったら生成
+        //Debug.Log(arealr);
+        if (arealr < 60.0f && arealr > -60.0f)
         {
-            Instantiate(Shot);
-            Shot.transform.position = this.transform.position;
-            time5 = 0f;
+            if (areaud < 60.0f && areaud > -60.0f)
+            {
+                stoptime += Time.deltaTime;
+                if (stoptime % 10 <= stop)
+                {
+                    this.rotation_speed = 0.5f;
+                    transform.Rotate(0, 0, this.rotation_speed);
+                    time += Time.deltaTime;
+                    time2 += Time.deltaTime;
+                    time3 += Time.deltaTime;
+                    time4 += Time.deltaTime;
+                    if (time > span)
+                    {
+                        Instantiate(enemy6shotr);
+                        enemy6shotr.transform.position = enemy6shotrh.transform.position;
+                        time = 0f;
+
+                    }
+                    else if (time2 > span2)
+                    {
+                        Instantiate(enemy6shotl);
+                        enemy6shotl.transform.position = enemy6shotlh.transform.position;
+                        time2 = 0f;
+                    }
+
+                    else if (time3 > span3)
+                    {
+                        Instantiate(enemy6shotr);
+                        enemy6shotr.transform.position = enemy6shotrhd.transform.position;
+                        time3 = 0f;
+
+                    }
+                    else if (time4 > span4)
+                    {
+                        Instantiate(enemy6shotl);
+                        enemy6shotl.transform.position = enemy6shotlhu.transform.position;
+                        time4 = 0f;
+                    }
+                }
+            }
         }
 
-        stoptime += Time.deltaTime;
-        if(stoptime % 10 <= stop)
-        {
-            this.rotation_speed = 0.5f;
-            transform.Rotate(0, 0, this.rotation_speed);
-            time += Time.deltaTime;
-            time2 += Time.deltaTime;
-            time3 += Time.deltaTime;
-            time4 += Time.deltaTime;
-            if (time > span)
-            {
-                Instantiate(enemy6shotr);
-                enemy6shotr.transform.position = enemy6shotrh.transform.position;
-                time = 0f;
-
-            }
-            else if (time2 > span2)
-            {
-                Instantiate(enemy6shotl);
-                enemy6shotl.transform.position = enemy6shotlh.transform.position;
-                time2 = 0f;
-            }
-
-            else if (time3 > span3)
-            {
-                Instantiate(enemy6shotr);
-                enemy6shotr.transform.position = enemy6shotrhd.transform.position;
-                time3 = 0f;
-
-            }
-            else if (time4 > span4)
-            {
-                Instantiate(enemy6shotl);
-                enemy6shotl.transform.position = enemy6shotlhu.transform.position;
-                time4 = 0f;
-            }
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -99,14 +107,17 @@ public class Enemy6 : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             hp -= script.Power;
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Gun")
         {
             hp -= (script.Power / 2.0f);
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
             hp -= 50;
+            hpSlider.value = hp;
         }
 
 
@@ -115,9 +126,8 @@ public class Enemy6 : MonoBehaviour
             coin = Random.Range(0, 2);
             food = Random.Range(0, 2);
             gold = Random.Range(0, 2);
-            Debug.Log(coin);
-            Debug.Log(food);
-            Debug.Log(gold);
+     
+            //coinが1ならコインを生成する
             if (coin == 1)
             {
                 while (c < 10)
@@ -130,6 +140,7 @@ public class Enemy6 : MonoBehaviour
 
             }
 
+            //foodが1なら食べ物を生成する
             if (food == 1)
             {
                 float x = Random.Range(this.transform.position.x + 1, this.transform.position.x - 1);
@@ -137,6 +148,7 @@ public class Enemy6 : MonoBehaviour
                 Food.transform.position = new Vector2(x, this.transform.position.y);
             }
 
+            //goldが1なら資源を生成する
             if (gold == 1)
             {
                 while (g < 1)
@@ -149,6 +161,7 @@ public class Enemy6 : MonoBehaviour
             }
             this.gameObject.SetActive(false);
         }
+
     }
 
 }

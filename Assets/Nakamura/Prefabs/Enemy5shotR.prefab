@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3508253697850558495}
   - component: {fileID: 5338725638754863219}
   m_Layer: 0
-  m_Name: Enemy5shotR
+  m_Name: Enemy5ShotR
   m_TagString: Enemy5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3508253697850558494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 293.16287, y: -47.174126, z: 0}
+  m_LocalPosition: {x: -28.619236, y: -117.9093, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 53ca86ccf42797d43a2281e68e44063b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb8b3b3f4b89e1449a3d77a36f0364a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.62, y: 9.27}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

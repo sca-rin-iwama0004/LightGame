@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy5 : MonoBehaviour
 {
     GameObject player;
     PlayerControl script;
     private float hp =500;
+    private float nowhp;
     Rigidbody2D rb;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Gold;
-    [SerializeField] private GameObject Shot;
-    private float time = 0f;
-    private float span = 5.0f;
+    public Slider hpSlider;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,17 +21,12 @@ public class Enemy5 : MonoBehaviour
         rb.isKinematic = true;
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
+        hpSlider.value = 500;
     }
 
     void Update()
     {
-        time += Time.deltaTime;
-        if (time % 10 > span)
-        {
-            Instantiate(Shot);
-            Shot.transform.position = this.transform.position;
-            time = 0f;
-        }
+       
     }
 
 
@@ -45,14 +40,17 @@ public class Enemy5 : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             hp -= script.Power;
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Gun")
         {
             hp -= (script.Power / 2.0f);
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
             hp -= 50;
+            hpSlider.value = hp;
         }
 
 

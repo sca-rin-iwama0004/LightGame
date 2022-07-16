@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy01 : MonoBehaviour
 {
     PlayerControl script;
-    private float hp = 100;
-    Rigidbody2D rb;
+    private float hp = 100.0f;
+    private float nowhp;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Bronze;
     [SerializeField] private GameObject player;
+    public Slider hpSlider;
     // Start is called before the first frame update
     void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = true;
+    { 
         script = player.GetComponent<PlayerControl>();
+        hpSlider.value = 100;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -28,15 +29,18 @@ public class Enemy01 : MonoBehaviour
         int b =0;
         if (other.gameObject.tag == "Bullet")
         {
-           hp -= script.Power;
+            hp -= script.Power;
+            hpSlider.value = hp;
         }
         if (other.gameObject.tag == "Gun")
-         {
+        {
           hp -= (script.Power / 2);
-         }
+          hpSlider.value = hp;
+        }
         if (other.gameObject.tag == "Explosion")
         {
           hp -= 50;
+          hpSlider.value = hp;
         }
 
         if (hp <= 0)

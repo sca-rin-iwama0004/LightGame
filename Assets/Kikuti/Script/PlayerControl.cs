@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour
     private float timeGun=3.0f;  //攻撃を撃つ速度
     private float gunSpeed = 30;//攻撃が飛ぶ速度
     private float range=0; //増加攻撃範囲
-    private float power=50; //攻撃力
+    private float power=500; //攻撃力
 
     //防御力
     private float defense = 0;//%
@@ -297,6 +297,7 @@ public class PlayerControl : MonoBehaviour
             hp = 0;
         }
         */
+        
         //中ボス1,2
         if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
         {
