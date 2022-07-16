@@ -79,16 +79,5 @@ public class CheckButton : text
 
        }
     }
-
-/*
-    public void PushButtonDialBack()
-    {
-        inputString = "";//back‚Ì‚ğíœ‚µ‚Ä‚µ‚Ü‚Á‚Ä‚¢‚é
-        suuji_text.text = "";
-        Panel.SetActive(false);
-
-        Debug.Log("–ß‚é");
-    }
-*/
   
 }
