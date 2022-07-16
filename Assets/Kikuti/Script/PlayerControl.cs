@@ -296,6 +296,7 @@ public class PlayerControl : MonoBehaviour
         {
             hp = 0;
         }
+        */
         
         //中ボス1,2
         if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
