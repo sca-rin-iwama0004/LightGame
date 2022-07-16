@@ -243,4 +243,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eye: {fileID: 21300000, guid: 111998d8ee749c349b594570bf8e7877, type: 3}
   enemy3: {fileID: 21300000, guid: 24c57b1fd61390949b5d13b55fb09fda, type: 3}
-  enemy4: {fileID: 2275914178961091299, guid: 03cb22cd96e2af444b47e3163587a3ad, type: 3}
+  enemy4: {fileID: 8144534837736765522, guid: fe0d2520b3f6e1c4082a1377c617e406, type: 3}

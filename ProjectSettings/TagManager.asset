@@ -37,6 +37,8 @@ TagManager:
   - 8
   - 9
   - Wall
+  - Guns
+  - explosion
   layers:
   - Default
   - TransparentFX

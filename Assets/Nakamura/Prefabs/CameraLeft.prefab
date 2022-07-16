@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eye: {fileID: 21300000, guid: 48a675e14eadae041b39ddff12950eff, type: 3}
   enemy3: {fileID: 21300000, guid: 66cf358627be58843ade541e43e3a1a0, type: 3}
-  enemy4: {fileID: 2275914178961091299, guid: 03cb22cd96e2af444b47e3163587a3ad, type: 3}
+  enemy4: {fileID: 8144534837736765522, guid: fe0d2520b3f6e1c4082a1377c617e406, type: 3}
 --- !u!50 &5164697727262175188
 Rigidbody2D:
   serializedVersion: 4
