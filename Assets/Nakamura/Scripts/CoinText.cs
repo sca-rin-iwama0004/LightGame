@@ -11,7 +11,7 @@ public class CoinText : MonoBehaviour
     void Start()
     {
 
-        //coinText.text = PlayerControl.coin.ToString();
+        coinText.text = PlayerControl.coin.ToString();
     }
 
     // Update is called once per frame

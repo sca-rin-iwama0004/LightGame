@@ -41,7 +41,6 @@ public class Boss : MonoBehaviour
     private int o2r = 0;
     private int o2l = 0;
     Rigidbody2D rb;
-    bool InArea = false;
     private float arealr = 0.0f;//UŒ‚”ÍˆÍ(¶‰E)
     private float areaud = 0.0f;//UŒ‚”ÍˆÍ(ã‰º)
     public Slider hpSlider;
@@ -62,65 +61,58 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        arealr = player.transform.position.x - this.transform.position.x;
+        areaud = player.transform.position.y - this.transform.position.y;
         recovery();
         //ƒvƒŒƒCƒ„[‚ª”ÍˆÍ‚É“ü‚Á‚½‚çˆÊ’u‚ğ‹‚ßAŠÔ‚ğŒv‘ª
-        if (InArea == true)
+        if (arealr < 60.0f && arealr > -60.0f)
         {
+            if (areaud < 60.0f && areaud > -60.0f)
+            {
+                float x = this.transform.position.x;
+                float y = this.transform.position.y;
+                time += Time.deltaTime;
+                time2 += Time.deltaTime;
+                time3 += Time.deltaTime;
+                //span3•bŒo‰ß‚µ‚½‚çenemyshotR`enemyshotD‚ğ¶¬
+                if (time3 > span3 && this.tag != "explosion")
+                {
+                    Instantiate(enemyshotR);
+                    Instantiate(enemyshotL);
+                    Instantiate(enemyshotU);
+                    Instantiate(enemyshotD);
+                    enemyshotR.transform.position = new Vector2(x, y);
+                    enemyshotL.transform.position = new Vector2(x, y);
+                    enemyshotU.transform.position = new Vector2(x, y);
+                    enemyshotD.transform.position = new Vector2(x, y);
+                    time3 = 0f;
+                }
+                //span•bŒo‰ß‚µ‚½‚çenemy6r,enemy6L‚Ì¶¬
+                if (time > span && this.tag != "explosion")
+                {
+                    Instantiate(enemy6r);
+                    Instantiate(enemy6L);
+                    enemy6r.transform.position = enemy6rd.transform.position;
+                    enemy6L.transform.position = enemy6lu.transform.position;
+                    time = 0f;
 
-            float x = this.transform.position.x;
-            float y = this.transform.position.y;
-            time += Time.deltaTime;
-            time2 += Time.deltaTime;
-            time3 += Time.deltaTime;
-            //span3•bŒo‰ß‚µ‚½‚çenemyshotR`enemyshotD‚ğ¶¬
-            if (time3 > span3 && this.tag != "explosion")
-            {
-                Instantiate(enemyshotR);
-                Instantiate(enemyshotL);
-                Instantiate(enemyshotU);
-                Instantiate(enemyshotD);
-                enemyshotR.transform.position = new Vector2(x, y);
-                enemyshotL.transform.position = new Vector2(x, y);
-                enemyshotU.transform.position = new Vector2(x, y);
-                enemyshotD.transform.position = new Vector2(x, y);
-                time3 = 0f;
+                }
+                //span2•bŒo‰ß‚µ‚½‚çenemy6l,enemy6R‚Ì¶¬
+                if (time2 > span2 && this.tag != "explosion")
+                {
+                    Instantiate(enemy6l);
+                    Instantiate(enemy6R);
+                    enemy6l.transform.position = enemy6ld.transform.position;
+                    enemy6R.transform.position = enemy6ru.transform.position;
+                    time2 = 0f;
+                }
             }
-            //span•bŒo‰ß‚µ‚½‚çenemy6r,enemy6L‚Ì¶¬
-            if (time > span && this.tag != "explosion")
-            {
-                Instantiate(enemy6r);
-                Instantiate(enemy6L);
-                enemy6r.transform.position = enemy6rd.transform.position;
-                enemy6L.transform.position = enemy6lu.transform.position;
-                time = 0f;
-
-            }
-            //span2•bŒo‰ß‚µ‚½‚çenemy6l,enemy6R‚Ì¶¬
-            if (time2 > span2 && this.tag != "explosion")
-            {
-                Instantiate(enemy6l);
-                Instantiate(enemy6R);
-                enemy6l.transform.position = enemy6ld.transform.position;
-                enemy6R.transform.position = enemy6ru.transform.position;
-                time2 = 0f;
-            }
-        }
-        arealr = player.transform.position.x - this.transform.position.x;
-        //Debug.Log(arealr);
-        areaud = player.transform.position.y - this.transform.position.y;
-        if (arealr >= 60.0f || arealr <= -60.0f || areaud >= 60.0f || areaud <= -60.0f)//Collider‚ª‚S‚O‚È‚ç60
-        {
-            InArea = false;
         }
 
 
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            InArea = true;
-        }
 
         if (other.gameObject.tag == "Bullet")
         {
@@ -148,10 +140,6 @@ public class Boss : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            InArea = true;
-        }
 
         if (other.gameObject.tag == "Bullet")
         {

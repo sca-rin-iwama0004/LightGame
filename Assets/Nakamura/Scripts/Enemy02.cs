@@ -11,6 +11,8 @@ public class Enemy02 : MonoBehaviour
     private float Speed = 3;
     private float hp = 150;
     private float nowhp;
+    private float arealr = 0.0f;
+    private float areaud = 0.0f;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Silver;
@@ -25,11 +27,18 @@ public class Enemy02 : MonoBehaviour
 
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void Update()
     {
-        if (other.gameObject.tag == "Player")
+        arealr = player.transform.position.x - this.transform.position.x;
+        areaud = player.transform.position.y - this.transform.position.y;
+        //Debug.Log(arealr);
+        if (arealr <30.0f && arealr > -30.0f)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+            if (areaud < 30.0f && areaud > -30.0f)
+            {
+                this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+            }
+                
         }
     }
 

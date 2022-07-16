@@ -12,7 +12,6 @@ public class Enemy01 : MonoBehaviour
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Bronze;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject enemy1;
     public Slider hpSlider;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +22,6 @@ public class Enemy01 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("A");
         int coin = 0;
         int c = 0;
         int food = 0;
@@ -80,7 +78,7 @@ public class Enemy01 : MonoBehaviour
                 }
                 
             }
-            enemy1.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 }
