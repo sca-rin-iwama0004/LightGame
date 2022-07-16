@@ -15,6 +15,8 @@ public class Enemy03 : MonoBehaviour
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Silver;
     public Slider hpSlider;
+    private float arealr = 0.0f;
+    private float areaud = 0.0f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,12 +25,19 @@ public class Enemy03 : MonoBehaviour
         script = player.GetComponent<PlayerControl>();
         hpSlider.value = 200;
     }
-   
-    void OnTriggerStay2D(Collider2D other)
+
+    void Update()
     {
-        if(other.gameObject.tag =="Player")
+        arealr = player.transform.position.x - this.transform.position.x;
+        areaud = player.transform.position.y - this.transform.position.y;
+        //Debug.Log(arealr);
+        if (arealr < 20.0f && arealr > -20.0f)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+            if (areaud < 20.0f && areaud > -20.0f)
+            {
+                this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+            }
+
         }
     }
 

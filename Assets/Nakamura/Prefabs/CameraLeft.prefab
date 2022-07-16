@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 5164697727262175190}
   - component: {fileID: 5164697727262175185}
   - component: {fileID: 5164697727262175184}
-  - component: {fileID: 5164697727262175187}
   - component: {fileID: 5164697727262175191}
   - component: {fileID: 5164697727262175188}
   - component: {fileID: 4192747171129693888}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: CameraLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5164697727262175186}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5409365, y: 2.4683504, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 5.5409365, y: -7.4, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &5164697727262175185
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -113,32 +112,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.35, y: 2.93}
   m_EdgeRadius: 0
---- !u!61 &5164697727262175187
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164697727262175186}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -4.41}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.2, y: 5.94}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 13.07, y: 11.7}
-  m_EdgeRadius: 0
 --- !u!114 &5164697727262175191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +127,6 @@ MonoBehaviour:
   eye: {fileID: 21300000, guid: 48a675e14eadae041b39ddff12950eff, type: 3}
   enemy3: {fileID: 21300000, guid: 66cf358627be58843ade541e43e3a1a0, type: 3}
   enemy4: {fileID: 2275914178961091299, guid: 03cb22cd96e2af444b47e3163587a3ad, type: 3}
-  sound: {fileID: 8300000, guid: cb0128f428171984a860ae76ad70f8fa, type: 3}
 --- !u!50 &5164697727262175188
 Rigidbody2D:
   serializedVersion: 4

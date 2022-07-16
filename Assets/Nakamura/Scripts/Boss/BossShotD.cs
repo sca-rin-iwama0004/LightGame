@@ -6,7 +6,7 @@ public class BossShotD : MonoBehaviour
 {
     
    
-    private float speed = 0.005f;
+    private float speed = 0.05f;
     GameObject boss;
     Rigidbody2D rb;
     // Start is called before the first frame update

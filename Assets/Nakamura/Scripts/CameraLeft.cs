@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraLeft : MonoBehaviour
 {
     SpriteRenderer MainSpriteRenderer;
     [SerializeField] private Sprite eye;//–Ú‚ª•Â‚¶‚Ä‚é“G‰æ‘œ
@@ -13,7 +13,8 @@ public class Camera : MonoBehaviour
     Rigidbody2D rb;
     GameObject player;
     int en =0;
-    private Vector2 pos;
+    private float arealr = 0.0f;
+    private float areaud = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,6 @@ public class Camera : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
         player = GameObject.Find("Player");
-        pos = transform.position;
     }
 
     // Update is called once per frame
@@ -38,26 +38,30 @@ public class Camera : MonoBehaviour
         {
             MainSpriteRenderer.sprite = eye;
         }
-
-    }
-
-  
-    void OnTriggerStay2D(Collider2D other)
-    {
-        float x = this.transform.position.x;
-        float y = this.transform.position.y+3;
-        if (other.gameObject.tag == "Player" && MainSpriteRenderer.sprite == enemy3 && en <1)
+        //Debug.Log(areaud);
+        arealr = player.transform.position.x - this.transform.position.x;
+        areaud = player.transform.position.y - this.transform.position.y;
+        if (arealr < 26.0f && arealr > -1.0f)
         {
-            GetComponent<AudioSource>().Play();
-            Instantiate(enemy4);
-            en++;
-            enemy4.transform.position = new Vector2(x, y);
+            if (areaud < 15.0f && areaud > -15.0f)
+            {
+                float x = this.transform.position.x+3;
+                float y = this.transform.position.y;
+                if (MainSpriteRenderer.sprite == enemy3 && en < 1)
+                {
+                    GetComponent<AudioSource>().Play();
+                    Instantiate(enemy4);
+                    en++;
+                    enemy4.transform.position = new Vector2(x, y);
 
-        }
+                }
 
-        if (MainSpriteRenderer.sprite == eye)
-        {
-            en =0;
+                if (MainSpriteRenderer.sprite == eye)
+                {
+                    en = 0;
+                }
+            }
+
         }
     }
 }
