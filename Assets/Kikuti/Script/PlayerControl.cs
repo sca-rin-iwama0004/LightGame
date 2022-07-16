@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.01f; //移動速度
+    private float speed=0.05f; //移動速度
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
     //ジャンプ判定
@@ -41,7 +41,6 @@ public class PlayerControl : MonoBehaviour
     private PlayerDirection direction;
 
     //弾
-    private float gunSpeed=23;
     public enum PlayerWeapon
     {
         KNIF,
@@ -50,7 +49,8 @@ public class PlayerControl : MonoBehaviour
     private PlayerWeapon weapon;
     public GameObject knife;
     public GameObject gun;
-    private float timeGun=5.0f;  //攻撃速度
+    private float timeGun=3.0f;  //攻撃を撃つ速度
+    private float gunSpeed = 30;//攻撃が飛ぶ速度
     private float range=0; //増加攻撃範囲
     private float power=50; //攻撃力
 

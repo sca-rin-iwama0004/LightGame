@@ -45,10 +45,18 @@ public class OxygenControl : MonoBehaviour
             currentTime += Time.deltaTime;
 
             if (currentTime > span)
-            {
-                script.Oxygen +=  0.3f; //span‚²‚Æ‚É30“‰ñ•œ
-                currentTime = 0f;
+            { 
+               
+                    script.Oxygen += script.OxygenMax * 0.3f; //span‚²‚Æ‚É30“‰ñ•œ
+                    currentTime = 0f;
+                
+               
             }
+        }
+
+        if (script.Oxygen >= script.OxygenMax)
+        {
+            script.Oxygen = script.OxygenMax;
         }
     }
 
