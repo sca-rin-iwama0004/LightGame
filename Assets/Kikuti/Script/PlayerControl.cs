@@ -36,13 +36,18 @@ public class PlayerControl : MonoBehaviour
         UP,
         LEFT,
         RIGHT,
-        DOWN,
+        DOWN
     }
     private PlayerDirection direction;
 
     //弾
-    private float gunSpeed=23;                    
-    private int gunKind=1;//武器１(ナイフ)2(銃)～ 
+    private float gunSpeed=23;
+    public enum PlayerWeapon
+    {
+        KNIF,
+        GUN
+    }
+    private PlayerWeapon weapon;
     public GameObject knife;
     public GameObject gun;
     private float timeGun=5.0f;  //攻撃速度
@@ -103,14 +108,14 @@ public class PlayerControl : MonoBehaviour
 
         if (horizontalKey > 0)//右
         {
-            rb.position += new Vector2(speed/* * Input.GetAxis("Horizontal")*/,0 );
+            rb.position += new Vector2(speed,0 );
             sr.sprite = playerSide;
             renderer.flipX = true;
             direction = PlayerDirection.RIGHT;
         }
         else if (horizontalKey < 0)//左
         {
-            rb.position += new Vector2(-speed/* * Input.GetAxis("Horizontal")*/, 0);
+            rb.position += new Vector2(-speed, 0);
             sr.sprite = playerSide;
             renderer.flipX = false;
             direction = PlayerDirection.LEFT;
@@ -118,13 +123,13 @@ public class PlayerControl : MonoBehaviour
 
         if (verticalKey > 0)//上
         {
-            rb.position += new Vector2(0,speed/* * Input.GetAxis("Vertical")*/);
+            rb.position += new Vector2(0,speed);
             sr.sprite = playerBehind;
             direction = PlayerDirection.UP;
         }
         else if (verticalKey < 0)//下
         {
-            rb.position += new Vector2(0, -speed /* * Input.GetAxis("Vertical")*/);
+            rb.position += new Vector2(0, -speed);
             sr.sprite = playerPrevious;
             direction = PlayerDirection.DOWN;
         }
@@ -180,11 +185,11 @@ public class PlayerControl : MonoBehaviour
         //
         if (timeElapsed >= timeGun)
         {
-            if (gunKind == 1)//ナイフ
+            if (weapon == PlayerWeapon.KNIF)//ナイフ
             {
                 Instantiate(knife, transform.position, transform.rotation);
             }
-            else if (gunKind == 2)//銃
+            else if (weapon == PlayerWeapon.GUN)//銃
             {
                 Instantiate(gun, transform.position, transform.rotation);
             }
@@ -214,8 +219,8 @@ public class PlayerControl : MonoBehaviour
             //ゲームオーバー
             else
             {
-                SceneManager.LoadScene("GameOver");
                 asset = 0;
+                SceneManager.LoadScene("GameOver");
             }
             
         }
@@ -235,7 +240,7 @@ public class PlayerControl : MonoBehaviour
         //銃
         if (other.gameObject.tag == "Guns")
         {
-            gunKind = 2;
+            weapon=PlayerWeapon.GUN;//武器を銃に変更
             power+=5;
             ui="銃GET";
             uiDecision=true;
@@ -273,20 +278,20 @@ public class PlayerControl : MonoBehaviour
             oxygen +=10;
         }
 
-        /*
+        
         //敵キャラ攻撃受ける
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
         {
             hp -= (10 - (10 * (defense / 100)));
         }
+        /*
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
         {
             hp -= (15 - (15 * (defense / 100)));
         }
         //ざこ３即死
-        /*
         if (other.gameObject.tag == "DieEnemy")
         {
             hp = 0;
@@ -302,7 +307,7 @@ public class PlayerControl : MonoBehaviour
         {
             hp -= (30 - (30 * (defense / 100)));
         }
-        */
+        
     }
     void OnTriggerExit2D(Collider2D other)
     {
@@ -380,10 +385,10 @@ public class PlayerControl : MonoBehaviour
         set { this.gunSpeed = value; }
         get { return this.gunSpeed; }
     }
-    public int GunKind
+    public PlayerWeapon Weapon    
     {
-        set { this.gunKind = value; }
-        get { return this.gunKind; }
+        set { this.weapon = value; }
+        get { return this.weapon; }
     }
     public float TimeGun
     {

@@ -13,22 +13,29 @@ public class PlayerUi : MonoBehaviour
     GameObject player;
     PlayerControl script;
 
+    private Animator anim;//*
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
+
+        anim = gameObject.GetComponent<Animator>();//*
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(script.UiDecision==true)//•\Ž¦
-        { 
+        if (script.UiDecision==true)//•\Ž¦
+        {
+            anim.SetBool("Anim", true);//*
+
             text.text = script.Ui;
             StartCoroutine(DelayCoroutine(1, () => //‚P•bŒã”ñ•\Ž¦
             {
                 text.text = " ";
+                anim.SetBool("Anim", false);//*
                 script.UiDecision=false;
             }));
         }
