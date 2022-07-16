@@ -11,7 +11,6 @@ public class CheckButton : text
     [SerializeField] private TrainScript_b trainB;
     [SerializeField] private TrainScript_c trainC;
     [SerializeField] private GameObject KeyDoor;
-    [SerializeField] private GameObject newPanel;
     [SerializeField] private GameObject Enemy;
 
     AudioSource audioSource;
@@ -38,11 +37,12 @@ public class CheckButton : text
 
     }
 
+    
 
     public void PushButtonCheck()
     {
         TrainScript_a A = trainA.GetComponent<TrainScript_a>();
-        A.GetNumberA();//マップに何の数字がでてるか
+        A.GetNumberA();
 
         TrainScript_b B = trainB.GetComponent<TrainScript_b>();
         B.GetNumberB();
@@ -67,7 +67,7 @@ public class CheckButton : text
            Debug.Log("正解");
            Destroy(KeyDoor);
             audioSource.PlayOneShot(yes);
-            newPanel.SetActive(false);
+            Panel.SetActive(false);
 
         }
         else{
@@ -78,7 +78,17 @@ public class CheckButton : text
             Debug.Log("不正解");
 
        }
-       
-        
     }
+
+/*
+    public void PushButtonDialBack()
+    {
+        inputString = "";//backのを削除してしまっている
+        suuji_text.text = "";
+        Panel.SetActive(false);
+
+        Debug.Log("戻る");
+    }
+*/
+  
 }
