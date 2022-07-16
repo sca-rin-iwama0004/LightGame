@@ -6,18 +6,11 @@ using UnityEngine.UI;//UIを使うため追加
 
 public class text : MonoBehaviour
 {
-    [SerializeField] private Text suuji_text;//Text型の変数suuji_textを宣言
+
+    public GameObject Panel;
+    public Text suuji_text;//Text型の変数suuji_textを宣言
     [SerializeField] protected Button checkButton;
-    [SerializeField] GameObject Panel;
 
-    GameObject Check;
-    CheckButton script;
-
-    void Start()
-    {
-        Check = GameObject.Find("Check");
-        script = Check.GetComponent<CheckButton>();
-    }
 
     //ボタンを押したら実行する関数　実行するためにはボタンへ関数登録が必要
     //int型の引数numberを宣言
@@ -64,13 +57,6 @@ public class text : MonoBehaviour
 
     }
     
-    public void PushButtonDialBack()
-    {
-       script.PushButtonCheck(); 
-
-       suuji_text.text = "";
-       Panel.SetActive(false);
-      
-        Debug.Log("戻る");
-    }
+   
 }
+    
