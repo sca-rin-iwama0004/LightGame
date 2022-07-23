@@ -78,10 +78,6 @@ public class PlayerControl : MonoBehaviour
     //ショップ画面
     public static int coin = 10000;
     public static int asset = 0;     //資源
-    public static bool shopResu; //ショップ蘇生
-    public static bool shopRange;//ショップ攻撃範囲
-    public static bool shopDefense;//ショップ防御力
-    public static bool shopRec;//ショップ自動回復
 
     //UI
     private string ui;
@@ -95,11 +91,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        
-            Debug.Log(shopRange);
-        
-        
-
+       
         this.rb = GetComponent<Rigidbody2D>();
 
         renderer = GetComponent<SpriteRenderer>();
@@ -260,11 +252,11 @@ public class PlayerControl : MonoBehaviour
         if (hp <= 0||oxygen<=0)
         {
             //蘇生実行
-            if(shopResu==true)
+            if(book4.shopResu==true)
             { 
                 hp=hpLimit;
                 oxygen= oxygenMax;
-                shopResu =false;
+                book4.shopResu =false;
             } 
             //ゲームオーバー
             else

@@ -68,7 +68,7 @@ public class Box4Control : MonoBehaviour
             float rnd = Random.Range(0, 1f);
 
             //HP自動回復を買っていないならドロップ数＝0に設定
-            if (PlayerControl.shopRec == false)
+            if (book3.shopRec == false)
             {
                 GameManager.hpRecUp = 0;
             }
@@ -104,7 +104,7 @@ public class Box4Control : MonoBehaviour
             //自動回復ドロップ
             else
             {
-                if (PlayerControl.shopRec == true)//ショップで購入していれば実行
+                if (book3.shopRec == true)//ショップで購入していれば実行
                 {
                     if (GameManager.hpRecUp > 0)//ドロップ数上限超えてなければ実行
                     {

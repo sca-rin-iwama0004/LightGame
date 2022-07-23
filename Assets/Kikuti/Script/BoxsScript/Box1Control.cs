@@ -72,12 +72,12 @@ public class Box1Control : MonoBehaviour
             float rnd = Random.Range(0, 1f);
 
             //攻撃範囲UPを買っていないならドロップ数＝0に設定
-            if (PlayerControl.shopRange == false)
+            if (book2.shopRange == false)
             {
                 GameManager.attackRange = 0;
             }
             //防御力UPを買っていないならドロップ数＝0に設定
-            if (PlayerControl.shopDefense == false)
+            if (book1.shopDefense == false)
             {
                 GameManager.defenseUp = 0;
             }
@@ -126,7 +126,7 @@ public class Box1Control : MonoBehaviour
             //攻撃範囲UPドロップ
             else if (rnd <= 0.8f)
             {
-                if (PlayerControl.shopRange == true)//ショップで購入していれば実行
+                if (book2.shopRange == true)//ショップで購入していれば実行
                 {
                     if (GameManager.attackRange > 0)//ドロップ数上限超えてなければ実行
                     {
@@ -140,7 +140,7 @@ public class Box1Control : MonoBehaviour
             //防御力UPドロップ
             else
             {
-                if (PlayerControl.shopDefense == true)//ショップで購入していれば実行
+                if (book1.shopDefense == true)//ショップで購入していれば実行
                 {
                     if (GameManager.defenseUp > 0)//ドロップ数上限超えてなければ実行
                     {
