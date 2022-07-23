@@ -219,7 +219,7 @@ public class PlayerControl : MonoBehaviour
             //ゲームオーバー
             else
             {
-                asset = 0;
+                //asset = 0;
                 SceneManager.LoadScene("GameOver");
             }
             
