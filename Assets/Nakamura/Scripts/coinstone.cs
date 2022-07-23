@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class coinstone : MonoBehaviour
 {
     [SerializeField] private Text coinstoneText;
-    public static int allcoin = 0;
+    public static int allcoin =0;
     int all = 0;
     // Start is called before the first frame update
     void Start()
     { 
-	    all = PlayerControl.coin+ (StoneText.assetCoin*3);
+	    all = PlayerControl.coin+ (PlayerControl.asset * 3);
         allcoin += PlayerControl.coin;
-        allcoin += (StoneText.assetCoin * 3);
-        coinstoneText.text ="合計コイン　"+ allcoin.ToString();
+        allcoin += (PlayerControl.asset * 3);
+        coinstoneText.text = allcoin.ToString();
         Debug.Log(allcoin);
     }
 
@@ -22,7 +22,7 @@ public class coinstone : MonoBehaviour
     void Update()
     {
         PlayerControl.coin = 0;
-        StoneText.assetCoin = 0;
+        PlayerControl.asset = 0;
         all = 0;
     }
 }

@@ -12,7 +12,7 @@ public class TrainScript : MonoBehaviour
     
        int  number = Random.Range(0, Train.Length);
         // Instantiate(Train[number], transform.position, transform.rotation);
-        Instantiate(Train[number], new Vector3(1f,1f,0.0f),Quaternion.identity);
+        Instantiate(Train[number], new Vector3(1f,0f,0.0f),Quaternion.identity);
 
 
     }

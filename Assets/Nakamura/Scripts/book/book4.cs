@@ -12,23 +12,28 @@ public class book4 : MonoBehaviour
     void Start()
     {
 
-        
+        if (d == 1)
+        {
+            toggle.isOn = true;
+            toggle.interactable = false;
+        }
     }
 
     public void OnToggleChanged()
     {
     if (d == 0)
 	{
-		if (coinstone.allcoin < 1000)
+		if (coinstone.allcoin < 5000)
         	{
             		toggle.isOn = false;
         	}
 
-	 	if (coinstone.allcoin >= 1000)
+	 	if (coinstone.allcoin >= 5000)
         	{
-            		coinstone.allcoin -= 1000;
+            		coinstone.allcoin -= 5000;
             		toggle.interactable = false;
                     shopResu = true;
+                    d =1;
         	}
 
 	}

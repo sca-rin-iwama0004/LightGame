@@ -17,18 +17,21 @@ public class Enemy6 : MonoBehaviour
     [SerializeField] private GameObject enemy6shotlhu;
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Gold;
+    [SerializeField] private GameObject Shot;
 
     private float span = 0.5f;
     private float span2 = 1.0f;
     private float span3 = 1.5f;
     private float span4 = 2.0f;
+    private float span5 = 3.0f;
     //private float span5 = 5.0f;
     private float time = 0f;
     private float time2 = 0f;
     private float time3 = 0f;
     private float time4 = 0f;
+    private float time5 = 0f;
     //private float time5 = 0f;
-    private float hp = 500;
+    private float hp = 700;
     private float nowhp;
     private float stoptime = 0f;
     private float stop = 9.0f;
@@ -41,7 +44,8 @@ public class Enemy6 : MonoBehaviour
     {
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
-        hpSlider.value = 500;
+        hpSlider.value = 1;
+        nowhp = hp;
     }
 
     // Update is called once per frame
@@ -56,6 +60,7 @@ public class Enemy6 : MonoBehaviour
             if (areaud < 60.0f && areaud > -60.0f)
             {
                 stoptime += Time.deltaTime;
+                time5 += Time.deltaTime;
                 if (stoptime % 10 <= stop)
                 {
                     this.rotation_speed = 0.5f;
@@ -92,6 +97,13 @@ public class Enemy6 : MonoBehaviour
                         time4 = 0f;
                     }
                 }
+
+                if (time5 % 10 > span5)
+                {
+                    Instantiate(Shot);
+                    Shot.transform.position = this.transform.position;
+                    time5 = 0f;
+                }
             }
         }
 
@@ -106,22 +118,22 @@ public class Enemy6 : MonoBehaviour
         int g = 0;
         if (other.gameObject.tag == "Bullet")
         {
-            hp -= script.Power;
-            hpSlider.value = hp;
+            nowhp -= script.Power;
+            hpSlider.value = nowhp / hp;
         }
         if (other.gameObject.tag == "Gun")
         {
-            hp -= (script.Power / 2.0f);
-            hpSlider.value = hp;
+            nowhp -= (script.Power / 2.0f);
+            hpSlider.value = nowhp / hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
-            hp -= 50;
-            hpSlider.value = hp;
+            nowhp -= 50;
+            hpSlider.value = nowhp / hp;
         }
 
 
-        if (hp <= 0)
+        if (nowhp <= 0)
         {
             coin = Random.Range(0, 2);
             food = Random.Range(0, 2);

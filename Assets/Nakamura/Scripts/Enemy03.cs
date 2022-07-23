@@ -9,7 +9,7 @@ public class Enemy03 : MonoBehaviour
     PlayerControl script;
     Rigidbody2D rb;
     private float Speed = 3;
-    private  float hp =200;
+    private  float hp =300;
     private float nowhp;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;
@@ -23,7 +23,8 @@ public class Enemy03 : MonoBehaviour
         rb.isKinematic = true;
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
-        hpSlider.value = 200;
+        hpSlider.value = 1;
+        nowhp = hp;
     }
 
     void Update()
@@ -31,9 +32,9 @@ public class Enemy03 : MonoBehaviour
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
         //Debug.Log(arealr);
-        if (arealr < 20.0f && arealr > -20.0f)
+        if (arealr < 35.0f && arealr > -35.0f)
         {
-            if (areaud < 20.0f && areaud > -20.0f)
+            if (areaud < 35.0f && areaud > -35.0f)
             {
                 this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
             }
@@ -50,21 +51,21 @@ public class Enemy03 : MonoBehaviour
         int s = 0;
         if (other.gameObject.tag == "Bullet")
         {
-            hp -= script.Power;
-            hpSlider.value = hp;
+            nowhp -= script.Power;
+            hpSlider.value = nowhp / hp;
         }
        if (other.gameObject.tag == "Gun")
         {
-           hp -= (script.Power / 2.0f);
-            hpSlider.value = hp;
+           nowhp -= (script.Power / 2.0f);
+            hpSlider.value = nowhp / hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
-            hp -= 50;
-            hpSlider.value = hp;
+            nowhp -= 50;
+            hpSlider.value = nowhp / hp;
         }
 
-        if (hp <= 0)
+        if (nowhp <= 0)
             {
                 coin = Random.Range(0, 2);
                 food = Random.Range(0, 2);

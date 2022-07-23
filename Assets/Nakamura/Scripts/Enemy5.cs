@@ -7,7 +7,7 @@ public class Enemy5 : MonoBehaviour
 {
     GameObject player;
     PlayerControl script;
-    private float hp =500;
+    private float hp =700;
     private float nowhp;
     Rigidbody2D rb;
     [SerializeField] private GameObject Coin;
@@ -21,7 +21,8 @@ public class Enemy5 : MonoBehaviour
         rb.isKinematic = true;
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
-        hpSlider.value = 500;
+        hpSlider.value = 1;
+        nowhp = hp;
     }
 
     void Update()
@@ -39,22 +40,22 @@ public class Enemy5 : MonoBehaviour
         int g = 0;
         if (other.gameObject.tag == "Bullet")
         {
-            hp -= script.Power;
-            hpSlider.value = hp;
+            nowhp -= script.Power;
+            hpSlider.value = nowhp / hp;
         }
         if (other.gameObject.tag == "Gun")
         {
-            hp -= (script.Power / 2.0f);
-            hpSlider.value = hp;
+            nowhp -= (script.Power / 2.0f);
+            hpSlider.value = nowhp / hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
-            hp -= 50;
-            hpSlider.value = hp;
+            nowhp -= 50;
+            hpSlider.value = nowhp / hp;
         }
 
 
-        if (hp <= 0)
+        if (nowhp <= 0)
         {
             coin = Random.Range(0, 2);
             food = Random.Range(0, 2);

@@ -66,29 +66,19 @@ public class CheckButton : text
        {
            Debug.Log("³‰ğ");
            Destroy(KeyDoor);
+             GetComponent<AudioSource>().Play();//
             audioSource.PlayOneShot(yes);
             Panel.SetActive(false);
 
         }
         else{
             Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
-           // GetComponent<AudioSource>().Play();
+         
             audioSource.PlayOneShot(no);
             inputString = "";
             Debug.Log("•s³‰ğ");
 
        }
     }
-
-/*
-    public void PushButtonDialBack()
-    {
-        inputString = "";//back‚Ì‚ğíœ‚µ‚Ä‚µ‚Ü‚Á‚Ä‚¢‚é
-        suuji_text.text = "";
-        Panel.SetActive(false);
-
-        Debug.Log("–ß‚é");
-    }
-*/
   
 }
