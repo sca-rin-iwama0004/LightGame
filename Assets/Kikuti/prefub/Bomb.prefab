@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6866966207901272187}
   - component: {fileID: 6866966207901272186}
   - component: {fileID: 6866966207901272185}
-  - component: {fileID: 6866966207901272184}
+  - component: {fileID: 5973331357692832770}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Bomb
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.83, y: 6}
   m_EdgeRadius: 0
---- !u!114 &6866966207901272184
+--- !u!114 &5973331357692832770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,8 +119,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6866966207901272455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d84f790b33d1ec4daea31639f9b780b, type: 3}
+  m_Script: {fileID: 11500000, guid: 74aad53b0441994498bd6712a67562a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombText: {fileID: 0}
+  bombUi: {fileID: 0}
   gunSound: {fileID: 4922372970040084405, guid: 102ccb169484946428463cfa3135835b,
     type: 3}

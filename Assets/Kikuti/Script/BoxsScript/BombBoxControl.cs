@@ -35,4 +35,15 @@ public class BombBoxControl : MonoBehaviour
         }
 
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if ( other.gameObject.tag == "Player")
+        {
+            Instantiate(openSound, this.transform.position, this.transform.rotation);//Œø‰Ê‰¹
+            Destroy(gameObject);
+
+            Instantiate(bomb, this.transform.position, this.transform.rotation); //”š’e
+
+        }
+    }
 }

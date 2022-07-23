@@ -12,11 +12,11 @@ public class OxygenControl : MonoBehaviour
     PlayerControl script;
 
     private float o2Time = 0f;
-    private float o2Span = 0.2f;  //é€šå¸¸é…¸ç´ æ¸›å°‘ãƒšãƒ¼ã‚¹
+    private float o2Span = 0.2f;  //’ÊíŽ_‘fŒ¸­ƒy[ƒX
 
-    private float span = 1.0f;  //é…¸ç´ ãƒœãƒ³ãƒ™å›žå¾©ãƒšãƒ¼ã‚¹
+    private float span = 1.0f;  //Ž_‘fƒ{ƒ“ƒx‰ñ•œƒy[ƒX
     private float currentTime = 0f;
-    private float o2Up=0.5f;  //é€šå¸¸é…¸ç´ æ¸›å°‘çŽ‡
+    private float o2Up=0.5f;  //’ÊíŽ_‘fŒ¸­—¦
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class OxygenControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //é€šå¸¸é…¸ç´ æ¸›å°‘
+        //’ÊíŽ_‘fŒ¸­
         o2Time += Time.deltaTime;
         if (o2Time > o2Span)
         {
@@ -38,18 +38,22 @@ public class OxygenControl : MonoBehaviour
             o2Time = 0f;
         }
 
-        image.fillAmount = script.Oxygen / script.OxygenMax;//è¡¨ç¤º
+        image.fillAmount = script.Oxygen / script.OxygenMax;//•\Ž¦
         
-       if(script.PlaceO2 == true)//é…¸ç´ ãƒœãƒ³ãƒ™ã‚¨ãƒªã‚¢
+       if(script.PlaceO2 == true)//Ž_‘fƒ{ƒ“ƒxƒGƒŠƒA
        {
             currentTime += Time.deltaTime;
 
             if (currentTime > span)
             { 
-                    script.Oxygen += script.OxygenMax * 0.3f; 
-                    currentTime = 0f;   
+               
+                    script.Oxygen += script.OxygenMax * 0.3f; //span‚²‚Æ‚É30“‰ñ•œ
+                    currentTime = 0f;
+                
+               
             }
         }
+
         if (script.Oxygen >= script.OxygenMax)
         {
             script.Oxygen = script.OxygenMax;

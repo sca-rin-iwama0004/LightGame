@@ -35,4 +35,17 @@ public class GunBoxControl : MonoBehaviour
         }
 
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Instantiate(openSound, this.transform.position, this.transform.rotation);//å¯â âπ
+            Destroy(gameObject);
+
+            Instantiate(gun, this.transform.position, this.transform.rotation); //èe
+
+        }
+
+    }
 }

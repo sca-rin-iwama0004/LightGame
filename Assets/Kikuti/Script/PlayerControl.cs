@@ -86,8 +86,12 @@ public class PlayerControl : MonoBehaviour
     //UI
     private string ui;
     private bool uiDecision=false;
+    private string ui2;
+    private bool uiDecision2 = false;
 
-    
+
+
+
 
     void Start()
     {
@@ -144,50 +148,90 @@ public class PlayerControl : MonoBehaviour
         {
             float tile = 5;//１タイルの幅
 
-            //右にジャンプ（向いてる方向に床があるか&&向いてる方向に穴があるか）
-            if (jumpDecision == true && jumpHole == true)
+            //右にジャンプ（向いてる方向に穴があるか）
+            if (jumpHole == true)
             {
                 if (direction == PlayerDirection.RIGHT)
                 {
-                    this.transform.position = new Vector2(this.transform.position.x + (tile * (jumpPower + 2)), this.transform.position.y);
-                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
+                    //(向いてる方向に床があるか)
+                    if (jumpDecision == true)
+                    {
+                        this.transform.position = new Vector2(this.transform.position.x + (tile * (jumpPower + 2)), this.transform.position.y);
+                        Instantiate(jumpSound, this.transform.position, this.transform.rotation);
 
+                    }
+                    else
+                    {
+                        ui2 = "ジャンプ力が足りない";
+                        uiDecision2 = true;
+                    }
                 }
+               
+               
             }
-            //左にジャンプ（向いてる方向に床があるか&&向いてる方向に穴があるか）
-            if (jumpDecision3 == true && jumpHole3 == true)
+            //左にジャンプ（向いてる方向に穴があるか）
+            if (jumpHole3 == true)
             {
                 if (direction == PlayerDirection.LEFT)
                 {
-                    this.transform.position = new Vector2(this.transform.position.x - (tile * (jumpPower + 2)), this.transform.position.y);
-                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
+                    //(向いてる方向に床があるか)
+                    if (jumpDecision3 == true)
+                    {
+                        this.transform.position = new Vector2(this.transform.position.x - (tile * (jumpPower + 2)), this.transform.position.y);
+                        Instantiate(jumpSound, this.transform.position, this.transform.rotation);
+                    }
+                    else
+                    {
+                        ui2 = "ジャンプ力が足りない";
+                        uiDecision2 = true;
+                    }
                 }
+                
+                
 
             }
-            //上にジャンプ（向いてる方向に床があるか&&向いてる方向に穴があるか）
-            if (jumpDecision4 == true && jumpHole4 == true)
+            //上にジャンプ（向いてる方向に穴があるか）
+            if (jumpHole4 == true)
             {
                 if (direction == PlayerDirection.UP)
                 {
-                    this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (tile * (jumpPower + 2)));
-                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
+                    //(向いてる方向に床があるか)
+                    if (jumpDecision4 == true)
+                    {
+                        this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (tile * (jumpPower + 2)));
+                        Instantiate(jumpSound, this.transform.position, this.transform.rotation);
+                    }
+                    else
+                    {
+                        ui2 = "ジャンプ力が足りない";
+                        uiDecision2 = true;
+                    }
                 }
             }
-            //下にジャンプ（向いてる方向に床があるか&&向いてる方向に穴があるか）
-            if (jumpDecision2 == true && jumpHole2 == true)
+            //下にジャンプ（向いてる方向に穴があるか）
+            if (jumpHole2 == true)
             {
                 if (direction == PlayerDirection.DOWN)
                 {
-                    this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - (tile * (jumpPower + 2)));
-                    Instantiate(jumpSound, this.transform.position, this.transform.rotation);
+                    //(向いてる方向に床があるか)
+                    if (jumpDecision2 == true)
+                    {
+                        this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - (tile * (jumpPower + 2)));
+                        Instantiate(jumpSound, this.transform.position, this.transform.rotation);
+                    }
+                    else
+                    {
+                        ui2 = "ジャンプ力が足りない";
+                        uiDecision2 = true;
+                    }
                 }
+                    
             }
+            
         }
 
         //弾
         timeElapsed += Time.deltaTime;
-
-        //
         if (timeElapsed >= timeGun)
         {
             if (weapon == PlayerWeapon.KNIF)//ナイフ
@@ -218,13 +262,13 @@ public class PlayerControl : MonoBehaviour
             //蘇生実行
             if(shopResu==true)
             { 
-                hpLimit=hp;
-                shopResu=false;
+                hp=hpLimit;
+                oxygen= oxygenMax;
+                shopResu =false;
             } 
             //ゲームオーバー
             else
             {
-                //asset = 0;
                 SceneManager.LoadScene("GameOver");
             }
             
@@ -302,7 +346,6 @@ public class PlayerControl : MonoBehaviour
             hp = 0;
         }
         */
-        
         //中ボス1,2
         if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
         {
@@ -505,6 +548,16 @@ public class PlayerControl : MonoBehaviour
     {
         set { this.uiDecision = value; }
         get { return this.uiDecision; }
+    }
+    public string Ui2
+    {
+        set { this.ui2 = value; }
+        get { return this.ui2; }
+    }
+    public bool UiDecision2
+    {
+        set { this.uiDecision2 = value; }
+        get { return this.uiDecision2; }
     }
 
 }
