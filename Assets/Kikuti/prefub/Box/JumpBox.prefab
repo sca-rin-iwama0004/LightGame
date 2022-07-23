@@ -96,8 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216c8ef547139f344812abbab2882180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpUpBook: {fileID: 7848898430929738164, guid: 58729d23765be1141a326b1aa40c7c34, type: 3}
-  openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4, type: 3}
+  jumpUpBook: {fileID: 7079547271012327389, guid: 6a50c23830669614cafea7fa85b752e5,
+    type: 3}
+  openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4,
+    type: 3}
 --- !u!61 &3329354718502918694
 BoxCollider2D:
   m_ObjectHideFlags: 0
