@@ -32,10 +32,10 @@ public class Boss : MonoBehaviour
     private float span = 1.0f;
     private float span2 = 1.5f;
     private float span3 = 3.0f;
-    private float time = 0f;
+    private float time1 = 0f;
     private float time2 = 0f;
     private float time3 = 0f;
-    private float hp = 1000;
+    private float hp = 1500;
     private float nowhp;
     private int o2d = 0;
     private int o2u = 0;
@@ -45,6 +45,8 @@ public class Boss : MonoBehaviour
     private float arealr = 0.0f;//çUåÇîÕàÕ(ç∂âE)
     private float areaud = 0.0f;//çUåÇîÕàÕ(è„â∫)
     public Slider hpSlider;
+    private int counter = 0;
+    private float move = 0.05f;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,11 +59,27 @@ public class Boss : MonoBehaviour
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
        script = player.GetComponent<PlayerControl>();
-        hpSlider.value = 1000;
+        hpSlider.value = 1;
+        nowhp = hp;
     }
 
     void Update()
     {
+        Vector3 p = new Vector3(move,0,0);
+        transform.Translate(p);
+        counter++;
+        if (counter == 500)
+        {
+            move *= -1;
+        }
+        else if(counter == 1500)
+        {
+            counter = 0;
+        }
+        else if (counter == 2000)
+        {
+            counter = 0;
+        }
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
         recovery();
@@ -72,7 +90,7 @@ public class Boss : MonoBehaviour
             {
                 float x = this.transform.position.x;
                 float y = this.transform.position.y;
-                time += Time.deltaTime;
+                time1 += Time.deltaTime;
                 time2 += Time.deltaTime;
                 time3 += Time.deltaTime;
                 //span3ïbåoâﬂÇµÇΩÇÁenemyshotRÅ`enemyshotDÇê∂ê¨
@@ -89,13 +107,13 @@ public class Boss : MonoBehaviour
                     time3 = 0f;
                 }
                 //spanïbåoâﬂÇµÇΩÇÁenemy6r,enemy6LÇÃê∂ê¨
-                if (time > span && this.tag != "explosion")
+                if (time1 > span && this.tag != "explosion")
                 {
                     Instantiate(enemy6r);
                     Instantiate(enemy6L);
                     enemy6r.transform.position = enemy6rd.transform.position;
                     enemy6L.transform.position = enemy6lu.transform.position;
-                    time = 0f;
+                    time1 = 0f;
 
                 }
                 //span2ïbåoâﬂÇµÇΩÇÁenemy6l,enemy6RÇÃê∂ê¨
@@ -117,21 +135,21 @@ public class Boss : MonoBehaviour
 
         if (other.gameObject.tag == "Bullet")
         {
-            hp -= script.Power;
-            hpSlider.value = hp;
+            nowhp -= script.Power;
+            hpSlider.value = nowhp / hp;
         }
         if (other.gameObject.tag == "Gun")
         {
-            hp -= (script.Power / 2);
-            hpSlider.value = hp;
+            nowhp -= (script.Power / 2);
+            hpSlider.value = nowhp / hp;
         }
         if (other.gameObject.tag == "Explosion")
         {
-            hp -= 50;
-            hpSlider.value = hp;
+            nowhp -= 50;
+            hpSlider.value = nowhp / hp;
         }
 
-        if (hp <= 0)
+        if (nowhp <= 0)
         {
             MainSpriteRenderer.sprite = explosion;
             this.tag = "explosion";
@@ -139,29 +157,6 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-
-        if (other.gameObject.tag == "Bullet")
-        {
-            hp -= script.Power;
-        }
-        if (other.gameObject.tag == "Gun")
-        {
-            hp -= (script.Power / 2);
-        }
-        if (other.gameObject.tag == "Explosion")
-        {
-            hp -= 50;
-        }
-
-        if (hp <= 0)
-        {
-            MainSpriteRenderer.sprite = explosion;
-            this.tag = "explosion";
-            Invoke("End", 2.0f);
-        }
-    }
 
 
 

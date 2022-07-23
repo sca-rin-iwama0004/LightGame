@@ -8,13 +8,17 @@ public class Title2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Title", 5.0f);
+
     }
 
     // Update is called once per frame
-    void Title()
+    void Update()
     {
-        SceneManager.LoadScene("Title");
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("Title");
+        }
+            
     }
 }
 

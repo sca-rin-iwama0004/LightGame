@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6209646543416817177}
   - component: {fileID: 9123981142112109632}
   - component: {fileID: 6565599603614262346}
-  - component: {fileID: -6898063051442040872}
+  - component: {fileID: 3982166139376928651}
   m_Layer: 0
   m_Name: Shot
   m_TagString: Enemy4
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7293175676095867252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.559063, y: 2.537787, z: 0}
+  m_LocalPosition: {x: 25.8, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,13 +116,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-6898063051442040872
+--- !u!114 &3982166139376928651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a90f06743f40149a0958dfb514a9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy4: {fileID: 8513740535968747545, guid: 3da9edab38641d74f8e639116a7d3210, type: 3}

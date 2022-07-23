@@ -66,13 +66,14 @@ public class CheckButton : text
        {
            Debug.Log("ê≥â");
            Destroy(KeyDoor);
+             GetComponent<AudioSource>().Play();//
             audioSource.PlayOneShot(yes);
             Panel.SetActive(false);
 
         }
         else{
             Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
-           // GetComponent<AudioSource>().Play();
+         
             audioSource.PlayOneShot(no);
             inputString = "";
             Debug.Log("ïsê≥â");
