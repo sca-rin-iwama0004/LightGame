@@ -9,7 +9,7 @@ public class Enemy02 : MonoBehaviour
     PlayerControl script;
     Rigidbody2D rb;
     private float Speed = 3;
-    private float hp = 150;
+    private float hp = 250;
     private float nowhp;
     private float arealr = 0.0f;
     private float areaud = 0.0f;
@@ -23,7 +23,7 @@ public class Enemy02 : MonoBehaviour
         rb.isKinematic = true;
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
-        hpSlider.value = 150;
+        hpSlider.value = 10;
 
     }
 
@@ -32,9 +32,9 @@ public class Enemy02 : MonoBehaviour
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
         //Debug.Log(arealr);
-        if (arealr <30.0f && arealr > -30.0f)
+        if (arealr <40.0f && arealr > -40.0f)
         {
-            if (areaud < 30.0f && areaud > -30.0f)
+            if (areaud < 40.0f && areaud > -40.0f)
             {
                 this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
             }
@@ -44,6 +44,7 @@ public class Enemy02 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("a");
         int coin = 0;
         int food = 0;
         int silver = 0;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Enemy01 : MonoBehaviour
 {
     PlayerControl script;
-    private float hp = 100.0f;
+    private float hp = 200.0f;
     private float nowhp;
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject Food;

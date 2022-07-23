@@ -7,7 +7,7 @@ public class Enemy5 : MonoBehaviour
 {
     GameObject player;
     PlayerControl script;
-    private float hp =500;
+    private float hp =700;
     private float nowhp;
     Rigidbody2D rb;
     [SerializeField] private GameObject Coin;

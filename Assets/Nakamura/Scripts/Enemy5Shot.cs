@@ -8,10 +8,11 @@ public class Enemy5Shot : MonoBehaviour
     [SerializeField] private GameObject enemyshotL;//UŒ‚(¶)
     [SerializeField] private GameObject enemyshotU;//UŒ‚(ã)
     [SerializeField] private GameObject enemyshotD;//UŒ‚(‰º)
-    //[SerializeField] private GameObject Shot;//UŒ‚(’ÇÕ)
+    [SerializeField] private GameObject Shot;//UŒ‚(’ÇÕ)
     GameObject player;
     GameObject enemy4;
     private float span = 2.0f;
+    private float span2 = 5.0f;
     private float time = 0f;
     private float time2 = 0f;
     private float arealr = 0.0f;
@@ -51,14 +52,14 @@ public class Enemy5Shot : MonoBehaviour
                     enemyshotD.transform.position = new Vector2(x, y);
                     time = 0f;
                 }
-                /*
-                if (time2 % 10 > span)
+      
+                if (time2 % 10 > span2)
                 {
                     Instantiate(Shot);
-                    Shot.transform.position = this.transform.position;
+                    Shot.transform.position = new Vector2(x, y);
                     time2 = 0f;
                 }
-                */
+               
 
             }
         }
