@@ -17,14 +17,18 @@ public class Enemy03 : MonoBehaviour
     public Slider hpSlider;
     private float arealr = 0.0f;
     private float areaud = 0.0f;
+    private float x;
+    private float y;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
         hpSlider.value = 1;
         nowhp = hp;
+        x = this.transform.position.x;
+        y = this.transform.position.y;
     }
 
     void Update()
@@ -41,6 +45,15 @@ public class Enemy03 : MonoBehaviour
 
         }
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Wall"|| other.gameObject.tag == "Botton")
+        {
+            this.transform.position = new Vector2(x, y);
+        }
+    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {

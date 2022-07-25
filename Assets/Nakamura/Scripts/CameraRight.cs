@@ -38,7 +38,7 @@ public class CameraRight : MonoBehaviour
         {
             MainSpriteRenderer.sprite = eye;
         }
-        Debug.Log(arealr);
+        //Debug.Log(arealr);
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
         if (arealr < 1.0f && arealr > -26.0f)

@@ -44,9 +44,12 @@ public class Boss : MonoBehaviour
     Rigidbody2D rb;
     private float arealr = 0.0f;//攻撃範囲(左右)
     private float areaud = 0.0f;//攻撃範囲(上下)
-    public Slider hpSlider;
+    [SerializeField] private Slider hpSlider;
+    GameObject Slider;
     private int counter = 0;
     private float move = 0.05f;
+    private float X;
+    private float Y;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,13 +61,17 @@ public class Boss : MonoBehaviour
         MainSpriteRendererU = enemyshotU.GetComponent<SpriteRenderer>();
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
-       script = player.GetComponent<PlayerControl>();
+        Slider = GameObject.Find("Bosshp");
+        script = player.GetComponent<PlayerControl>();
         hpSlider.value = 1;
         nowhp = hp;
+        Slider.SetActive(true);
     }
 
     void Update()
     {
+        float x = this.transform.position.x;
+        float y = this.transform.position.y;
         Vector3 p = new Vector3(move,0,0);
         transform.Translate(p);
         counter++;
@@ -83,13 +90,20 @@ public class Boss : MonoBehaviour
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
         recovery();
+
+        if (nowhp <= 0)
+        {
+            this.transform.position = new Vector2(x, y);
+            MainSpriteRenderer.sprite = explosion;
+            Slider.SetActive(false);
+            this.tag = "explosion";
+            Invoke("End", 2.0f);
+        }
         //プレイヤーが範囲に入ったら位置を求め、時間を計測
-        if (arealr < 60.0f && arealr > -60.0f)
+        else if (arealr < 60.0f && arealr > -60.0f)
         {
             if (areaud < 60.0f && areaud > -60.0f)
             {
-                float x = this.transform.position.x;
-                float y = this.transform.position.y;
                 time1 += Time.deltaTime;
                 time2 += Time.deltaTime;
                 time3 += Time.deltaTime;
@@ -147,13 +161,6 @@ public class Boss : MonoBehaviour
         {
             nowhp -= 50;
             hpSlider.value = nowhp / hp;
-        }
-
-        if (nowhp <= 0)
-        {
-            MainSpriteRenderer.sprite = explosion;
-            this.tag = "explosion";
-            Invoke("End", 2.0f);
         }
     }
 

@@ -17,14 +17,18 @@ public class Enemy02 : MonoBehaviour
     [SerializeField] private GameObject Food;
     [SerializeField] private GameObject Silver;
     public Slider hpSlider;
+    private float x;
+    private float y;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = true;
+        this.rb = GetComponent<Rigidbody2D>();
+        //rb.isKinematic = true;
         player = GameObject.Find("Player");
         script = player.GetComponent<PlayerControl>();
         hpSlider.value = 1;
         nowhp = hp;
+        x = this.transform.position.x;
+        y = this.transform.position.y;
 
     }
 
@@ -33,15 +37,23 @@ public class Enemy02 : MonoBehaviour
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
         //Debug.Log(arealr);
-        if (arealr <40.0f && arealr > -40.0f)
+        if (arealr < 40.0f && arealr > -40.0f)
         {
             if (areaud < 40.0f && areaud > -40.0f)
             {
                 this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
             }
-                
+
         }
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Botton")
+        {
+            this.transform.position = new Vector2(x, y);
+        }
+    }   
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -53,7 +65,7 @@ public class Enemy02 : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             nowhp -= script.Power;
-            hpSlider.value =  nowhp/hp;
+            hpSlider.value = nowhp / hp;
         }
         if (other.gameObject.tag == "Gun")
         {
@@ -67,43 +79,24 @@ public class Enemy02 : MonoBehaviour
         }
 
         if (nowhp <= 0)
+        {
+            this.gameObject.SetActive(false);
+            coin = Random.Range(0, 2);
+            food = Random.Range(0, 2);
+            silver = Random.Range(0, 2);
+            //Debug.Log(coin);
+            //Debug.Log(food);
+            if (coin == 1)
             {
-                coin = Random.Range(0, 2);
-                food = Random.Range(0, 2);
-                silver = Random.Range(0, 2);
-                Debug.Log(coin);
-                Debug.Log(food);
-                if (coin == 1)
+                while (c < 10)
                 {
-                    while (c < 10)
-                    {
-                        Instantiate(Coin);
-                        float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                        Coin.transform.position = new Vector2(x, this.transform.position.y);
-                        c++;
-                    }
-
+                    Instantiate(Coin);
+                    float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
+                    Coin.transform.position = new Vector2(x, this.transform.position.y);
+                    c++;
                 }
-
-                if (food == 1)
-                {
-                    float x = Random.Range(this.transform.position.x + 1, this.transform.position.x - 1);
-                    Instantiate(Food);
-                    Food.transform.position = new Vector2(x, this.transform.position.y);
-                }
-
-                if (silver == 1)
-                {
-                    while (s < 1)
-                    {
-                        float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                        Instantiate(Silver);
-                        Silver.transform.position = new Vector2(x, this.transform.position.y);
-                        s++;
-                    }
-
-                }
-                this.gameObject.SetActive(false);
             }
+
+        }
     }
 }

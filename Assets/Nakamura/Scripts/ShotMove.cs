@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class ShotMove : MonoBehaviour
 {
-    private float speed = 0.1f;
-    float n;
-    Rigidbody2D rb;
-    [SerializeField] private GameObject player;
-    private float Speed =30;
-    private float arealr = 0.0f;
-    private float areaud = 0.0f;
     GameObject enemy4;
+    Rigidbody2D rb;
+    private float Speed = 30;
+    float m = 0.0f;
+    float n = 0.0f;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
         enemy4 = GameObject.Find("Enemy4");
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame

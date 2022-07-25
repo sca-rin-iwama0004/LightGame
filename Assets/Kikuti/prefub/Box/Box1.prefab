@@ -96,11 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4676dff830cda604ebb4ca7678ccfa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackUpBook: {fileID: 9160576990489394192, guid: cd62288856a193047b566154500572f9, type: 3}
-  attackSpeedBook: {fileID: 88842135130139407, guid: 1fe226c4afa934e42834bcfdf61b7eaf, type: 3}
-  defenseBook: {fileID: 3411117121085898835, guid: ace06f50e6e34bf4e8fef88ce8131ecb, type: 3}
-  attackRangeBook: {fileID: 7464203762429969564, guid: 92a35d1b5ce8c194aa4c52e1362b6a94, type: 3}
-  speedBook: {fileID: 2950972043260305690, guid: 5af7a80698db3c2419d442254f1eb23e, type: 3}
+  attackUpBook: {fileID: 5366522889977461231, guid: 717319c9172536d4d8716145042adfb6, type: 3}
+  attackSpeedBook: {fileID: 1268259615359810914, guid: 4af96490dc2941641989b1393988f70f, type: 3}
+  defenseBook: {fileID: 7401124192795639119, guid: 60d652bd7e6dee6459bfc4aab2681f9d, type: 3}
+  attackRangeBook: {fileID: 1919087013098557877, guid: f9e3b0aa2ce7f5a4eb557d1b6d654459, type: 3}
+  speedBook: {fileID: 8818875264808674731, guid: e9f3bca9f9cdab34eac758c967aeeb5a, type: 3}
   stone: {fileID: 2980797111661389138, guid: a776ee7cbe7ede44a842f3329dfa671d, type: 3}
   openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4, type: 3}
 --- !u!61 &330133010782945405

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3631435141445704699}
   m_Layer: 0
   m_Name: Shot5
-  m_TagString: Enemy4
+  m_TagString: Enemy1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8809897146770210650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.15658, y: -13.569346, z: 0}
+  m_LocalPosition: {x: -55.7, y: -27.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -134,4 +134,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed77b8a014370a4c8b3377fc900bb9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3081380709000108139, guid: 7abe39053764a9f428ccc4355fce39d1, type: 3}
