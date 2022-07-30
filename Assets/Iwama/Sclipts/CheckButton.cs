@@ -57,14 +57,14 @@ public class CheckButton : text
         int c = C.GetNumberC();
 
 
-        /*
+        
         if (inputString == "")
         {
             //Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
             //Panel.SetActive(false);
             Debug.Log(inputString);
         }
-        */
+        
 
         int s = 0;
 
@@ -85,7 +85,7 @@ public class CheckButton : text
             audioSource.clip = sounds[1];
             audioSource.Play();
             Debug.Log("ê≥â");
-           Destroy(KeyDoor);
+            Destroy(KeyDoor);
             Panel.SetActive(false);
 
         }
@@ -94,7 +94,6 @@ public class CheckButton : text
 
             audioSource.clip = sounds[0];
             audioSource.Play();
-            // audioSource.PlayOneShot(no);
             inputString = "";
             Debug.Log("ïsê≥â");
 
