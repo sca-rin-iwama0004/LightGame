@@ -147,7 +147,6 @@ public class PlayerControl : MonoBehaviour
         {
             float tile = 5;//１タイルの幅
 
-            Instantiate(resuEffect, transform.position, transform.rotation);
 
             //右にジャンプ（向いてる方向に穴があるか）
             if (jumpHole == true)
@@ -265,13 +264,11 @@ public class PlayerControl : MonoBehaviour
             { 
                 hp=hpLimit;
                 oxygen= oxygenMax;
-
                 book4.shopResu =false;//蘇生効果切れ
                 Instantiate(resuSound, this.transform.position, this.transform.rotation);//効果音
                 Instantiate(resuEffect, this.transform.position, this.transform.rotation);//モーション
                 ui = "♦蘇生♦";
                 uiDecision = true;
-
             } 
             //ゲームオーバー
             else

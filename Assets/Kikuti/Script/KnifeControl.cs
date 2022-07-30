@@ -77,7 +77,7 @@ public class KnifeControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //ナイフ消滅
-        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Enemy1" || other.gameObject.tag == "Enemy2" || other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5" || other.gameObject.tag == "DieEnemy" || other.gameObject.tag == "Boss")
+        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Door" || other.gameObject.tag == "Enemy1" || other.gameObject.tag == "Enemy2" || other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5" || other.gameObject.tag == "DieEnemy" || other.gameObject.tag == "Boss")
         {
             Destroy(gameObject);
         }
