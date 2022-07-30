@@ -64,9 +64,8 @@ public class Enemy5 : MonoBehaviour
             {
                 while (c < 10)
                 {
-                    Instantiate(Coin);
                     float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                    Coin.transform.position = new Vector2(x, this.transform.position.y);
+                    Instantiate(Coin, new Vector2(x, this.transform.position.y), Quaternion.identity);
                     c++;
                 }
 
@@ -74,18 +73,15 @@ public class Enemy5 : MonoBehaviour
 
             if (food == 1)
             {
-                float x = Random.Range(this.transform.position.x + 1, this.transform.position.x - 1);
-                Instantiate(Food);
-                Food.transform.position = new Vector2(x, this.transform.position.y);
+                Instantiate(Food, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
             }
 
-            if(gold == 1)
+            if (gold == 1)
             {
                 while(g < 1)
                 {
                     float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                    Instantiate(Gold);
-                    Gold.transform.position = new Vector2(x, this.transform.position.y);
+                    Instantiate(Gold, new Vector2(x, this.transform.position.y), Quaternion.identity);
                     g++;
                 }
                   
