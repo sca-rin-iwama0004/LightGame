@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coin: {fileID: 3031357079797871623, guid: a4276af2ea425494684eb86e3036f9b1, type: 3}
-  Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
+  Food: {fileID: 3183053530892355876, guid: acf88b1ac815fa5499e9f905d3820351, type: 3}
   Gold: {fileID: 9180543449771526230, guid: 5b69f0682d49fe34db31104d2b16a3ec, type: 3}
   hpSlider: {fileID: 933447708746833802}
 --- !u!50 &8513740535968747546

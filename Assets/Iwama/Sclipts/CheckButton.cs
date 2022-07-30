@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CheckButton : text
 {
-    public string inputString;
+    public string inputString = null;
 
     [SerializeField] private TrainScript_a trainA;
     [SerializeField] private TrainScript_b trainB;
@@ -15,10 +15,10 @@ public class CheckButton : text
 
     AudioSource audioSource;
     [SerializeField] private AudioClip no;
-    [SerializeField] private AudioClip yes;
 
     private void Start()
     {
+        Debug.Log(inputString);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -54,20 +54,34 @@ public class CheckButton : text
         int b = B.GetNumberB();
         int c = C.GetNumberC();
 
-        int s = int.Parse(inputString);
+
+        /*
+        if (inputString == "")
+        {
+            //Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
+            //Panel.SetActive(false);
+            Debug.Log(inputString);
+        }
+        */
+
+        int s = 0;
+
+        if (inputString != "")
+        {
+            Debug.Log("inputStringÇÕnullÇ≈ÇÕÇ»Ç¢");
+            s = int.Parse(inputString);
+        }
+        
         Debug.Log("ï€ë∂Ç≥ÇÍÇƒÇ¢ÇÈêîíl" + s);
 
        int j = a * 100 + b * 10 + c;
 
 
-        
-
+       
         if (s == j) 
        {
            Debug.Log("ê≥â");
            Destroy(KeyDoor);
-             GetComponent<AudioSource>().Play();//
-            audioSource.PlayOneShot(yes);
             Panel.SetActive(false);
 
         }

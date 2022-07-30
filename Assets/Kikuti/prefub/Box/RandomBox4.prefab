@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c087fe493852214b9dddfe43cdd9c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpUpBook: {fileID: 1436160505833530584, guid: 697a933a47fe87a4b939f92a3da9df48, type: 3}
-  o2UpBook: {fileID: 5043613685264305777, guid: 0a10c8a98d39d344dbcb34d06dbff713, type: 3}
-  hpRecoveryBook: {fileID: 5819749302071813212, guid: da2626debe6117141a916dfabf9c2098, type: 3}
+  hpUpBook: {fileID: 2916432877027761531, guid: c882517b1796b6e40ba4615b5f71e12b, type: 3}
+  o2UpBook: {fileID: 4599334584796748355, guid: a8d2a92b4b0ae4e4bac1a4b9c1c3892d, type: 3}
+  hpRecoveryBook: {fileID: 2976665084395387528, guid: 0dd8ba3d5300b804f90df28e32748262, type: 3}
   stone: {fileID: 9180543449771526230, guid: 5b69f0682d49fe34db31104d2b16a3ec, type: 3}
   openSound: {fileID: 8496052750482985641, guid: b0c59af1f76165d41bcaff98454eb1e4, type: 3}
 --- !u!61 &3834347704299863062

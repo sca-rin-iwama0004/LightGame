@@ -211,13 +211,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &6220749750918773095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.13}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -242,7 +242,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.4, y: 13.44}
+  m_Size: {x: 3.94, y: 12.42}
   m_EdgeRadius: 0
 --- !u!114 &-4267577437563449009
 MonoBehaviour:
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coin: {fileID: 3031357079797871623, guid: a4276af2ea425494684eb86e3036f9b1, type: 3}
-  Food: {fileID: 7039017919932371998, guid: afd201bb3b396cc459fa89e19fc95b46, type: 3}
+  Food: {fileID: 3183053530892355876, guid: acf88b1ac815fa5499e9f905d3820351, type: 3}
   Silver: {fileID: 1586172539853583186, guid: accca7b1ce9627d4b937ee09e83204d1, type: 3}
   hpSlider: {fileID: 275092595216453539}
 --- !u!1 &6631204782942347578

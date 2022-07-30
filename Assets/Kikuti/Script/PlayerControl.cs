@@ -265,11 +265,13 @@ public class PlayerControl : MonoBehaviour
             { 
                 hp=hpLimit;
                 oxygen= oxygenMax;
+
                 book4.shopResu =false;//蘇生効果切れ
                 Instantiate(resuSound, this.transform.position, this.transform.rotation);//効果音
                 Instantiate(resuEffect, this.transform.position, this.transform.rotation);//モーション
                 ui = "♦蘇生♦";
                 uiDecision = true;
+
             } 
             //ゲームオーバー
             else

@@ -9,18 +9,20 @@ public class ShotMove5 : MonoBehaviour
     private float Speed = 30;
     float m = 0.0f;
     float n = 0.0f;
-    [SerializeField] private GameObject player;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
+        player = GameObject.Find("Player");
         enemy5 = GameObject.Find("Enemy5");
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(player.transform.position.x);
         this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
         if (this.transform.position.x > enemy5.transform.position.x + 45.0f || this.transform.position.x < enemy5.transform.position.x - 45.0f || this.transform.position.y > enemy5.transform.position.y + 45.0f || this.transform.position.y < enemy5.transform.position.y - 45.0f)
         {
