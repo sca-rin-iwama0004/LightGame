@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.1f; //移動速度
+    private float speed=0.05f; //移動速度
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
     //ジャンプ判定
@@ -50,7 +50,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject knife;
     public GameObject gun;
     private float timeGun=3.0f;  //攻撃を撃つ速度
-    private float gunSpeed = 30;//攻撃が飛ぶ速度
+    private float gunSpeed = 35;//攻撃が飛ぶ速度
     private float range=0; //増加攻撃範囲
     private float power=50; //攻撃力
 
@@ -76,7 +76,7 @@ public class PlayerControl : MonoBehaviour
     private int parCount=0;  //仲間判定
 
     //ショップ画面
-    public static int coin = 10000;
+    public static int coin = 0;
     public static int asset = 0;     //資源
 
     //UI
@@ -90,7 +90,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject resuEffect;//蘇生した時のモーション
 
     //Enemy1当たり判定
-    private float timeEnemy1=1.5f;
+    private float timeEnemy1=0;
     private float timeEnemy1Count=1.5f;
 
 
@@ -331,13 +331,14 @@ public class PlayerControl : MonoBehaviour
             oxygen +=10;
         }
 
-        /*
+        
         //敵キャラ攻撃受ける
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
         {
             hp -= (10 - (10 * (defense / 100)));
         }
+        /*
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
         {
@@ -348,6 +349,7 @@ public class PlayerControl : MonoBehaviour
         {
             hp = 0;
         }
+          */
         //中ボス1,2
         if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
         {
@@ -358,7 +360,7 @@ public class PlayerControl : MonoBehaviour
         {
             hp -= (30 - (30 * (defense / 100)));
         }
-         */
+       
 
     }
     void OnTriggerExit2D(Collider2D other)
@@ -393,13 +395,13 @@ public class PlayerControl : MonoBehaviour
         {
             hp -= (10 - (10 * (defense / 100)));
         }
-        /*
+        
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
         {
             hp -= (15 - (15 * (defense / 100)));
         }
-        */
+        
         //ざこ３即死
         if (other.gameObject.tag == "DieEnemy")
         {

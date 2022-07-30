@@ -2,18 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;//UIを使うため追加
+using UnityEngine.UI;
 
 public class text : MonoBehaviour
 {
 
     public GameObject Panel;
-    public Text suuji_text;//Text型の変数suuji_textを宣言
+    public Text suuji_text;
     [SerializeField] protected Button checkButton;
 
 
-    //ボタンを押したら実行する関数　実行するためにはボタンへ関数登録が必要
-    //int型の引数numberを宣言
+    //ボタンを押したら実行
     public virtual void Push_Button(int number)
     {
         this.checkButton.GetComponent<CheckButton>().Push_Button(number);

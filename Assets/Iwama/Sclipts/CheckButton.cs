@@ -13,8 +13,7 @@ public class CheckButton : text
     [SerializeField] private GameObject KeyDoor;
     [SerializeField] private GameObject Enemy;
 
-    //AudioSource audioSource;
-    //[SerializeField] private AudioClip no;
+   
      public AudioClip[] sounds;
     private AudioSource audioSource;
 
@@ -39,8 +38,6 @@ public class CheckButton : text
 
     }
 
-    
-
     public void PushButtonCheck()
     {
         TrainScript_a A = trainA.GetComponent<TrainScript_a>();
@@ -60,8 +57,6 @@ public class CheckButton : text
         
         if (inputString == "")
         {
-            //Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
-            //Panel.SetActive(false);
             Debug.Log(inputString);
         }
         
@@ -82,8 +77,7 @@ public class CheckButton : text
        
         if (s == j) 
        {
-            audioSource.clip = sounds[1];
-            audioSource.Play();
+            
             Debug.Log("ê≥â");
             Destroy(KeyDoor);
             Panel.SetActive(false);
