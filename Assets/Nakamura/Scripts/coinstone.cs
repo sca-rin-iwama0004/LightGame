@@ -15,7 +15,7 @@ public class coinstone : MonoBehaviour
         allcoin += PlayerControl.coin;
         allcoin += (PlayerControl.asset * 3);
         coinstoneText.text = allcoin.ToString();
-        Debug.Log(allcoin);
+        //Debug.Log(allcoin);
     }
 
     // Update is called once per frame
