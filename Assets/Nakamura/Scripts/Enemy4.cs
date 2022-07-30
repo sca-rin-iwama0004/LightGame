@@ -55,35 +55,31 @@ public class Enemy4 : MonoBehaviour
                 silvercount = Random.Range(0, 4);
                 Debug.Log(coin);
                 Debug.Log(food);
-                if (coin  == 1)
+                if (coin == 1)
                 {
-                    while(c < 10)
+                    while (c < 10)
                     {
-                        Instantiate(Coin);
                         float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                        Coin.transform.position = new Vector2(x, this.transform.position.y);
+                        Instantiate(Coin, new Vector2(x, this.transform.position.y), Quaternion.identity);
                         c++;
                     }
-                   
+
                 }
 
-                if(food == 1)
+                if (food == 1)
                 {
-                    float x = Random.Range(this.transform.position.x + 1, this.transform.position.x - 1);
-                    Instantiate(Food);
-                    Food.transform.position = new Vector2(x, this.transform.position.y);
+                    Instantiate(Food, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
                 }
 
                 if (silver == 1)
                 {
-                    while(s < silvercount)
+                    while (s < 1)
                     {
                         float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                        Instantiate(Silver);
-                        Silver.transform.position = new Vector2(x, this.transform.position.y);
+                        Instantiate(Silver, new Vector2(x, this.transform.position.y), Quaternion.identity);
                         s++;
                     }
-                   
+
                 }
                 this.gameObject.SetActive(false);
             }
