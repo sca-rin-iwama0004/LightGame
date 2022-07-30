@@ -11,8 +11,8 @@ public class Enemy5Shot : MonoBehaviour
     [SerializeField] private GameObject Shot;//çUåÇ(í«ê’)
     GameObject player;
     GameObject enemy4;
-    private float span = 2.0f;
-    private float span2 = 4.0f;
+    private float span = 5.0f;
+    private float span2 = 8.0f;
     private float time = 0f;
     private float time2 = 0f;
     private float arealr = 0.0f;
