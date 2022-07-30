@@ -80,7 +80,6 @@ public class Enemy02 : MonoBehaviour
 
         if (nowhp <= 0)
         {
-            this.gameObject.SetActive(false);
             coin = Random.Range(0, 2);
             food = Random.Range(0, 2);
             silver = Random.Range(0, 2);
@@ -90,18 +89,15 @@ public class Enemy02 : MonoBehaviour
             {
                 while (c < 10)
                 {
-                    Instantiate(Coin);
                     float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                    Coin.transform.position = new Vector2(x, this.transform.position.y);
+                    Instantiate(Coin, new Vector2(x, this.transform.position.y), Quaternion.identity);
                     c++;
                 }
             }
 
             if (food == 1)
             {
-                float x = Random.Range(this.transform.position.x + 1, this.transform.position.x - 1);
-                Instantiate(Food);
-                Food.transform.position = new Vector2(x, this.transform.position.y);
+                Instantiate(Food, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
             }
 
             if (silver == 1)
@@ -109,13 +105,12 @@ public class Enemy02 : MonoBehaviour
                 while (s < 1)
                 {
                     float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
-                    Instantiate(Silver);
-                    Silver.transform.position = new Vector2(x, this.transform.position.y);
+                    Instantiate(Silver, new Vector2(x, this.transform.position.y), Quaternion.identity);
                     s++;
                 }
 
             }
-
+            this.gameObject.SetActive(false);
         }
     }
 }
