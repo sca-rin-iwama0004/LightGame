@@ -97,6 +97,25 @@ public class Enemy02 : MonoBehaviour
                 }
             }
 
+            if (food == 1)
+            {
+                float x = Random.Range(this.transform.position.x + 1, this.transform.position.x - 1);
+                Instantiate(Food);
+                Food.transform.position = new Vector2(x, this.transform.position.y);
+            }
+
+            if (silver == 1)
+            {
+                while (s < 1)
+                {
+                    float x = Random.Range(this.transform.position.x + 2, this.transform.position.x - 2);
+                    Instantiate(Silver);
+                    Silver.transform.position = new Vector2(x, this.transform.position.y);
+                    s++;
+                }
+
+            }
+
         }
     }
 }
