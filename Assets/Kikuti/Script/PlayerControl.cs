@@ -67,8 +67,8 @@ public class PlayerControl : MonoBehaviour
     //HP酸素
     private float hp=100.0f;
     private float hpLimit = 100.0f;  //その時のmaxのHP
-    private float oxygen=150.0f;
-    private float oxygenMax = 150.0f;
+    private float oxygen=100.0f;
+    private float oxygenMax = 100.0f;
     private bool placeO2=false;  //酸素ボンベ
     private bool rec=false;    //HP自動回復
 
