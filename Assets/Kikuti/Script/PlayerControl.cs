@@ -78,34 +78,33 @@ public class PlayerControl : MonoBehaviour
     //ショップ画面
     public static int coin = 10000;
     public static int asset = 0;     //資源
-    public static bool shopResu; //ショップ蘇生
-    public static bool shopRange;//ショップ攻撃範囲
-    public static bool shopDefense;//ショップ防御力
-    public static bool shopRec;//ショップ自動回復
 
     //UI
-    private string ui;
-    private bool uiDecision=false;
-    private string ui2;
-    private bool uiDecision2 = false;
+    private string ui;//拾ったアイテムの表示
+    private bool uiDecision=false;//uiの表示判定
+    private string ui2;//説明の表示
+    private bool uiDecision2 = false;//uiの表示判定
 
+    //蘇生
+    public GameObject resuSound;//蘇生した時の効果音
+    public GameObject resuEffect;//蘇生した時のモーション
 
-
+    //Enemy1当たり判定
+    private float timeEnemy1=1.5f;
+    private float timeEnemy1Count=1.5f;
 
 
     void Start()
     {
-        
-            Debug.Log(shopRange);
-        
-        
-
+       
         this.rb = GetComponent<Rigidbody2D>();
 
         renderer = GetComponent<SpriteRenderer>();
         sr = gameObject.GetComponent<SpriteRenderer>();
 
         direction = PlayerDirection.LEFT;
+
+        
     }
 
     // Update is called once per frame
@@ -147,6 +146,8 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             float tile = 5;//１タイルの幅
+
+            Instantiate(resuEffect, transform.position, transform.rotation);
 
             //右にジャンプ（向いてる方向に穴があるか）
             if (jumpHole == true)
@@ -260,11 +261,15 @@ public class PlayerControl : MonoBehaviour
         if (hp <= 0||oxygen<=0)
         {
             //蘇生実行
-            if(shopResu==true)
+            if(book4.shopResu==true)
             { 
                 hp=hpLimit;
                 oxygen= oxygenMax;
-                shopResu =false;
+                book4.shopResu =false;//蘇生効果切れ
+                Instantiate(resuSound, this.transform.position, this.transform.rotation);//効果音
+                Instantiate(resuEffect, this.transform.position, this.transform.rotation);//モーション
+                ui = "♦蘇生♦";
+                uiDecision = true;
             } 
             //ゲームオーバー
             else
@@ -327,14 +332,13 @@ public class PlayerControl : MonoBehaviour
             oxygen +=10;
         }
 
-        
+        /*
         //敵キャラ攻撃受ける
         //ざこ1
         if (other.gameObject.tag == "Enemy1")
         {
             hp -= (10 - (10 * (defense / 100)));
         }
-        /*
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
         {
@@ -345,7 +349,6 @@ public class PlayerControl : MonoBehaviour
         {
             hp = 0;
         }
-        */
         //中ボス1,2
         if (other.gameObject.tag == "Enemy4" || other.gameObject.tag == "Enemy5")
         {
@@ -356,7 +359,8 @@ public class PlayerControl : MonoBehaviour
         {
             hp -= (30 - (30 * (defense / 100)));
         }
-        
+         */
+
     }
     void OnTriggerExit2D(Collider2D other)
     {
@@ -390,11 +394,13 @@ public class PlayerControl : MonoBehaviour
         {
             hp -= (10 - (10 * (defense / 100)));
         }
+        /*
         //ざこ2
         if (other.gameObject.tag == "Enemy2")
         {
             hp -= (15 - (15 * (defense / 100)));
         }
+        */
         //ざこ３即死
         if (other.gameObject.tag == "DieEnemy")
         {
@@ -415,7 +421,23 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    
+    void OnCollisionStay2D(Collision2D other)
+    {
+        //ざこ2
+        if (other.gameObject.tag == "Enemy2")
+        {
+            timeEnemy1 += Time.deltaTime;
+            if (timeEnemy1 >= timeEnemy1Count)
+            {
+                hp -= (15 - (15 * (defense / 100)));
+
+                timeEnemy1 = 0.0f;
+            }
+           
+        }
+    }
+
+
 
 
 

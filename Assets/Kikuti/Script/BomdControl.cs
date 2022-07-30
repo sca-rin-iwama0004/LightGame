@@ -7,7 +7,7 @@ public class BomdControl : MonoBehaviour
 {
     //爆弾（攻撃）
 
-    public GameObject Explosion;
+    public GameObject Explosion;//モーション
     private float time=3.0f;//爆発までの時間
 
     //効果音
