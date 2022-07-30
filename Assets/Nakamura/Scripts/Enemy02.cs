@@ -49,7 +49,7 @@ public class Enemy02 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Botton")
+        if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Botton" || other.gameObject.tag == "Door")
         {
             this.transform.position = new Vector2(x, y);
         }

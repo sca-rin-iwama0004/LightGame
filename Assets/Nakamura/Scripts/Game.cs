@@ -9,7 +9,7 @@ public class Game: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(coinstone.allcoin);
+        //Debug.Log(coinstone.allcoin);
     }
 
     // Update is called once per frame
@@ -23,11 +23,11 @@ public class Game: MonoBehaviour
         SceneManager.LoadScene("SampleScene");
         if (book1.shopDefense == true)
         {
-            Debug.Log("a");
+            //Debug.Log("a");
         }
         else
         {
-            Debug.Log("b");
+            //Debug.Log("b");
         }
     }	
 }
