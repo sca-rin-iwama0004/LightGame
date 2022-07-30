@@ -13,8 +13,10 @@ public class CheckButton : text
     [SerializeField] private GameObject KeyDoor;
     [SerializeField] private GameObject Enemy;
 
-    AudioSource audioSource;
-    [SerializeField] private AudioClip no;
+    //AudioSource audioSource;
+    //[SerializeField] private AudioClip no;
+     public AudioClip[] sounds;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -80,15 +82,19 @@ public class CheckButton : text
        
         if (s == j) 
        {
-           Debug.Log("ê≥â");
+            audioSource.clip = sounds[1];
+            audioSource.Play();
+            Debug.Log("ê≥â");
            Destroy(KeyDoor);
             Panel.SetActive(false);
 
         }
         else{
             Instantiate(Enemy, new Vector3(-47, 64, 0), Quaternion.identity);
-         
-            audioSource.PlayOneShot(no);
+
+            audioSource.clip = sounds[0];
+            audioSource.Play();
+            // audioSource.PlayOneShot(no);
             inputString = "";
             Debug.Log("ïsê≥â");
 
