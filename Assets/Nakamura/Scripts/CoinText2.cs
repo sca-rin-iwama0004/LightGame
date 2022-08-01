@@ -15,6 +15,7 @@ public class CoinText2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       //すべてのコインの合計を表示
        coinText.text = coinstone.allcoin.ToString();
        
     }

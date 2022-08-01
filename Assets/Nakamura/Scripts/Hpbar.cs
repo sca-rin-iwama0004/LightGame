@@ -19,6 +19,7 @@ public class Hpbar : MonoBehaviour
     void Update()
     {
         a= enemy5.activeSelf;
+        //enemy5‚ªfalse‚É‚È‚Á‚½‚çfalse‚É‚·‚é
         if(a == false)
         {
             this.gameObject.SetActive(false);

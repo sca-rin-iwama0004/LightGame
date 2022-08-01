@@ -14,6 +14,7 @@ public class Title2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚çTitle‚ÖˆÚ“®‚·‚é
         if (Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene("Title");

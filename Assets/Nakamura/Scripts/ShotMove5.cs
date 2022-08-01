@@ -6,9 +6,7 @@ public class ShotMove5 : MonoBehaviour
 {
     GameObject enemy5;
     Rigidbody2D rb;
-    private float Speed = 30;
-    float m = 0.0f;
-    float n = 0.0f;
+    private float Speed = 30;//攻撃の速さ
     GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -22,8 +20,9 @@ public class ShotMove5 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(player.transform.position.x);
+        //プレイヤーの方向へ移動する
         this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x, player.transform.position.y), Speed * Time.deltaTime);
+        //enemy5のx座標より40以上または40以下、ｙ座標より40以上または40以下ならfalseにする
         if (this.transform.position.x > enemy5.transform.position.x + 45.0f || this.transform.position.x < enemy5.transform.position.x - 45.0f || this.transform.position.y > enemy5.transform.position.y + 45.0f || this.transform.position.y < enemy5.transform.position.y - 45.0f)
         {
             this.gameObject.SetActive(false);
@@ -33,6 +32,7 @@ public class ShotMove5 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        //Bullet、Player、Wall、Partner、Doorのどれかに当たったならfalseにする
         if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player" || other.gameObject.tag == "Wall" || other.gameObject.tag == "Partner" || other.gameObject.tag == "Door")
         {
             this.gameObject.SetActive(false);

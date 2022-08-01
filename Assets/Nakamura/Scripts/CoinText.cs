@@ -10,7 +10,7 @@ public class CoinText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //¡‰ñŠl“¾‚µ‚½ƒRƒCƒ“‚Ì–‡”‚ğ•\¦
         coinText.text = PlayerControl.coin.ToString();
     }
 

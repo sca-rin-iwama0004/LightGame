@@ -20,14 +20,6 @@ public class Game: MonoBehaviour
     public void OnClickStartButton()
     {
         
-        SceneManager.LoadScene("SampleScene");
-        if (book1.shopDefense == true)
-        {
-            //Debug.Log("a");
-        }
-        else
-        {
-            //Debug.Log("b");
-        }
+        SceneManager.LoadScene("SampleScene");//SampleScene‚ÖˆÚ“®‚·‚é
     }	
 }

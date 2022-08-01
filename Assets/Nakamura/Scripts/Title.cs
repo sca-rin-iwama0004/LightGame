@@ -17,7 +17,7 @@ public class Title : MonoBehaviour
         
     }
      public void OnClickStartButton()
-   {
-	SceneManager.LoadScene("Title");
-   }	
+    {
+        SceneManager.LoadScene("Title");//Title‚ÖˆÚ“®‚·‚é
+    }
 }
