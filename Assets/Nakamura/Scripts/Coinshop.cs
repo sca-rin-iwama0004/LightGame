@@ -14,6 +14,7 @@ public class Coinshop : MonoBehaviour
     // Update is called once per frame
     public void OnClickStartButton()
     {
+        //CoinShop‚ÖƒV[ƒ“ˆÚ“®‚·‚é
         SceneManager.LoadScene("CoinShop");
     }
 }

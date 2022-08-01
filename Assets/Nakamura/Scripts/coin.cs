@@ -18,6 +18,7 @@ public class coin : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
+        //ƒvƒŒƒCƒ„[‚É“–‚½‚Á‚½‚È‚çfalse‚É‚·‚é
         if (other.gameObject.tag == "Player")
         {
             this.gameObject.SetActive(false);

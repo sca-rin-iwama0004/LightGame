@@ -10,11 +10,11 @@ public class CameraUnder : MonoBehaviour
     [SerializeField] private GameObject enemy4;//出現させる敵
     private float time = 0f;
     private int sleep = 3;//画像切り替えの間隔
+    private int en = 0;//生成された敵の数
+    private float arealr = 0.0f;//カメラの範囲(上下)
+    private float areaud = 0.0f;//カメラの範囲(左右)
     Rigidbody2D rb;
     GameObject player;
-    int en = 0;
-    private float arealr = 0.0f;
-    private float areaud = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +28,13 @@ public class CameraUnder : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        //秒数/10の余りがsleepより小さいなら目が開く
         if (time % 10 <= sleep)
         {
             MainSpriteRenderer.sprite = enemy3;
 
         }
-
+        //それ以外なら閉じる
         else
         {
             MainSpriteRenderer.sprite = eye;
@@ -41,12 +42,14 @@ public class CameraUnder : MonoBehaviour
         //Debug.Log(areaud);
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
+        //プレイヤーのx座標がー１以上26以下かつy座標が－15以上15以下なら
         if (arealr < 15.0f && arealr > -15.0f)
         {
             if (areaud < 26.0f && areaud > -1.0f)
             {
                 float x = this.transform.position.x;
                 float y = this.transform.position.y+3;
+                //目が開いてるかつ敵が生成されていないなら敵を生成し、enに+1する
                 if (MainSpriteRenderer.sprite == enemy3 && en < 1)
                 {
                     GetComponent<AudioSource>().Play();
@@ -55,7 +58,7 @@ public class CameraUnder : MonoBehaviour
                     enemy4.transform.position = new Vector2(x, y);
 
                 }
-
+                //目が閉じたなら生成された敵の数を0に戻す
                 if (MainSpriteRenderer.sprite == eye)
                 {
                     en = 0;

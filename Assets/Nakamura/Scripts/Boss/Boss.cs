@@ -13,13 +13,13 @@ public class Boss : MonoBehaviour
     SpriteRenderer MainSpriteRendererR;
     SpriteRenderer MainSpriteRendererL;
     SpriteRenderer MainSpriteRenderer;
-    [SerializeField] private Sprite atk;
-    [SerializeField] private Sprite o2up;
-    [SerializeField] private Sprite explosion;
-    [SerializeField] private GameObject enemyshotR;
-    [SerializeField] private GameObject enemyshotL;
-    [SerializeField] private GameObject enemyshotU;
-    [SerializeField] private GameObject enemyshotD;
+    [SerializeField] private Sprite atk;//ボスの攻撃の画像
+    [SerializeField] private Sprite o2up; //ボスの攻撃(酸素)の画像
+    [SerializeField] private Sprite explosion;//爆発時の画像
+    [SerializeField] private GameObject enemyshotR;//右への攻撃
+    [SerializeField] private GameObject enemyshotL;//左への攻撃
+    [SerializeField] private GameObject enemyshotU;//上への攻撃
+    [SerializeField] private GameObject enemyshotD;//下への攻撃
     [SerializeField] private GameObject enemy6r;//right方向(下)の攻撃
     [SerializeField] private GameObject enemy6l;//left方向(下)の攻撃
     [SerializeField] private GameObject enemy6rd;//enemy6rの生成位置
@@ -28,28 +28,26 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject enemy6L;//left方向(上)の攻撃
     [SerializeField] private GameObject enemy6ru;//enemy6Rの生成位置
     [SerializeField] private GameObject enemy6lu;//enemy6Lの生成位置
-    [SerializeField] private GameObject Coin;
-    private float span = 1.0f;
-    private float span2 = 1.5f;
-    private float span3 = 3.0f;
+    [SerializeField] private Slider hpSlider;//HPバー
+    [SerializeField] private GameObject Coin;//コイン
+    private float span = 1.0f;//enemy6r,enemy6Lが生成される間隔
+    private float span2 = 1.5f;//enemy6l,enemy6Rが生成される間隔
+    private float span3 = 3.0f;//enemyshotR～enemyshotDが生成される間隔
     private float time1 = 0f;
     private float time2 = 0f;
     private float time3 = 0f;
-    private float hp = 1500;
-    private float nowhp;
     private int o2d = 0;
     private int o2u = 0;
     private int o2r = 0;
     private int o2l = 0;
+    private float hp = 1500;//ボスの最大HP
+    private float nowhp;//ボスの現在のHP
     Rigidbody2D rb;
     private float arealr = 0.0f;//攻撃範囲(左右)
     private float areaud = 0.0f;//攻撃範囲(上下)
-    [SerializeField] private Slider hpSlider;
     GameObject Slider;
     private int counter = 0;
-    private float move = 0.05f;
-    private float X;
-    private float Y;
+    private float move = 0.05f;//ボスの動くスピード
     // Start is called before the first frame update
     void Start()
     {
@@ -63,9 +61,9 @@ public class Boss : MonoBehaviour
         player = GameObject.Find("Player");
         Slider = GameObject.Find("Bosshp");
         script = player.GetComponent<PlayerControl>();
-        hpSlider.value = 1;
-        nowhp = hp;
-        Slider.SetActive(true);
+        hpSlider.value = 1;//HPバーを満タンにする
+        nowhp = hp;//現在のHPをボスのHPとする
+        Slider.SetActive(true);//HPバーを表示する
     }
 
     void Update()
@@ -75,15 +73,13 @@ public class Boss : MonoBehaviour
         Vector3 p = new Vector3(move,0,0);
         transform.Translate(p);
         counter++;
+        //couterが500になったら反対方向に進む
         if (counter == 500)
         {
             move *= -1;
         }
-        else if(counter == 1500)
-        {
-            counter = 0;
-        }
-        else if (counter == 2000)
+        //couterが1500になったらcounterを0にし、進む方向が戻る
+        else if (counter == 1500)
         {
             counter = 0;
         }
@@ -91,6 +87,7 @@ public class Boss : MonoBehaviour
         areaud = player.transform.position.y - this.transform.position.y;
         recovery();
 
+        //現在のHPが0になったら動きを止め、画像を爆発に変え、HPバーを消し、tagをexplosionに変更し、2秒後にEndメソッドに移動する
         if (nowhp <= 0)
         {
             this.transform.position = new Vector2(x, y);
@@ -146,17 +143,19 @@ public class Boss : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-
+        //Bulletに当たったなら現在のHPをPowerぶん減らし、HPバーにも反映させる
         if (other.gameObject.tag == "Bullet")
         {
             nowhp -= script.Power;
             hpSlider.value = nowhp / hp;
         }
+        //Gunに当たったなら現在のHPをPower/2ぶん減らし、HPバーにも反映させる
         if (other.gameObject.tag == "Gun")
         {
             nowhp -= (script.Power / 2);
             hpSlider.value = nowhp / hp;
         }
+        //Explosionに当たったなら現在のHPを50減らし、HPバーにも反映させる
         if (other.gameObject.tag == "Explosion")
         {
             nowhp -= 50;
@@ -171,51 +170,64 @@ public class Boss : MonoBehaviour
     void recovery()
     {
         o2d = Random.Range(1, 11);
+        //o2dの値が9以上なら攻撃を酸素にし、tagをO2にする
         if (o2d >= 9)
         {
             MainSpriteRendererD.sprite = o2up;
             enemyshotD.tag = "O2";
         }
-
+        //それ以外なら攻撃をし、tagはBossにする
         else
         {
             MainSpriteRendererD.sprite = atk;
             enemyshotD.tag = "Boss";
         }
 
+
+
         o2u = Random.Range(1, 11);
+        //o2uの値が9以上なら攻撃を酸素にし、tagをO2にする
         if (o2u >= 9)
         {
             MainSpriteRendererU.sprite = o2up;
             enemyshotU.tag = "O2";
         }
 
+        //それ以外なら攻撃をし、tagはBossにする
         else
         {
             MainSpriteRendererU.sprite = atk;
             enemyshotU.tag = "Boss";
         }
 
+
+
         o2r = Random.Range(1, 11);
+        //o2rの値が9以上なら攻撃を酸素にし、tagをO2にする
         if (o2r >= 9)
         {
             MainSpriteRendererR.sprite = o2up;
             enemyshotR.tag = "O2";
         }
 
+        //それ以外なら攻撃をし、tagはBossにする
         else
         {
             MainSpriteRendererR.sprite = atk;
             enemyshotR.tag = "Boss";
         }
 
+
+
         o2l = Random.Range(1, 11);
+        //o2lの値が9以上なら攻撃を酸素にし、tagをO2にする
         if (o2l >= 9)
         {
             MainSpriteRendererL.sprite = o2up;
             enemyshotL.tag = "O2";
         }
 
+        //それ以外なら攻撃をし、tagはBossにする
         else
         {
             MainSpriteRendererL.sprite = atk;
@@ -223,7 +235,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-
+    //クリア画面に移動し、ボスを消す
     void End()
     {
         SceneManager.LoadScene("Clear");

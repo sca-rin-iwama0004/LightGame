@@ -6,10 +6,10 @@ public class Enemyshot : MonoBehaviour
 {
     [SerializeField] private GameObject enemyshot;
     GameObject player;
-    private float span = 2.0f;
+    private float span = 2.0f;//shotが生成させる間隔
     private float time =0f;
-    private float arealr =0.0f;
-    private float areaud =0.0f;
+    private float arealr = 0.0f;//攻撃範囲(左右)
+    private float areaud = 0.0f;//攻撃範囲(上下)
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class Enemyshot : MonoBehaviour
         arealr = player.transform.position.x - this.transform.position.x;
         areaud = player.transform.position.y - this.transform.position.y;
         //Debug.Log(arealr);
-        //プレイヤーが範囲内に入ったらenemyshot生成
+        //プレイヤーが範囲内に入ったら時間を計測
         if (arealr<80.0f &&  arealr>-80.0f)
         {
             if (areaud < 20.0f && areaud > -20.0f)
@@ -33,6 +33,7 @@ public class Enemyshot : MonoBehaviour
                 float x = this.transform.position.x;
                 float y = this.transform.position.y;
                 time += Time.deltaTime;
+                //span秒経過したら生成
                 if (time > span)
                 {
                     Instantiate(enemyshot);

@@ -12,6 +12,7 @@ public class book1 : MonoBehaviour
 
     void Start()
     {
+        //すでに買っているなら、クリックができないようにし、チェックマークを付ける
         if (a == 1)
         {
 
@@ -26,9 +27,10 @@ public class book1 : MonoBehaviour
     }
     public void OnToggleChanged()
     {
-	    if(a == 0)
+        //購入していなければ
+        if (a == 0)
         {
-            //コインの枚数が500以上ならクリックできる
+            //コインの枚数が500以下ならチェックマークを付けない
 		    if (coinstone.allcoin < 500)
             { 
                 	toggle.isOn = false;
