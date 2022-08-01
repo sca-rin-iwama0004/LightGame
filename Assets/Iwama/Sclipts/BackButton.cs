@@ -9,19 +9,16 @@ public class BackButton : CheckButton
     GameObject number;
     CheckButton script;
  
-    public void PushButtonDialBack()
+    public void PushButtonDialBack()//~ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Ìˆ—
     {
-
         number = GameObject.Find("Check");
         script = number.GetComponent<CheckButton>();
-
         
-        script.inputString = "";//back‚Ì‚ğíœ‚µ‚Ä‚µ‚Ü‚Á‚Ä‚¢‚é
-        suuji_text.text = "";
+        script.inputString = "";
+        suuji.text = "";
         Panel.SetActive(false);
 
         Debug.Log("–ß‚é");
-        
     }
 
 }

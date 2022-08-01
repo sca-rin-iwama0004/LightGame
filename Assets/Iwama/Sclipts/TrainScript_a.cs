@@ -16,7 +16,7 @@ public class TrainScript_a : MonoBehaviour
     }
     
 
-    public int GetNumberA()
+    public int GetNumberA() //パスワードの3桁目がどの数字になっているか
     {
         if (number == 0)
         {
@@ -68,9 +68,7 @@ public class TrainScript_a : MonoBehaviour
             a = 9;
             Debug.Log("a=" + a);
         }
-
         return a;
-
     }
 }
         

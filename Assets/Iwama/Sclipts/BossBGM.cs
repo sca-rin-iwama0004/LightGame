@@ -6,7 +6,7 @@ public class BossBGM : MonoBehaviour
 {
     public AudioClip[] sounds;
     private AudioSource audioSource;
-    private bool Boss = false;
+    private bool Boss = false;//プレイヤーがボスの部屋にいるか
 
     void Start()
     {
@@ -18,7 +18,6 @@ public class BossBGM : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        
         if(other.CompareTag("Player") && !Boss)
         {
             audioSource.clip = sounds[1];
@@ -31,8 +30,5 @@ public class BossBGM : MonoBehaviour
             audioSource.Play();
             Boss = false;
         }
-        
-
     }
-
 }

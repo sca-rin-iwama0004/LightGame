@@ -5,24 +5,15 @@ using UnityEngine.UI;
  
 public class UIManager : MonoBehaviour
 {
-    //３つのPanelを格納する変数
-    //インスペクターウィンドウからゲームオブジェクトを設定する
-    [SerializeField] GameObject Panel;
+    [SerializeField] GameObject Panel;//ボタンを一つにまとめたパネル
 
-    // Start is called before the first frame update
     void Start()
     {
-        Panel.SetActive(false);
-        //BackToMenuメソッドを呼び出す
-     //   BackToMenu();
+     Panel.SetActive(false);
     }
 
-    
     void OnCollisionEnter2D(Collision2D Collision)
     {
-      
-            Panel.SetActive(true);
-      
+      Panel.SetActive(true);
     }
-
 }

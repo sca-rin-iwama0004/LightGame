@@ -14,16 +14,14 @@ public class CheckButton : text
     [SerializeField] private GameObject Enemy;
 
    
-     public AudioClip[] sounds;
+    public AudioClip[] sounds;
     private AudioSource audioSource;
 
     private void Start()
     {
-        Debug.Log(inputString);
-        audioSource = GetComponent<AudioSource>();
+      Debug.Log(inputString);
+      audioSource = GetComponent<AudioSource>();
     }
-
-
 
     public string InputString {
         set { this.inputString = value; }
@@ -34,11 +32,9 @@ public class CheckButton : text
     {
         this.inputString += number;
         Debug.Log(inputString);
-        //base.Push_Button(number);
-
     }
 
-    public void PushButtonCheck()
+    public void PushButtonCheck()//チェックボタンが押されたら
     {
         TrainScript_a A = trainA.GetComponent<TrainScript_a>();
         A.GetNumberA();
@@ -60,7 +56,6 @@ public class CheckButton : text
             Debug.Log(inputString);
         }
         
-
         int s = 0;
 
         if (inputString != "")
@@ -73,11 +68,8 @@ public class CheckButton : text
 
        int j = a * 100 + b * 10 + c;
 
-
-       
         if (s == j) 
        {
-            
             Debug.Log("正解");
             Destroy(KeyDoor);
             Panel.SetActive(false);
@@ -90,7 +82,6 @@ public class CheckButton : text
             audioSource.Play();
             inputString = "";
             Debug.Log("不正解");
-
        }
     }
   

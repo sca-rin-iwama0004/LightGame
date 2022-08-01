@@ -11,7 +11,7 @@ public class TrainScript_c : TrainScript_a
         base.Start();
     }
 
-    public int GetNumberC()
+    public int GetNumberC() //パスワードの1桁目がどの数字になっているか
     {
         if (number == 0)
         {
@@ -63,8 +63,6 @@ public class TrainScript_c : TrainScript_a
             c = 9;
             Debug.Log("c=" + c);
         }
-
         return c;
-
     }
 }

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public class TrainScript_b : TrainScript_a
-    {
+public class TrainScript_b : TrainScript_a
+{
         protected int b;
 
         protected override void Start()
@@ -11,8 +11,7 @@ using UnityEngine;
             base.Start();
         }
 
-
-        public int GetNumberB()
+    public int GetNumberB() //パスワードの2桁目がどの数字になっているか
     {
         if (number == 0)
         {
@@ -64,9 +63,7 @@ using UnityEngine;
             b = 9;
             Debug.Log("b=" + b);
         }
-        
         return b;
-        
     }
 }
   
