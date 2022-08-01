@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer sr;
 
     //移動
-    private float speed=0.25f; //移動速度
+    private float speed=0.05f; //移動速度
     private Rigidbody2D rb;
     private float jumpPower=1;//ジャンプ力
     //ジャンプ判定
